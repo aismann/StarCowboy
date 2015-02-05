@@ -26,6 +26,10 @@ public:
         return _force;
     }
     
+    const cc::Vec2& getDirection() const {
+        return _direction;
+    }
+    
     void setDirection(const cc::Vec2& direction) {
         _direction = direction;
     }

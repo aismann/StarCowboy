@@ -37,7 +37,7 @@ void ComShipBody::update(float dt) {
     
     if (_engine) {
         if (_engine->getForce().lengthSquared() > 0.01) {
-            float aim = math::radian2Angle(-_engine->getForce().getAngle());
+            float aim = math::radian2Angle(-_engine->getDirection().getAngle());
             float curr = _ndoe->getRotation();
             curr = math::normalizeAngle(curr);
             
