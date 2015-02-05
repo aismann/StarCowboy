@@ -51,7 +51,7 @@ bool GameScene::init()
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
     playerShip->addComponent(ComShipController::create(), "controller");
     playerShip->addComponent(ComPhysicsEntity::create(5, 400), "physics_entity");
-    playerShip->addComponent(ComEngine::create(20000, 50), "engine");
+    playerShip->addComponent(ComEngine::create(25000, 50), "engine");
     playerShip->addComponent(ComWeaponSystem::create()->setCoolDown(0.15f)->setErrorAngle(2.5), "weapon");
     playerShip->addComponent(ComHitPoint::create(25));
     playerShip->awake();
@@ -59,6 +59,11 @@ bool GameScene::init()
     int maxEnemyNum = 20;
     int waveEnemyNum = 5;
     std::function<void(float)> addEnemy = [=](float){
+        GameObject *player = GameWorld::getInstance()->getObjectManager()->getObject("player");
+        if (player == nullptr || !player->isActive()) {
+            this->unschedule("add_enemy");
+            return;
+        }
         int num = 0;
         GameWorld::getInstance()->getObjectManager()->enumerateObject(TagSet::getBit("enemy"), [&num](GameObject*){
             ++num;
@@ -68,9 +73,10 @@ bool GameScene::init()
             GameObject *enemy = GameWorld::getInstance()->getObjectManager()->createObject();
             enemy->setTagBits(TagSet::getBit("enemy") | TagSet::getBit("physics_entity"));
             enemy->addComponent(ComShipBody::create(Sprite::create("enemy.png")), "body");
+            enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
             enemy->addComponent(ComPhysicsEntity::create(2, 200), "physics_entity");
             cc::Vec2 locate(random(-100, 100), random(-100, 100));
-            enemy->getComponent<ComPhysicsEntity>("physics_entity")->setLocation(locate.getNormalized() * 500);
+            enemy->getComponent<ComPhysicsEntity>("physics_entity")->setLocation(player->getComponent<ComPhysicsEntity>("physics_entity")->getLocation() + locate.getNormalized() * 300);
             enemy->addComponent(ComEngine::create(2000, 45), "engine");
             enemy->addComponent(ComWeaponSystem::create()->setCoolDown(1.0f)->setErrorAngle(2.5), "weapon");
             enemy->addComponent(ComAiEnemyController::create());

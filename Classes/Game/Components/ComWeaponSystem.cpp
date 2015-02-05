@@ -45,7 +45,7 @@ void ComWeaponSystem::fireOnce() {
     GameObject* bullet = getWorld()->getObjectManager()->createObject();
     bullet->setTagBits(TagSet::getBit("bullet") | TagSet::getBit("physics_entity"));
     bullet->addComponent(ComBullet::create(1, cc::Sprite::create("bullet.png")));
-    ComPhysicsEntity *physics = ComPhysicsEntity::create(1, 1, 0.004);
+    ComPhysicsEntity *physics = ComPhysicsEntity::create(1, 50, 0.004);
     physics->setCollisionResistance(0.25);
     ComPhysicsEntity *ship = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
     physics->setLocation(ship->getLocation() + shootAim * (ship->getRadius() + physics->getRadius() + 1));

@@ -46,7 +46,6 @@ void ComPhysicsEntity::update(float dt) {
             }
         }
     });
-    
 }
 
 cc::Vec2 ComPhysicsEntity::calculateForce(float dt) {

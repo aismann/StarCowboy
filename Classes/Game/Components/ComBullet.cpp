@@ -5,7 +5,9 @@ void ComBullet::onLoad() {
 }
 
 void ComBullet::onUnload() {
-    getOwner()->getWorld()->getGameForeground()->removeChild(_ndoe);
+    if (_ndoe) {
+        getOwner()->getWorld()->getGameForeground()->removeChild(_ndoe);
+    }
 }
 
 void ComBullet::start() {
