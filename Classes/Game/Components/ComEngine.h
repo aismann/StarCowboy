@@ -30,16 +30,19 @@ public:
         return _direction;
     }
     
-    void setDirection(const cc::Vec2& direction) {
+    ComEngine* setDirection(const cc::Vec2& direction) {
         _direction = direction;
+        return this;
     }
     
-    void setMaxForce(float force) {
+    ComEngine* setMaxForce(float force) {
         _maxForce = force;
+        return this;
     }
     
-    void setMaxSpeed(float speed) {
+    ComEngine* setMaxSpeed(float speed) {
         _maxSpeed = speed;
+        return this;
     }
     
     float getMaxForce() const {

@@ -3,8 +3,11 @@
 #define __ComWeaponSystem_h__
 
 #include "Component.h"
+#include <vector>
 
 class ComShipBody;
+class ComPhysicsEntity;
+class Weapon;
 class ComWeaponSystem : public ComponentBace {
     
     ComWeaponSystem();
@@ -19,18 +22,15 @@ public:
         return com;
     }
     
+    ComWeaponSystem* addWeapon(Weapon* weapon);
+    
     ComWeaponSystem* setAim(const cc::Vec2& at) {
         _aim = at;
         return this;
     }
     
-    ComWeaponSystem*  setCoolDown(float cd) {
-        _coolDown = cd;
-        return this;
-    }
-    
-    ComWeaponSystem* setErrorAngle(float angle) {
-        _errorAngle = angle;
+    ComWeaponSystem* setTargetMask(const TagSet::TagBit& mask) {
+        _targetMask = mask;
         return this;
     }
     
@@ -40,9 +40,6 @@ public:
     void endFire() {
         _isFire = false;
     }
-    
-    void fireOnce();
-    
     
 protected:
     
@@ -54,14 +51,17 @@ protected:
     
     ComShipBody*            _body = nullptr;
     
+    ComPhysicsEntity*       _shipEntity = nullptr;
+    
     cc::Vec2                _aim = {1, 0};
     
     bool                    _isFire = false;
     
-    float                   _coolDown = 0.5;
-    float                   _coolDownTimer = 0;
+    std::vector<cc::RefPtr<Weapon>> _weapens;
+    Weapon*                         _currentWeapen = nullptr;
     
-    float                   _errorAngle = 0;
+    TagSet::TagBit          _targetMask;
+    
 };
 
 #endif

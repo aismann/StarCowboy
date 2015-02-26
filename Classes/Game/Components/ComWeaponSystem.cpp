@@ -2,11 +2,8 @@
 #include "ComWeaponSystem.h"
 #include "ComShipBody.h"
 #include "MathUtils.h"
-#include "GameObjectManager.h"
+#include "Weapon.h"
 #include "ComPhysicsEntity.h"
-#include "ComLifeTimeLimit.h"
-#include "ComPhysicsNote.h"
-#include "ComBullet.h"
 
 ComWeaponSystem::ComWeaponSystem()
 :_node(nullptr){
@@ -16,43 +13,35 @@ ComWeaponSystem::ComWeaponSystem()
     _node->addChild(sp);
 }
 
+ComWeaponSystem* ComWeaponSystem::addWeapon(Weapon* weapon) {
+    _weapens.push_back(weapon);
+    if (!_currentWeapen) {
+        _currentWeapen = weapon;
+    }
+    return this;
+}
+
 void ComWeaponSystem::start() {
     
     _body = getOwner()->getComponent<ComShipBody>("body");
     _body->getNode()->addChild(_node);
     cc::Size sz = _body->getNode()->getContentSize();
     _node->setPosition(cc::Vec2(sz.width * 0.5, sz.height * 0.5));
+    
+    _shipEntity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
 }
 
 void ComWeaponSystem::update(float dt) {
+    
+    for (auto weapon : _weapens) {
+        weapon->update(dt);
+    }
     
     if (_aim.lengthSquared() > 0.01) {
         _node->setRotation(-math::radian2Angle(_aim.getAngle()) - _body->getNode()->getRotation());
     }
     
-    if (_isFire && _coolDownTimer >= _coolDown) {
-        fireOnce();
+    if (_isFire && _currentWeapen && _shipEntity) {
+        _currentWeapen->fire(_shipEntity->getLocation(), _aim, _shipEntity->getVelocity(), _targetMask);
     }
-    _coolDownTimer += dt;
-}
-
-void ComWeaponSystem::fireOnce() {
-    
-    float errorAngle = math::angle2Radian(cc::random<float>(-_errorAngle, _errorAngle));
-    cc::Vec2 shootAim = _aim.rotateByAngle(cc::Vec2::ZERO, errorAngle);
-    shootAim.normalize();
-    
-    GameObject* bullet = getWorld()->getObjectManager()->createObject();
-    bullet->setTagBits(TagSet::getBit("bullet") | TagSet::getBit("physics_entity"));
-    bullet->addComponent(ComBullet::create(1, cc::Sprite::create("bullet.png")));
-    ComPhysicsEntity *physics = ComPhysicsEntity::create(1, 50, 0.004);
-    physics->setCollisionResistance(0.25);
-    ComPhysicsEntity *ship = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
-    physics->setLocation(ship->getLocation() + shootAim * (ship->getRadius() + physics->getRadius() + 1));
-    physics->setVelocity(ship->getVelocity() + shootAim * 200);
-    bullet->addComponent(physics, "physics_entity");
-    bullet->addComponent(ComLifeTimeLimit::create(5.f));
-    bullet->awake();
-    
-    _coolDownTimer = 0;
 }

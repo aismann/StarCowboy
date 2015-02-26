@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		056EBF221A9ED82B005C6032 /* Cannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056EBF201A9ED82B005C6032 /* Cannon.cpp */; };
+		056EBF231A9ED82B005C6032 /* Cannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056EBF201A9ED82B005C6032 /* Cannon.cpp */; };
 		0592087D1A6C0A07000FD7C3 /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 0592087C1A6C0A07000FD7C3 /* particles */; };
 		0592087E1A6C0A07000FD7C3 /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 0592087C1A6C0A07000FD7C3 /* particles */; };
 		059208811A6C0C51000FD7C3 /* ComParticleEmiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0592087F1A6C0C51000FD7C3 /* ComParticleEmiter.cpp */; };
@@ -162,6 +164,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		056EBF1D1A9EC894005C6032 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weapon.h; path = Weapon/Weapon.h; sourceTree = "<group>"; };
+		056EBF201A9ED82B005C6032 /* Cannon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cannon.cpp; path = Weapon/Cannon.cpp; sourceTree = "<group>"; };
+		056EBF211A9ED82B005C6032 /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cannon.h; path = Weapon/Cannon.h; sourceTree = "<group>"; };
+		056EBF251A9EF04B005C6032 /* ComEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComEntity.h; sourceTree = "<group>"; };
 		0592087C1A6C0A07000FD7C3 /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		0592087F1A6C0C51000FD7C3 /* ComParticleEmiter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComParticleEmiter.cpp; sourceTree = "<group>"; };
 		059208801A6C0C51000FD7C3 /* ComParticleEmiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComParticleEmiter.h; sourceTree = "<group>"; };
@@ -321,6 +327,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		056EBF1B1A9EC85B005C6032 /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				056EBF1D1A9EC894005C6032 /* Weapon.h */,
+				056EBF201A9ED82B005C6032 /* Cannon.cpp */,
+				056EBF211A9ED82B005C6032 /* Cannon.h */,
+			);
+			name = Weapon;
+			sourceTree = "<group>";
+		};
 		05A90EF81A66B24E006018B2 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +373,7 @@
 		05A90F0B1A66B2C2006018B2 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				056EBF1B1A9EC85B005C6032 /* Weapon */,
 				05A90F0D1A66B2C2006018B2 /* Components */,
 				05A90F0C1A66B2C2006018B2 /* cocos.h */,
 				05A90F1A1A66B2C2006018B2 /* Constants.h */,
@@ -379,10 +396,11 @@
 		05A90F0D1A66B2C2006018B2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				05D15A671A73563400017EFA /* Weapon */,
+				05D15A671A73563400017EFA /* Ammo */,
 				05D15A661A73560D00017EFA /* Ship */,
 				05A90F121A66B2C2006018B2 /* Component.cpp */,
 				05A90F131A66B2C2006018B2 /* Component.h */,
+				056EBF251A9EF04B005C6032 /* ComEntity.h */,
 				05A90F101A66B2C2006018B2 /* ComPhysicsEntity.cpp */,
 				05A90F111A66B2C2006018B2 /* ComPhysicsEntity.h */,
 				05D15A381A73427E00017EFA /* ComPhysicsNote.cpp */,
@@ -432,13 +450,13 @@
 			name = Ship;
 			sourceTree = "<group>";
 		};
-		05D15A671A73563400017EFA /* Weapon */ = {
+		05D15A671A73563400017EFA /* Ammo */ = {
 			isa = PBXGroup;
 			children = (
 				05D15A6C1A735A3E00017EFA /* ComBullet.cpp */,
 				05D15A691A7356B800017EFA /* ComBullet.h */,
 			);
-			name = Weapon;
+			name = Ammo;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* ios */ = {
@@ -768,6 +786,7 @@
 			files = (
 				05A90F4B1A66B2C2006018B2 /* UiLayer.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				056EBF221A9ED82B005C6032 /* Cannon.cpp in Sources */,
 				05A90F491A66B2C2006018B2 /* Joystick.cpp in Sources */,
 				05D15A3A1A73427E00017EFA /* ComPhysicsNote.cpp in Sources */,
 				05A90F3B1A66B2C2006018B2 /* ComWeaponSystem.cpp in Sources */,
@@ -818,6 +837,7 @@
 				05D15A371A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				05A90F341A66B2C2006018B2 /* ComPhysicsEntity.cpp in Sources */,
+				056EBF231A9ED82B005C6032 /* Cannon.cpp in Sources */,
 				05A90F421A66B2C2006018B2 /* GameObjectManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

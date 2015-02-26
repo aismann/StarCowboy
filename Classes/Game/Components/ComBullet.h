@@ -2,21 +2,31 @@
 #ifndef __ComBullet_h__
 #define __ComBullet_h__
 
-#include "Component.h"
+#include "ComEntity.h"
 
-class ComPhysicsEntity;
-class ComBullet : public ComponentBace {
+class ComBullet : public ComEntity {
     
-    ComBullet(int damage, cc::Node *node)
-    : _damage(damage)
-    ,_ndoe(node){}
+    ComBullet(cc::Node *node)
+    :_ndoe(node){}
     
 public:
     
-    static ComBullet *create(int damage, cc::Node *node = nullptr) {
-        ComBullet *com = new ComBullet(damage, node);
+    static ComBullet *create(cc::Node *node) {
+        ComBullet *com = new ComBullet(node);
         com->autorelease();
         return com;
+    }
+    
+    ComBullet* setVelocity(const cc::Vec2& v);
+    
+    ComBullet* setHitTestMask(TagSet::TagBit mask) {
+        _hitTestMask = mask;
+        return this;
+    }
+    
+    ComBullet* setDamage(int damage) {
+        _damage = damage;
+        return this;
     }
     
 protected:
@@ -28,12 +38,14 @@ protected:
     virtual void onLoad() override;
     virtual void onUnload() override;
     
-    virtual void onMessage(const GameMessage& msg);
+    virtual void onOwnerDestroy() override;
     
-    float _damage = 0;
+    int _damage = 0;
     
-    cc::RefPtr<cc::Node>    _ndoe = nullptr;
+    cc::Vec2 _velocity;
     
-    ComPhysicsEntity*       _entity = nullptr;
+    cc::RefPtr<cc::Node> _ndoe = nullptr;
+    
+    TagSet::TagBit  _hitTestMask;
 };
 #endif

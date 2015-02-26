@@ -2,11 +2,11 @@
 #ifndef __ComPhysicsBody_h__
 #define __ComPhysicsBody_h__
 
-#include "Component.h"
+#include "ComEntity.h"
 #include "Constants.h"
 
 class ComShipBody;
-class ComPhysicsEntity : public ComponentBace {
+class ComPhysicsEntity : public ComEntity {
     
     struct CollisionTargetInfo {
         cc::Vec2    velocity;
@@ -54,28 +54,22 @@ public:
         return _mass;
     }
     
-    void    setVelocity(const cc::Vec2& v) {
+    ComPhysicsEntity*    setVelocity(const cc::Vec2& v) {
         _velocity = v;
+        return this;
     }
     
     const cc::Vec2&    getVelocity() const {
         return _velocity;
     }
     
-    void    setLocation(const cc::Vec2& location)  {
-        _location = location;
-    }
-    
-    const cc::Vec2& getLocation() const {
-        return _location;
-    }
-    
     bool    getIsFixed() const {
         return _isFixed;
     }
     
-    void setCollisionResistance(float value) {
+    ComPhysicsEntity* setCollisionResistance(float value) {
         _collisionResistance = value;
+        return this;
     }
     
     const float getCollisionResistance() const {
@@ -99,8 +93,6 @@ protected:
     
     cc::Vec2    _force;
     cc::Vec2    _velocity;
-    
-    cc::Vec2    _location;
     
     bool        _isFixed = false;
     

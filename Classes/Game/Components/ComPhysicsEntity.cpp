@@ -17,8 +17,7 @@ void ComPhysicsEntity::update(float dt) {
     
     _velocity += (_force / _mass) * dt;
     if (_velocity.lengthSquared() > 0.01) {
-        cc::Vec2 step = _velocity * dt;
-        setLocation(_location + step);
+        setLocation(_location + _velocity * dt);
     }
     
     //Collision Detection

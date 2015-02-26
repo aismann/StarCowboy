@@ -25,35 +25,39 @@ public:
         return _name;
     }
     
-    static TagSet& get(const std::string& typeName) {
-        auto it = _sTagMap->find(typeName);
+    static TagSet& get(const std::string& tagName) {
+        auto it = _sTagMap->find(tagName);
         if (it != _sTagMap->end()) {
             return *it->second;
         }
-        TagSet *t = new TagSet(typeName);
-        _sTagMap->insert(std::make_pair(typeName, t));
+        TagSet *t = new TagSet(tagName);
+        _sTagMap->insert(std::make_pair(tagName, t));
         return *t;
     }
     
-    static const TagBit getBit(const std::string& typeName) {
-        return get(typeName).bit();
+    static const TagBit getBit(const std::string& tagName) {
+        return get(tagName).bit();
     }
     
 protected:
     
     TagSet(const std::string& name)
     :_bit(_sNextBit)
-    ,_name(name){
+    ,_name(name) {
         _sNextBit = _sNextBit << 1;
         assert(_bit != 0 && "BIT_SIZE is not enough");
     }
     
-    //init the static null type
+    //init the static null and all
     TagSet() :_bit(0) ,_name("null"){
         if (_sTagMap == nullptr) {
             _sTagMap = new std::map<std::string, TagSet*>;
         }
-        _sTagMap->insert(std::make_pair(_name, this));
+        if (_sTagMap->find("null") == _sTagMap->end()) {
+            _sTagMap->insert(std::make_pair(_name, this));
+        } else {
+            assert(!"error");
+        }
     }
     
     TagBit                  _bit;
