@@ -38,7 +38,7 @@ void ComAiEnemyController::update(float dt) {
                 vMove.normalize();
             }
             GameWorld::getInstance()->getObjectManager()->enumerateObject(_enemyMask, [&](GameObject* obj){
-                if (obj && obj->isActive() && obj != getOwner()) {
+                if (obj->isActive() && obj != getOwner()) {
                     cc::Vec2 dis2enemy = obj->getComponent<ComPhysicsEntity>("physics_entity")->getLocation() - _entity->getLocation();
                     if (dis2enemy.length() < 20) {
                         dis2enemy.normalize();

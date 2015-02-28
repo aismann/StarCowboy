@@ -19,13 +19,13 @@ public:
     
     ComBullet* setVelocity(const cc::Vec2& v);
     
-    ComBullet* setHitTestMask(TagSet::TagBit mask) {
-        _hitTestMask = mask;
+    ComBullet* setHitTestMask(TagSet::TagBit m) {
+        _hitTestMask = m;
         return this;
     }
     
-    ComBullet* setDamage(int damage) {
-        _damage = damage;
+    ComBullet* setDamage(int d) {
+        _damage = d;
         return this;
     }
     
@@ -44,8 +44,8 @@ protected:
     
     cc::Vec2 _velocity;
     
-    cc::RefPtr<cc::Node> _ndoe = nullptr;
-    
     TagSet::TagBit  _hitTestMask;
+    
+    cc::RefPtr<cc::Node> _ndoe = nullptr;
 };
 #endif

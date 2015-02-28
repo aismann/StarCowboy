@@ -24,13 +24,12 @@ public:
     
     virtual bool fire(const cc::Vec2& from,
                       const cc::Vec2& direction,
-                      const cc::Vec2& shipVelocity,
-                      const TagSet::TagBit& targetTag) override;
+                      const cc::Vec2& shipVelocity) override;
     
     virtual void update(float dt) override;
     
-    Cannon* setDamage(int damage) {
-        _damage = damage;
+    Cannon* setDamage(int d) {
+        _damage = d;
         return this;
     }
     
@@ -39,13 +38,18 @@ public:
         return this;
     }
     
+    Cannon* setRange(float r) {
+        _range = r;
+        return this;
+    }
+    
     Cannon* setCoolDown(float cd) {
         _coolDown = cd;
         return this;
     }
     
-    Cannon* setErrorAngle(float angle) {
-        _errorAngle = angle;
+    Cannon* setErrorAngle(float a) {
+        _errorAngle = a;
         return this;
     }
     
@@ -53,6 +57,7 @@ protected:
     
     int     _damage = 0;
     float   _bulletSpeed = 200;
+    float   _range = 500;
     
     float   _coolDown = 0.5;
     float   _coolDownTimer = 0;

@@ -4,7 +4,7 @@
 
 #include "Component.h"
 
-class ComPhysicsEntity;
+class ComEntity;
 class ComParticleEmiter : public ComponentBace {
     
     ComParticleEmiter() : _emiter(nullptr) {}
@@ -30,7 +30,7 @@ protected:
     virtual void onUnload() override;
     
     cc::RefPtr<cc::ParticleSystem>  _emiter;
-    ComPhysicsEntity*       _entity = nullptr;
+    ComEntity*                      _entity = nullptr;
 };
 
 #endif

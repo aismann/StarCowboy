@@ -114,6 +114,15 @@ void ComShipController::onKeyReleased(cc::EventKeyboard::KeyCode code, cc::Event
         case cc::EventKeyboard::KeyCode::KEY_D:
             _keyboardOutput -= {1, 0};
             break;
+        case cc::EventKeyboard::KeyCode::KEY_1:
+            _weapon->switchWeapon(0);
+            break;
+        case cc::EventKeyboard::KeyCode::KEY_2:
+            _weapon->switchWeapon(1);
+            break;
+        case cc::EventKeyboard::KeyCode::KEY_3:
+            _weapon->switchWeapon(2);
+            break;
             
         default:
             break;

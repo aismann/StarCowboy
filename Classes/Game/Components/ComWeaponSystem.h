@@ -34,18 +34,21 @@ public:
         return this;
     }
     
-    void startFire() {
-        _isFire = true;
+    void switchWeapon(int index) {
+        if (0 <= index && index < _weapens.size()) {
+            _currentWeapen = _weapens.at(index);
+        }
     }
-    void endFire() {
-        _isFire = false;
-    }
+    
+    void startFire();
+    void endFire();
     
 protected:
     
     virtual void start() override;
     
     virtual void update(float dt) override;
+    virtual void onUnload() override;
 
     cc::RefPtr<cc::Node>    _node = nullptr;
     

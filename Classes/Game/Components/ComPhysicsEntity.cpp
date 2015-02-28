@@ -22,11 +22,11 @@ void ComPhysicsEntity::update(float dt) {
     
     //Collision Detection
     getWorld()->getObjectManager()->enumerateObject(_physicsEntityMask, [this](GameObject* obj){
-        if (obj && _owner && obj != _owner && obj->isActive()) {
+        if (_owner && obj != _owner && obj->isActive()) {
             ComPhysicsEntity *he = obj->getComponent<ComPhysicsEntity>("physics_entity");
             ComPhysicsEntity *me = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
             if (!(he && me)) {
-                return ;
+                return;
             }
             cc::Vec2 d = me->getLocation() - he->getLocation();
             float limit = me->getRadius() + he->getRadius();

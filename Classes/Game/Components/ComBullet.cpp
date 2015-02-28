@@ -31,10 +31,10 @@ void ComBullet::update(float dt) {
     _ndoe->setPosition(_location * constants::Ptm);
     
     getWorld()->getObjectManager()->enumerateObject(_hitTestMask, [this](GameObject* obj){
-        if (obj && _owner && obj != _owner && obj->isActive()) {
+        if (obj->isActive()) {
             ComPhysicsEntity *t = obj->getComponent<ComPhysicsEntity>("physics_entity");
             if (!t) {
-                return ;
+                return;
             }
             cc::Vec2 d = _location - t->getLocation();
             if (d.lengthSquared() <= t->getRadius() * t->getRadius()) {
@@ -47,7 +47,7 @@ void ComBullet::update(float dt) {
 
 void ComBullet::onOwnerDestroy() {
     GameObject* explode = getWorld()->getObjectManager()->createObject();
-    explode->addComponent(ComLifeTimeLimit::create(2));
+    explode->addComponent(ComLifeTimeLimit::create(0.2));
     cc::ParticleSystem* emiter = cc::ParticleSystemQuad::create("particles/bullet_hit.plist");
     emiter->setPosition(_location * constants::Ptm);
     explode->addComponent(ComParticleEmiter::create(emiter));

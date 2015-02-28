@@ -13,7 +13,9 @@
 #include "GameWorld.h"
 #include "GameObjectManager.h"
 
-bool Cannon::fire(const cc::Vec2& from, const cc::Vec2& direction, const cc::Vec2& shipVelocity, const TagSet::TagBit& targetTag)
+bool Cannon::fire(const cc::Vec2& from,
+                  const cc::Vec2& direction,
+                  const cc::Vec2& shipVelocity)
 {
     if (_coolDownTimer >= _coolDown) {
         float errorAngle = math::angle2Radian(cc::random<float>(-_errorAngle, _errorAngle));
@@ -22,8 +24,11 @@ bool Cannon::fire(const cc::Vec2& from, const cc::Vec2& direction, const cc::Vec
 
         GameObject* bullet = GameWorld::getInstance()->getObjectManager()->createObject();
         bullet->setTagBits(TagSet::getBit("bullet"));
-        bullet->addComponent(ComBullet::create(cc::Sprite::create("bullet.png"))->setHitTestMask(targetTag | TagSet::getBit("stone"))->setDamage(_damage)->setVelocity(shootDirection * _bulletSpeed + shipVelocity)->setLocation(from));
-        bullet->addComponent(ComLifeTimeLimit::create(5.f));
+        bullet->addComponent(ComBullet::create(cc::Sprite::create("bullet.png"))
+                             ->setHitTestMask(_targetMask | _hitTestMask)->setDamage(_damage)
+                             ->setVelocity(shootDirection * _bulletSpeed + shipVelocity)
+                             ->setLocation(from));
+        bullet->addComponent(ComLifeTimeLimit::create(_range / _bulletSpeed));
         bullet->awake();
         
         _coolDownTimer = 0;

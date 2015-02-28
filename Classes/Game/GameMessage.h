@@ -17,7 +17,7 @@ struct GameMessage {
     ,pParam(p)
     ,objParam(o){}
     
-    GAME_MSG    id     = GAME_MSG::NONE;
+    GAME_MSG    id      = GAME_MSG::NONE;
     long        sender  = 0;
     long        nParam  = 0;
     void*       pParam  = nullptr;

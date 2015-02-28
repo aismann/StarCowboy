@@ -15,10 +15,17 @@ ComWeaponSystem::ComWeaponSystem()
 
 ComWeaponSystem* ComWeaponSystem::addWeapon(Weapon* weapon) {
     _weapens.push_back(weapon);
+    weapon->setTargetMask(_targetMask);
     if (!_currentWeapen) {
         _currentWeapen = weapon;
     }
     return this;
+}
+
+void ComWeaponSystem::onUnload() {
+    if (_currentWeapen) {
+        _currentWeapen->stopFire();
+    }
 }
 
 void ComWeaponSystem::start() {
@@ -42,6 +49,19 @@ void ComWeaponSystem::update(float dt) {
     }
     
     if (_isFire && _currentWeapen && _shipEntity) {
-        _currentWeapen->fire(_shipEntity->getLocation(), _aim, _shipEntity->getVelocity(), _targetMask);
+        _currentWeapen->fire(_shipEntity->getLocation(), _aim, _shipEntity->getVelocity());
+    }
+}
+
+void ComWeaponSystem::startFire() {
+    _isFire = true;
+}
+
+void ComWeaponSystem::endFire() {
+    if (_isFire) {
+        _isFire = false;
+        if (_currentWeapen) {
+            _currentWeapen->stopFire();
+        }
     }
 }
