@@ -40,6 +40,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set design resolution
     glview->setDesignResolutionSize(960, 640, ResolutionPolicy::NO_BORDER);
+    
     // add resources path
     FileUtils::getInstance()->addSearchPath("../Resources");
     

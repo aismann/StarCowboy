@@ -37,6 +37,8 @@ protected:
     void onMouseDown(cc::Event* event);
     void onMouseUp(cc::Event* event);
     
+    void onWeaponButtonClicked(int index, cc::Ref*);
+    
     cc::RefPtr<cc::EventDispatcher>        _eventDispatcher;
     cc::RefPtr<cc::EventListenerKeyboard>  _keyboardListener;
     cc::RefPtr<cc::EventListenerMouse>     _mouseListener;

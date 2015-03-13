@@ -30,12 +30,28 @@ void ComShipController::onLoad() {
     
     _joystickLeft = static_cast<Joystick*>(getWorld()->getInstance()->getUiLayer()->getChildByName("left_joystick"));
     _joystickRight = static_cast<Joystick*>(getWorld()->getInstance()->getUiLayer()->getChildByName("right_joystick"));
+    
+    auto menu = static_cast<cc::Menu*>(getWorld()->getInstance()->getUiLayer()->getChildByName("menu"));
+    auto weaponButton0 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_0"));
+    weaponButton0->setCallback(std::bind(&ComShipController::onWeaponButtonClicked, this, 0, std::placeholders::_1));
+    auto weaponButton1 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_1"));
+    weaponButton1->setCallback(std::bind(&ComShipController::onWeaponButtonClicked, this, 1, std::placeholders::_1));
+    auto weaponButton2 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_2"));
+    weaponButton2->setCallback(std::bind(&ComShipController::onWeaponButtonClicked, this, 2, std::placeholders::_1));
 }
 
 void ComShipController::onUnload() {
     
     _eventDispatcher->removeEventListener(_keyboardListener);
     _eventDispatcher->removeEventListener(_mouseListener);
+    
+    auto menu = static_cast<cc::Menu*>(getWorld()->getInstance()->getUiLayer()->getChildByName("menu"));
+    auto weaponButton0 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_0"));
+    weaponButton0->setCallback(nullptr);
+    auto weaponButton1 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_1"));
+    weaponButton1->setCallback(nullptr);
+    auto weaponButton2 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_2"));
+    weaponButton2->setCallback(nullptr);
 }
 
 void ComShipController::start() {
@@ -150,4 +166,8 @@ void ComShipController::onMouseDown(cc::Event* event) {
 void ComShipController::onMouseUp(cc::Event* event) {
     
     _weapon->endFire();
+}
+
+void ComShipController::onWeaponButtonClicked(int index, cc::Ref*) {
+    _weapon->switchWeapon(index);
 }

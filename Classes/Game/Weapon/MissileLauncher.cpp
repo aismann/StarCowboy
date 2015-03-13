@@ -15,8 +15,8 @@
 #include "ComParticleEmiter.h"
 
 bool MissileLauncher::fire(const cc::Vec2& from,
-                  const cc::Vec2& direction,
-                  const cc::Vec2& shipVelocity)
+                           const cc::Vec2& direction,
+                           const cc::Vec2& shipVelocity)
 {
     if (_coolDownTimer >= _coolDown && _ammoNum > 0) {
         

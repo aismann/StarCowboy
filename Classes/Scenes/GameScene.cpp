@@ -44,6 +44,12 @@ bool GameScene::init()
         return false;
     }
     
+//    Size visibleSize = Director::getInstance()->getVisibleSize();
+//    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+//    auto sprite = Sprite::create("space_1.jpg");
+//    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+//    addChild(sprite, 0);
+    
     addChild(GameWorld::getInstance()->getGameLayer());
     addChild(GameWorld::getInstance()->getUiLayer());
     
@@ -53,9 +59,10 @@ bool GameScene::init()
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/cosmic_particle.plist")));
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
     playerShip->addComponent(ComShipController::create(), "controller");
-    playerShip->addComponent(ComPhysicsEntity::create(5, 400), "physics_entity");
-    playerShip->addComponent(ComEngine::create(25000, 50), "engine");
-    playerShip->addComponent(ComWeaponSystem::create()->setTargetMask(TagSet::getBit("enemy"))
+    playerShip->addComponent(ComPhysicsEntity::create(3, 500), "physics_entity");
+    playerShip->addComponent(ComEngine::create(50000, 50), "engine");
+    playerShip->addComponent(ComWeaponSystem::create()
+                             ->setTargetMask(TagSet::getBit("enemy"))
                              ->addWeapon(Cannon::create()
                                          ->setDamage(40)
                                          ->setCoolDown(0.15f)
@@ -64,13 +71,13 @@ bool GameScene::init()
                                          ->addHitTestMask(TagSet::getBit("rock")))
                              ->addWeapon(MissileLauncher::create()
                                          ->setDamage(50)
-                                         ->setMaxAmmoNum(4)
+                                         ->setMaxAmmoNum(8)
                                          ->setMissileSpeed(100)
                                          ->setCoolDown(0.25)
                                          ->setSearchAngular(60)
                                          ->setAngularSpeed(180)
                                          ->addHitTestMask(TagSet::getBit("rock")))
-                             ->addWeapon(Laser::create(Sprite::create("bullet.png"))
+                             ->addWeapon(Laser::create(Sprite::create("laser.png"))
                                          ->setDPS(200)
                                          ->addHitTestMask(TagSet::getBit("rock")))
 , "weapon");
@@ -95,12 +102,13 @@ bool GameScene::init()
             enemy->setTagBits(TagSet::getBit("enemy") | TagSet::getBit("physics_entity"));
             enemy->addComponent(ComShipBody::create(Sprite::create("enemy.png")), "body");
             enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
-            enemy->addComponent(ComPhysicsEntity::create(5, 200), "physics_entity");
+            enemy->addComponent(ComPhysicsEntity::create(3, 200), "physics_entity");
             cc::Vec2 locate(random(-100, 100), random(-100, 100));
             enemy->getComponent<ComPhysicsEntity>("physics_entity")->setLocation(player->getComponent<ComPhysicsEntity>("physics_entity")->getLocation() + locate.getNormalized() * random(300, 500));
             enemy->addComponent(ComEngine::create(2000, 45), "engine");
-            if (i == 0) {
-                enemy->addComponent(ComWeaponSystem::create()->setTargetMask(TagSet::getBit("player"))
+            if (random(0, 100) >= 90) {
+                enemy->addComponent(ComWeaponSystem::create()
+                                    ->setTargetMask(TagSet::getBit("player"))
                                     ->addWeapon(MissileLauncher::create()
                                                 ->setDamage(10)
                                                 ->setMaxAmmoNum(2)
@@ -111,9 +119,11 @@ bool GameScene::init()
                                                 ->setAngularSpeed(90)
                                                 ->addHitTestMask(TagSet::getBit("rock"))), "weapon");
             } else {
-                enemy->addComponent(ComWeaponSystem::create()->setTargetMask(TagSet::getBit("player"))
+                enemy->addComponent(ComWeaponSystem::create()
+                                    ->setTargetMask(TagSet::getBit("player"))
                                     ->addWeapon(Cannon::create()
                                                 ->setDamage(10)
+                                                ->setBulletSpeed(150)
                                                 ->setCoolDown(1.0)
                                                 ->setRange(150)
                                                 ->setErrorAngle(2.5)
@@ -127,6 +137,16 @@ bool GameScene::init()
     };
     addEnemy(0);
     schedule(addEnemy, 10, "add_enemy");
+    
+    std::function<void(float)> checkRestartGame = [](float) {
+        GameObject* player =  GameWorld::getInstance()->getObjectManager()->getObject("player");
+        if (!player || !player->isActive()) {
+            GameObjectManager::destroy();
+            GameWorld::destroy();
+            cc::Director::getInstance()->replaceScene(GameScene::createScene());
+        }
+    };
+    schedule(checkRestartGame, 10, "check_restart_game");
 
     scheduleUpdate();
     return true;

@@ -9,8 +9,8 @@ ComWeaponSystem::ComWeaponSystem()
 :_node(nullptr){
     
     _node = cc::Node::create();
-    cc::Sprite* sp = cc::Sprite::create("weapon.png");
-    _node->addChild(sp);
+//    cc::Sprite* sp = cc::Sprite::create("weapon.png");
+//    _node->addChild(sp);
 }
 
 ComWeaponSystem* ComWeaponSystem::addWeapon(Weapon* weapon) {

@@ -20,6 +20,7 @@ class GameObjectManager : public Singleton<GameObjectManager> {
 public:
     
     GameObjectManager();
+    ~GameObjectManager();
     
     GameObject* createObject(const std::string& name = "");
     
@@ -37,6 +38,7 @@ public:
     
     void        clear();
     
+    void        enumerateObject(std::function<void(GameObject*)> callback);
     void        enumerateObject(TagSet::TagBit tagMask, std::function<void(GameObject*)> callback);
     
     const size_t getObjectNum() const {

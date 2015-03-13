@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <unordered_map>
+#include <memory>
 
 class GameObject;
 class GameObjectManager;
@@ -17,6 +18,7 @@ class GameWorld : public Singleton<GameWorld>  {
 public:
     
     GameWorld();
+    ~GameWorld();
     
     void        reset();
     

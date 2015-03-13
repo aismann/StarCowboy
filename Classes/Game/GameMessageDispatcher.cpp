@@ -42,13 +42,23 @@ void GameMessageDispatcher::msgDispatch(const MsgItem& item) {
     if (item.second.receiver >= 0) {
         GameObject *obj = GameObjectManager::getInstance()->getObject(item.second.receiver);
         if (obj) {
-            if (item.second.pred && item.second.pred(obj)) {
-                obj->sendMessage(item.first);
+            if (item.second.pred) {
+                if (item.second.pred(obj)) {
+                    obj->sendMessage(item.first);
+                }
             } else {
                 obj->sendMessage(item.first);
             }
         }
     } else {
-        
+        GameObjectManager::getInstance()->enumerateObject([&item](GameObject *obj){
+            if (item.second.pred) {
+                if (item.second.pred(obj)) {
+                    obj->sendMessage(item.first);
+                }
+            } else {
+                obj->sendMessage(item.first);
+            }
+        });
     }
 }

@@ -16,8 +16,8 @@ Joystick* Joystick::create(cc::Sprite* bg, cc::Sprite* button) {
     else
     {
         delete ret;
-        ret = NULL;
-        return NULL;
+        ret = nullptr;
+        return ret;
     }
 }
 

@@ -28,6 +28,9 @@ GameWorld::GameWorld() {
     _objNumLabel->setPosition(origin + cc::Vec2(size.x / 2, size.y /3));
 }
 
+GameWorld::~GameWorld() {
+}
+
 void GameWorld::reset() {
     _objectManager->clear();
 }

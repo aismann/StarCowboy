@@ -81,6 +81,8 @@ static AppDelegate s_sharedApplication;
     cocos2d::GLView *glview = cocos2d::GLViewImpl::createWithEAGLView(eaglView);
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
+    [eaglView setMultipleTouchEnabled:YES];
+    
     app->run();
 
     return YES;

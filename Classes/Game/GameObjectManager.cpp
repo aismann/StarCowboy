@@ -6,6 +6,10 @@ GameObjectManager::GameObjectManager() {
     _objects.reserve(512);
 }
 
+GameObjectManager::~GameObjectManager() {
+    _objects.clear();
+}
+
 void GameObjectManager::update(float dt) {
     
     for (auto &obj : _objects) {
@@ -89,6 +93,15 @@ void GameObjectManager::unregisterObjectName(const std::string& name) {
 
 void GameObjectManager::clear() {
     _objects.clear();
+}
+
+void GameObjectManager::enumerateObject(std::function<void(GameObject*)> callback)
+{
+    for (auto obj : _objects) {
+        if (obj) {
+            callback(obj);
+        }
+    }
 }
 
 void GameObjectManager::enumerateObject(TagSet::TagBit tagMask, std::function<void(GameObject*)> callback) {

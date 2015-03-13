@@ -55,8 +55,6 @@
 		05A90F591A66B31D006018B2 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F4D1A66B31D006018B2 /* bullet.png */; };
 		05A90F5A1A66B31D006018B2 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F4E1A66B31D006018B2 /* enemy.png */; };
 		05A90F5B1A66B31D006018B2 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F4E1A66B31D006018B2 /* enemy.png */; };
-		05A90F5E1A66B31D006018B2 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F511A66B31D006018B2 /* hero.png */; };
-		05A90F5F1A66B31D006018B2 /* hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F511A66B31D006018B2 /* hero.png */; };
 		05A90F601A66B31D006018B2 /* joystick_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F521A66B31D006018B2 /* joystick_bg.png */; };
 		05A90F611A66B31D006018B2 /* joystick_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F521A66B31D006018B2 /* joystick_bg.png */; };
 		05A90F621A66B31D006018B2 /* joystick_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F531A66B31D006018B2 /* joystick_button.png */; };
@@ -65,10 +63,10 @@
 		05A90F651A66B31D006018B2 /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F541A66B31D006018B2 /* ship.png */; };
 		05A90F661A66B31D006018B2 /* space_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F551A66B31D006018B2 /* space_1.jpg */; };
 		05A90F671A66B31D006018B2 /* space_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F551A66B31D006018B2 /* space_1.jpg */; };
-		05A90F681A66B31D006018B2 /* unit.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F561A66B31D006018B2 /* unit.png */; };
-		05A90F691A66B31D006018B2 /* unit.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F561A66B31D006018B2 /* unit.png */; };
 		05A90F6A1A66B31D006018B2 /* weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F571A66B31D006018B2 /* weapon.png */; };
 		05A90F6B1A66B31D006018B2 /* weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A90F571A66B31D006018B2 /* weapon.png */; };
+		05D0B70A1AAAE0AC009FDD79 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D0B7091AAAE0AC009FDD79 /* laser.png */; };
+		05D0B70B1AAAE0AC009FDD79 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D0B7091AAAE0AC009FDD79 /* laser.png */; };
 		05D15A361A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D15A341A729F6E00017EFA /* ComAiEnemyController.cpp */; };
 		05D15A371A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D15A341A729F6E00017EFA /* ComAiEnemyController.cpp */; };
 		05D15A3A1A73427E00017EFA /* ComPhysicsNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D15A381A73427E00017EFA /* ComPhysicsNote.cpp */; };
@@ -225,13 +223,12 @@
 		05A90F2E1A66B2C2006018B2 /* UiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiLayer.h; sourceTree = "<group>"; };
 		05A90F4D1A66B31D006018B2 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		05A90F4E1A66B31D006018B2 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
-		05A90F511A66B31D006018B2 /* hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero.png; sourceTree = "<group>"; };
 		05A90F521A66B31D006018B2 /* joystick_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_bg.png; sourceTree = "<group>"; };
 		05A90F531A66B31D006018B2 /* joystick_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_button.png; sourceTree = "<group>"; };
 		05A90F541A66B31D006018B2 /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
 		05A90F551A66B31D006018B2 /* space_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = space_1.jpg; sourceTree = "<group>"; };
-		05A90F561A66B31D006018B2 /* unit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unit.png; sourceTree = "<group>"; };
 		05A90F571A66B31D006018B2 /* weapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weapon.png; sourceTree = "<group>"; };
+		05D0B7091AAAE0AC009FDD79 /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laser.png; sourceTree = "<group>"; };
 		05D15A121A70F1F100017EFA /* ComLifeTimeLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComLifeTimeLimit.h; sourceTree = "<group>"; };
 		05D15A341A729F6E00017EFA /* ComAiEnemyController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComAiEnemyController.cpp; sourceTree = "<group>"; };
 		05D15A351A729F6E00017EFA /* ComAiEnemyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAiEnemyController.h; sourceTree = "<group>"; };
@@ -554,16 +551,15 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05D0B7091AAAE0AC009FDD79 /* laser.png */,
 				05E50F831AA0D0F50078F759 /* missile.png */,
 				0592087C1A6C0A07000FD7C3 /* particles */,
 				05A90F4D1A66B31D006018B2 /* bullet.png */,
 				05A90F4E1A66B31D006018B2 /* enemy.png */,
-				05A90F511A66B31D006018B2 /* hero.png */,
 				05A90F521A66B31D006018B2 /* joystick_bg.png */,
 				05A90F531A66B31D006018B2 /* joystick_button.png */,
 				05A90F541A66B31D006018B2 /* ship.png */,
 				05A90F551A66B31D006018B2 /* space_1.jpg */,
-				05A90F561A66B31D006018B2 /* unit.png */,
 				05A90F571A66B31D006018B2 /* weapon.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -684,7 +680,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = R8X6FJ6M7T;
 					};
 				};
 			};
@@ -739,12 +735,10 @@
 				05A90F621A66B31D006018B2 /* joystick_button.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
-				05A90F681A66B31D006018B2 /* unit.png in Resources */,
 				05A90F6A1A66B31D006018B2 /* weapon.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
-				05A90F5E1A66B31D006018B2 /* hero.png in Resources */,
 				05A90F601A66B31D006018B2 /* joystick_bg.png in Resources */,
 				05A90F5A1A66B31D006018B2 /* enemy.png in Resources */,
 				05A90F581A66B31D006018B2 /* bullet.png in Resources */,
@@ -762,6 +756,7 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				05D0B70A1AAAE0AC009FDD79 /* laser.png in Resources */,
 				0592087D1A6C0A07000FD7C3 /* particles in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				05A90F001A66B24E006018B2 /* LICENSE in Resources */,
@@ -782,16 +777,15 @@
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				05A90F631A66B31D006018B2 /* joystick_button.png in Resources */,
 				05A90F591A66B31D006018B2 /* bullet.png in Resources */,
-				05A90F691A66B31D006018B2 /* unit.png in Resources */,
 				05A90F5B1A66B31D006018B2 /* enemy.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				05E50F851AA0D0F50078F759 /* missile.png in Resources */,
 				05A90F6B1A66B31D006018B2 /* weapon.png in Resources */,
 				05A90F671A66B31D006018B2 /* space_1.jpg in Resources */,
-				05A90F5F1A66B31D006018B2 /* hero.png in Resources */,
 				05A90F011A66B24E006018B2 /* LICENSE in Resources */,
 				05A90F031A66B24E006018B2 /* README in Resources */,
+				05D0B70B1AAAE0AC009FDD79 /* laser.png in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 				46880B7C19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				0592087E1A6C0A07000FD7C3 /* particles in Resources */,
@@ -892,7 +886,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -913,6 +908,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -924,7 +920,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -943,6 +940,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
