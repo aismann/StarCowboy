@@ -67,7 +67,7 @@ void Laser::update(float dt)
                     if (td.distanceSquared(td.project(_direction)) < t->getRadius() * t->getRadius()
                         && td.getPerp().cross(_direction) < 0) {
                         t->getOwner()->sendMessage(GAME_MSG::TAKE_DAMEGE, _dps * dt);
-                        explode = world->getObjectManager()->createObject();
+                        explode = world->getObjectManager()->createObject().get();
                         explode->addComponent(ComLifeTimeLimit::create(0.2));
                         emiter = cc::ParticleSystemQuad::create("particles/bullet_hit.plist");
                         emiter->setPosition(t->getLocation() * constants::Ptm);

@@ -41,6 +41,6 @@ void GameWorld::update(float dt)
     _messageDisoatcher->update(dt);
     
     static char text[16] = "";
-    sprintf(text, "%zu", getObjectManager()->getObjectNum());
+    sprintf(text, "%zu/%zu", getObjectManager()->getObjectNum(), getObjectManager()->getObjectVecSize());
     _objNumLabel->setString(text);
 }

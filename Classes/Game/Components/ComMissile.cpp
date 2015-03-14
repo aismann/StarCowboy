@@ -45,7 +45,7 @@ void ComMissile::update(float dt) {
             _targetEntity = nullptr;
         }
     } else {
-        getWorld()->getObjectManager()->enumerateObject(_targetMask, [this](GameObject* obj){
+        GameObjectManager::getInstance()->enumerateObject(_targetMask, [this](GameObject* obj){
             if (obj->isActive()) {
                 ComPhysicsEntity *t = obj->getComponent<ComPhysicsEntity>("physics_entity");
                 if (!t) {
@@ -112,7 +112,7 @@ void ComMissile::update(float dt) {
     _ndoe->setPosition(_location * constants::Ptm);
     
     //hit test
-    getWorld()->getObjectManager()->enumerateObject(_targetMask | _hitTestMask, [this](GameObject* obj){
+    GameObjectManager::getInstance()->enumerateObject(_targetMask | _hitTestMask, [this](GameObject* obj){
         if (obj->isActive()) {
             ComPhysicsEntity *t = obj->getComponent<ComPhysicsEntity>("physics_entity");
             if (!t) {
@@ -128,7 +128,7 @@ void ComMissile::update(float dt) {
 }
 
 void ComMissile::onOwnerDestroy() {
-    GameObject* explode = getWorld()->getObjectManager()->createObject();
+    GameObject* explode = GameObjectManager::getInstance()->createObject().get();
     explode->addComponent(ComLifeTimeLimit::create(0.2));
     cc::ParticleSystem* emiter = cc::ParticleSystemQuad::create("particles/bullet_hit.plist");
     emiter->setPosition(_location * constants::Ptm);

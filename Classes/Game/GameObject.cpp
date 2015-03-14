@@ -4,10 +4,10 @@
 #include "GameObjectManager.h"
 #include "Component.h"
 #include "GameMessageDefine.h"
-long GameObject::_nextValidId = 0;
 
-GameObject::GameObject()
-:_id(_nextValidId++)
+GameObject::GameObject(IDType oid)
+:_id(oid)
+,_handleIndex(-1)
 ,_name(nullptr)
 ,_tagBits(TagSet::null.bit()) {
     _world = GameWorld::getInstance();
@@ -18,11 +18,8 @@ GameObject::~GameObject() {
     destroy();
 }
 
-GameObject*	GameObject::create(const std::string& name) {
-    GameObject	*obj = new GameObject();
-    if (!name.empty()) {
-        obj->setName(name);
-    }
+GameObject*	GameObject::create(IDType oid) {
+    GameObject	*obj = new GameObject(oid);
     obj->autorelease();
     return obj;
 }
@@ -34,17 +31,12 @@ const std::string& GameObject::getName() const {
     return constants::EmptyString;
 }
 
-bool GameObject::setName(const std::string& name) {
-    if (_world->getObjectManager()->registerObjectName(name, _id)) {
-        if (_name) {
-            _world->getObjectManager()->unregisterObjectName(*_name);
-            *_name = name;
-        } else {
-            _name = new std::string(name);
-        }
-        return true;
+void GameObject::setName(const std::string& name) {
+    if (_name) {
+        *_name = name;
+    } else {
+        _name = new std::string(name);
     }
-    return false;
 }
 
 void GameObject::addComponent(ComponentBace* com, const std::string& name) {
@@ -118,7 +110,6 @@ void GameObject::destroy() {
         }
         _components->clear();
         
-        _world->getObjectManager()->unregisterObjectName(getName());
         if (_name) {
             delete _name;
             _name = nullptr;

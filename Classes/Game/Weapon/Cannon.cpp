@@ -22,7 +22,7 @@ bool Cannon::fire(const cc::Vec2& from,
         cc::Vec2 shootDirection = direction.rotateByAngle(cc::Vec2::ZERO, errorAngle);
         shootDirection.normalize();
 
-        GameObject* bullet = GameWorld::getInstance()->getObjectManager()->createObject();
+        GameObject* bullet = GameWorld::getInstance()->getObjectManager()->createObject().get();
         bullet->setTagBits(TagSet::getBit("bullet"));
         bullet->addComponent(ComBullet::create(cc::Sprite::create("bullet.png"))
                              ->setHitTestMask(_targetMask | _hitTestMask)->setDamage(_damage)

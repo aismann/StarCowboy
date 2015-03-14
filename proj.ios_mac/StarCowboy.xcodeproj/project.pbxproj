@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051A6B3D1AB3264800258D6E /* GameObjectHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */; };
+		051A6B3E1AB3264800258D6E /* GameObjectHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */; };
 		056EBF221A9ED82B005C6032 /* Cannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056EBF201A9ED82B005C6032 /* Cannon.cpp */; };
 		056EBF231A9ED82B005C6032 /* Cannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056EBF201A9ED82B005C6032 /* Cannon.cpp */; };
 		0586D76E1AA02D130024C387 /* Laser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0586D76C1AA02D130024C387 /* Laser.cpp */; };
@@ -170,6 +172,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjectHandle.cpp; sourceTree = "<group>"; };
+		051A6B3C1AB3264800258D6E /* GameObjectHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectHandle.h; sourceTree = "<group>"; };
 		056EBF1D1A9EC894005C6032 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weapon.h; path = Weapon/Weapon.h; sourceTree = "<group>"; };
 		056EBF201A9ED82B005C6032 /* Cannon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cannon.cpp; path = Weapon/Cannon.cpp; sourceTree = "<group>"; };
 		056EBF211A9ED82B005C6032 /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cannon.h; path = Weapon/Cannon.h; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 				05A90F1E1A66B2C2006018B2 /* GameMessageDispatcher.h */,
 				05A90F1F1A66B2C2006018B2 /* GameObject.cpp */,
 				05A90F201A66B2C2006018B2 /* GameObject.h */,
+				051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */,
+				051A6B3C1AB3264800258D6E /* GameObjectHandle.h */,
 				05A90F211A66B2C2006018B2 /* GameObjectManager.cpp */,
 				05A90F221A66B2C2006018B2 /* GameObjectManager.h */,
 				05A90F231A66B2C2006018B2 /* TagSet.cpp */,
@@ -677,7 +683,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0620;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = R8X6FJ6M7T;
@@ -809,6 +815,7 @@
 				05A90F491A66B2C2006018B2 /* Joystick.cpp in Sources */,
 				05D15A3A1A73427E00017EFA /* ComPhysicsNote.cpp in Sources */,
 				05A90F3B1A66B2C2006018B2 /* ComWeaponSystem.cpp in Sources */,
+				051A6B3D1AB3264800258D6E /* GameObjectHandle.cpp in Sources */,
 				05A90F451A66B2C2006018B2 /* GameWorld.cpp in Sources */,
 				05A90F411A66B2C2006018B2 /* GameObjectManager.cpp in Sources */,
 				05D15A361A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */,
@@ -845,6 +852,7 @@
 				05E50F821AA0C0ED0078F759 /* MissileLauncher.cpp in Sources */,
 				05A90F361A66B2C2006018B2 /* Component.cpp in Sources */,
 				05D15A3B1A73427E00017EFA /* ComPhysicsNote.cpp in Sources */,
+				051A6B3E1AB3264800258D6E /* GameObjectHandle.cpp in Sources */,
 				059208821A6C0C51000FD7C3 /* ComParticleEmiter.cpp in Sources */,
 				05A90F401A66B2C2006018B2 /* GameObject.cpp in Sources */,
 				0586D76F1AA02D130024C387 /* Laser.cpp in Sources */,
@@ -952,9 +960,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -981,9 +989,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;

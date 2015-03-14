@@ -20,7 +20,7 @@ bool MissileLauncher::fire(const cc::Vec2& from,
 {
     if (_coolDownTimer >= _coolDown && _ammoNum > 0) {
         
-        GameObject* missile = GameWorld::getInstance()->getObjectManager()->createObject();
+        GameObject* missile = GameWorld::getInstance()->getObjectManager()->createObject().get();
         missile->setTagBits(TagSet::getBit("missile"));
         missile->addComponent(ComMissile::create(cc::Sprite::create("missile.png"))
                               ->setTargetMask(_targetMask)

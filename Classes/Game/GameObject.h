@@ -27,13 +27,16 @@ class GameObject : public cc::Ref, public GameMessageHandler {
     
 public:
     
+    typedef long IDType;
+    
     virtual ~GameObject()   final;
     
-    const long              getID() const { return _id; }
+    const IDType            getID() const { return _id; }
+    const long               getHandleIndex() const { return _handleIndex; }
+    void                    setHandleIndex(long index) { _handleIndex = index; }
     
     const std::string&      getName() const;
-    
-    bool                    setName(const std::string& name);
+    void                    setName(const std::string& name);
     
     const TagSet::TagBit&   getTagBits() const { return _tagBits; }
     
@@ -83,18 +86,17 @@ public:
     
 protected:
     
-    GameObject();
+    GameObject(IDType oid);
     
-    static GameObject*      create(const std::string& name = constants::EmptyString);
+    static GameObject*      create(IDType oid);
     
     
     virtual void            update(float dt);
     
     virtual void            onMessage(const GameMessage& msg) override;
     
-    long                    _id;
-    
-    static long             _nextValidId;
+    IDType                  _id;
+    long                    _handleIndex;
     
     std::string*            _name;
     

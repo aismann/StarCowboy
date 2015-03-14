@@ -3,6 +3,7 @@
 #define __ComAiEnemyController_h__
 
 #include "Component.h"
+#include "GameObjectHandle.h"
 
 class ComWeaponSystem;
 class ComEngine;
@@ -31,7 +32,7 @@ protected:
     ComWeaponSystem*            _weapon = nullptr;
     ComEngine*                  _engine = nullptr;
     
-    cc::RefPtr<GameObject>      _player = nullptr;
+    GameObjectHandle            _player;
     ComPhysicsEntity*           _playerEntity = nullptr;
     
     TagSet::TagBit              _enemyMask;

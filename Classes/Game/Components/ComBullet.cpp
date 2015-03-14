@@ -46,7 +46,7 @@ void ComBullet::update(float dt) {
 }
 
 void ComBullet::onOwnerDestroy() {
-    GameObject* explode = getWorld()->getObjectManager()->createObject();
+    GameObject* explode = getWorld()->getObjectManager()->createObject().get();
     explode->addComponent(ComLifeTimeLimit::create(0.2));
     cc::ParticleSystem* emiter = cc::ParticleSystemQuad::create("particles/bullet_hit.plist");
     emiter->setPosition(_location * constants::Ptm);

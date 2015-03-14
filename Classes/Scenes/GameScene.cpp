@@ -53,7 +53,7 @@ bool GameScene::init()
     addChild(GameWorld::getInstance()->getGameLayer());
     addChild(GameWorld::getInstance()->getUiLayer());
     
-    GameObject *playerShip = GameWorld::getInstance()->getObjectManager()->createObject("player");
+    GameObject *playerShip = GameWorld::getInstance()->getObjectManager()->createObject("player").get();
     playerShip->setTagBits(TagSet::getBit("player") | TagSet::getBit("physics_entity"));
     playerShip->addComponent(ComShipBody::create(Sprite::create("ship.png")), "body");
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/cosmic_particle.plist")));
@@ -87,7 +87,7 @@ bool GameScene::init()
     int maxEnemyNum = 10;
     int waveEnemyNum = 5;
     std::function<void(float)> addEnemy = [=](float){
-        GameObject *player = GameWorld::getInstance()->getObjectManager()->getObject("player");
+        GameObject *player = GameObjectManager::getInstance()->getObjectHandle("player").get();
         if (player == nullptr || !player->isActive()) {
             this->unschedule("add_enemy");
             return;
@@ -98,7 +98,7 @@ bool GameScene::init()
         });
         num = std::min(maxEnemyNum - num, waveEnemyNum);
         for (int i = 0; i < num; ++i) {
-            GameObject *enemy = GameWorld::getInstance()->getObjectManager()->createObject();
+            GameObject *enemy = GameWorld::getInstance()->getObjectManager()->createObject().get();
             enemy->setTagBits(TagSet::getBit("enemy") | TagSet::getBit("physics_entity"));
             enemy->addComponent(ComShipBody::create(Sprite::create("enemy.png")), "body");
             enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
@@ -139,7 +139,7 @@ bool GameScene::init()
     schedule(addEnemy, 10, "add_enemy");
     
     std::function<void(float)> checkRestartGame = [](float) {
-        GameObject* player =  GameWorld::getInstance()->getObjectManager()->getObject("player");
+        GameObject* player =  GameWorld::getInstance()->getObjectManager()->getObjectHandle("player").get();
         if (!player || !player->isActive()) {
             GameObjectManager::destroy();
             GameWorld::destroy();

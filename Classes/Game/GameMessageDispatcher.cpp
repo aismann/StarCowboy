@@ -40,7 +40,7 @@ void GameMessageDispatcher::update(float dt) {
 
 void GameMessageDispatcher::msgDispatch(const MsgItem& item) {
     if (item.second.receiver >= 0) {
-        GameObject *obj = GameObjectManager::getInstance()->getObject(item.second.receiver);
+        GameObject *obj = GameObjectManager::getInstance()->getObjectHandle(item.second.receiver).get();
         if (obj) {
             if (item.second.pred) {
                 if (item.second.pred(obj)) {

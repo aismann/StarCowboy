@@ -7,7 +7,7 @@ void ComParticleEmiter::onLoad() {
 }
 
 void ComParticleEmiter::onUnload() {
-    getOwner()->getWorld()->getGameBackground()->removeChild(_emiter);
+    _emiter->removeFromParent();
 }
 
 void ComParticleEmiter::start() {

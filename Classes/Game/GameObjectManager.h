@@ -12,27 +12,29 @@
 #include "Singleton.h"
 #include "cocos.h"
 
+#include "GameObjectHandle.h"
 #include "TagSet.h"
 
-class GameObject;
+#include <list>
+
 class GameObjectManager : public Singleton<GameObjectManager> {
     
 public:
     
+    typedef std::vector<cc::RefPtr<GameObject>> ObjectListType;
+    
     GameObjectManager();
     ~GameObjectManager();
     
-    GameObject* createObject(const std::string& name = "");
+    GameObjectHandle createObject(const std::string& name = "");
     
-    GameObject* getObject(const long oid);
+    GameObjectHandle getObjectHandle(GameObject::IDType oid) const;
     
-    GameObject* getObject(const std::string& name);
+    GameObjectHandle getObjectHandle(const std::string& name) const;
     
-    long        getObjectId(const std::string& name);
+    GameObject* getObject(const long handleIndex) const;
     
-    bool        registerObjectName(const std::string& name, long oid);
-    
-    void        unregisterObjectName(const std::string& name);
+    long         getObjectHandleIndex(const std::string& name) const;
     
     void        update(float dt);
     
@@ -42,14 +44,21 @@ public:
     void        enumerateObject(TagSet::TagBit tagMask, std::function<void(GameObject*)> callback);
     
     const size_t getObjectNum() const {
+        return _id2Index.size();
+    }
+    
+    const size_t getObjectVecSize() const {
         return _objects.size();
     }
 
 protected:
     
-    std::vector<cc::RefPtr<GameObject>>         _objects;
+    ObjectListType                                              _objects;
+    std::unordered_map<std::string, long>                     _name2Index;
+    std::unordered_map<GameObject::IDType, long>              _id2Index;
+    std::list<GameObject::IDType>                               _availableHandles;
     
-    std::unordered_map<std::string, long>       _name2id;
+    static  GameObject::IDType                                  _nextValidID;
 };
 
 #endif

@@ -20,14 +20,16 @@ void ComAiEnemyController::start() {
     _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
     _engine = getOwner()->getComponent<ComEngine>("engine");
     _weapon = getOwner()->getComponent<ComWeaponSystem>("weapon");
-    _player = GameWorld::getInstance()->getObjectManager()->getObject("player");
-    if (_player) {
-        _playerEntity = _player->getComponent<ComPhysicsEntity>("physics_entity");
+    _player = GameWorld::getInstance()->getObjectManager()->getObjectHandle("player");
+    GameObject *player = _player.get();
+    if (player) {
+        _playerEntity = player->getComponent<ComPhysicsEntity>("physics_entity");
     }
 }
 
 void ComAiEnemyController::update(float dt) {
-    if (_player && _player->isActive()) {
+    GameObject *player = _player.get();
+    if (player && player->isActive()) {
         cc::Vec2 dis2palyer = _playerEntity->getLocation() - _entity->getLocation();
         float distance = dis2palyer.length();
         if (_engine) {
@@ -58,7 +60,7 @@ void ComAiEnemyController::update(float dt) {
             }
         }
     } else {
-        _player = nullptr;
+        _player.reset();
         _playerEntity = nullptr;
         _weapon->endFire();
         _engine->setDirection({0, 0});
