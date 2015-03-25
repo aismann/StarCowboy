@@ -34,8 +34,8 @@ void ComPhysicsEntity::update(float dt) {
             if (distance <= limit) {
                 CollisionTargetInfo his = { he->getVelocity(), he->getLocation(), he->getMass()};
                 CollisionTargetInfo my = { me->getVelocity(), me->getLocation(), me->getMass()};
-				me->getOwner()->sendMessage(GAME_MSG::ON_COLLISION_WITH, 0, &his, he->getOwner());
-                obj->sendMessage(GAME_MSG::ON_COLLISION_WITH, 0, &my, me->getOwner());                
+				me->getOwner()->sendMessage(GAME_MSG::ON_COLLISION_WITH, 0, &his, he->getOwner()->getID());
+                obj->sendMessage(GAME_MSG::ON_COLLISION_WITH, 0, &my, me->getOwner()->getID());
                 d.normalize();
                 if (!me->getIsFixed()) {
                     me->setLocation(me->getLocation() + d * (limit - distance + constants::MinDistance));

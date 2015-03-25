@@ -5,23 +5,19 @@
 #include "Component.h"
 #include "GameMessageDefine.h"
 
+#include "MemoryAllocator.h"
+
 GameObject::GameObject(IDType oid)
 :_id(oid)
 ,_handleIndex(-1)
 ,_name(nullptr)
+,_world(nullptr)
 ,_tagBits(TagSet::null.bit()) {
     _world = GameWorld::getInstance();
 }
-
+ 
 GameObject::~GameObject() {
-    CCLOG("~GameObject %ld", _id);
     destroy();
-}
-
-GameObject*	GameObject::create(IDType oid) {
-    GameObject	*obj = new GameObject(oid);
-    obj->autorelease();
-    return obj;
 }
 
 const std::string& GameObject::getName() const {
@@ -67,8 +63,8 @@ void GameObject::removeAllComponents() {
 }
 
 void GameObject::removeComponentIterator(ComVecType::iterator it) {
-    it->get()->onUnload();
-    it->get()->setOwner(nullptr);
+    (*it)->onUnload();
+    (*it)->setOwner(nullptr);
     _components->erase(it);
 }
 
@@ -94,39 +90,37 @@ void GameObject::sleep() {
     }
 }
 
-void GameObject::destroy() {
+void GameObject::kill() {
     if (_lifeState != LifeState::Deaded) {
         _lifeState = LifeState::Deaded;
         for (auto it : *_components) {
             if (it) {
-                it->onOwnerDestroy();
+                it->onOwnerDead();
             }
         }
-        for (auto it : *_components) {
-            if (it) {
-                it->onUnload();
-                it->setOwner(nullptr);
-            }
+    }
+}
+
+void GameObject::destroy() {
+    for (auto it : *_components) {
+        if (it) {
+            it->onUnload();
+            it->setOwner(nullptr);
+            DelEx(ComponentBace, it);
         }
-        _components->clear();
-        
-        if (_name) {
-            delete _name;
-            _name = nullptr;
-        }
-        
-        CCLOG("destroy %ld", _id);
+    }
+    _components->clear();
+    
+    if (_name) {
+        delete _name;
+        _name = nullptr;
     }
 }
 
 void GameObject::update(float dt) {
     for (auto it : *_components) {
         if (it && it->isEnabled()) {
-            if (it->isStared() == false) {
-                it->start();
-                it->setStared();
-            }
-            it->update(dt);
+            it->doUpdate(dt);
         }
     }
 }
@@ -140,7 +134,7 @@ void GameObject::sendMessage(const GameMessage& msg) {
     }
 }
 
-void GameObject::sendMessage(const GAME_MSG msg, long nParam, void* pParam, GameObject* objParam) {
+void GameObject::sendMessage(const GAME_MSG msg, long nParam, void* pParam, long objParam) {
     sendMessage({msg, _id, nParam, pParam, objParam});
 }
 

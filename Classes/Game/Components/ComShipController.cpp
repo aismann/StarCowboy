@@ -28,8 +28,8 @@ void ComShipController::onLoad() {
     _eventDispatcher->addEventListenerWithSceneGraphPriority(_mouseListener, _uiLayer);
 #endif
     
-    _joystickLeft = static_cast<Joystick*>(getWorld()->getInstance()->getUiLayer()->getChildByName("left_joystick"));
-    _joystickRight = static_cast<Joystick*>(getWorld()->getInstance()->getUiLayer()->getChildByName("right_joystick"));
+    _joystickLeft = static_cast<Joystick*>(getWorld()->getUiLayer()->getChildByName("left_joystick"));
+    _joystickRight = static_cast<Joystick*>(getWorld()->getUiLayer()->getChildByName("right_joystick"));
     
     auto menu = static_cast<cc::Menu*>(getWorld()->getInstance()->getUiLayer()->getChildByName("menu"));
     auto weaponButton0 = static_cast<cc::MenuItem*>(menu->getChildByName("weapon_button_0"));

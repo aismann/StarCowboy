@@ -15,8 +15,7 @@ public:
     virtual ~ComShipBody() override {}
     
     static ComShipBody*  create(cc::Node *node) {
-        ComShipBody *com = new ComShipBody;
-        com->autorelease();
+        ComShipBody *com = NewEx(ComShipBody);
         com->_ndoe = node;
         return com;
     }
@@ -33,7 +32,7 @@ protected:
     virtual void onLoad() override;
     virtual void onUnload() override;
     
-    virtual void onOwnerDestroy() override;
+    virtual void onOwnerDead() override;
 
     cc::RefPtr<cc::Node>    _ndoe = nullptr;
     

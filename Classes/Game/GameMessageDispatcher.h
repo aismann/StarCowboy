@@ -12,11 +12,11 @@ public:
     
     void        postMessage(long receiver, const GameMessage msg, float delay = 0);
     
-    void        postMessage(long receiver, const GAME_MSG msg, long sender, long nParam = 0, void* pParam = nullptr, GameObject* objParam = nullptr, float delay = 0);
+    void        postMessage(long receiver, const GAME_MSG msg, long sender, long nParam = 0, void* pParam = nullptr, long objParam = -1, float delay = 0);
     
     void        broadcast(const GameMessage msg, MsgPred &pred, float delay = 0);
     
-    void        broadcast(const GAME_MSG msg, long sender, MsgPred &pred, long nParam = 0, void* pParam = nullptr, GameObject* objParam = nullptr, float delay = 0);
+    void        broadcast(const GAME_MSG msg, long sender, MsgPred &pred, long nParam = 0, void* pParam = nullptr, long objParam = -1, float delay = 0);
     
     void        update(float dt);
     

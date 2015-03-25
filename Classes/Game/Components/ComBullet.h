@@ -12,12 +12,13 @@ class ComBullet : public ComEntity {
 public:
     
     static ComBullet *create(cc::Node *node) {
-        ComBullet *com = new ComBullet(node);
-        com->autorelease();
+        ComBullet *com = NewEx(ComBullet, node);
         return com;
     }
     
     ComBullet* setVelocity(const cc::Vec2& v);
+    
+    ComBullet* setHeading(const cc::Vec2& v);
     
     ComBullet* setHitTestMask(TagSet::TagBit m) {
         _hitTestMask = m;
@@ -38,7 +39,7 @@ protected:
     virtual void onLoad() override;
     virtual void onUnload() override;
     
-    virtual void onOwnerDestroy() override;
+    virtual void onOwnerDead() override;
     
     int _damage = 0;
     

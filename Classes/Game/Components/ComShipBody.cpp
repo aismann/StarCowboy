@@ -59,7 +59,7 @@ void ComShipBody::update(float dt) {
     }
 }
 
-void ComShipBody::onOwnerDestroy() {
+void ComShipBody::onOwnerDead() {
     GameObject* explode = getWorld()->getObjectManager()->createObject().get();
     explode->addComponent(ComLifeTimeLimit::create(2));
     cc::ParticleSystem* emiter = cc::ParticleSystemQuad::create("particles/exploding_ring.plist");

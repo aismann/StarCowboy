@@ -24,10 +24,10 @@ public:
     
 protected:
     
-    Singleton() {}
-    virtual ~Singleton() {}
-    Singleton(const Singleton&){}
-    Singleton & operator= (const Singleton &){}
+    Singleton() = default;
+    virtual ~Singleton() = default;
+    Singleton(const Singleton&) = default;
+    Singleton & operator= (const Singleton &) = default;
     
     static T    *instance_;
 };

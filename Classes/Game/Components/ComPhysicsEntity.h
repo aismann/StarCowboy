@@ -26,15 +26,13 @@ public:
     virtual ~ComPhysicsEntity() override {}
 
     static ComPhysicsEntity*  create(float radius, float mass = 1, float resistance = constants::DefaultAirResistanceFactor) {
-        ComPhysicsEntity *com = new ComPhysicsEntity(false, radius, mass, resistance);
-        com->autorelease();
+        ComPhysicsEntity *com = NewEx(ComPhysicsEntity, false, radius, mass, resistance);
         return com;
     }
     
     static ComPhysicsEntity*  createFixed(float radius, cc::Vec2 location) {
-        ComPhysicsEntity *com = new ComPhysicsEntity(true ,radius, constants::MaxMass, 0);
+        ComPhysicsEntity *com = NewEx(ComPhysicsEntity, true ,radius, constants::MaxMass, 0);
         com->setLocation(location);
-        com->autorelease();
         return com;
     }
     

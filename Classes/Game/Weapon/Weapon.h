@@ -11,6 +11,7 @@
 
 #include "cocos.h"
 #include "TagSet.h"
+#include "Timer.h"
 
 class Weapon : public cc::Ref
 {

@@ -17,8 +17,7 @@ public:
     virtual ~ComWeaponSystem() override {}
     
     static ComWeaponSystem*  create() {
-        ComWeaponSystem *com = new ComWeaponSystem;
-        com->autorelease();
+        ComWeaponSystem *com = NewEx(ComWeaponSystem);
         return com;
     }
     

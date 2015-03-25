@@ -8,7 +8,7 @@ void GameMessageDispatcher::postMessage(long receiver, const GameMessage msg, fl
     _messageQueue.push_back(std::make_pair(msg, pack));
 }
 
-void GameMessageDispatcher::postMessage(long receiver, const GAME_MSG msg, long sender, long nParam, void* pParam, GameObject* objParam, float delay) {
+void GameMessageDispatcher::postMessage(long receiver, const GAME_MSG msg, long sender, long nParam, void* pParam, long objParam, float delay) {
     GameMessage m = {msg, sender, nParam, pParam, objParam};
     GameMessagePack pack = {receiver, delay, nullptr};
     _messageQueue.push_back(std::make_pair(m, pack));
@@ -19,7 +19,7 @@ void GameMessageDispatcher::broadcast(const GameMessage msg, MsgPred &pred, floa
     _messageQueue.push_back(std::make_pair(msg, t));
     
 }
-void GameMessageDispatcher::broadcast(const GAME_MSG msg, long sender, MsgPred &pred, long nParam, void* pParam, GameObject* objParam, float delay) {
+void GameMessageDispatcher::broadcast(const GAME_MSG msg, long sender, MsgPred &pred, long nParam, void* pParam, long objParam, float delay) {
     GameMessage m = {msg, sender, nParam, pParam, objParam};
     GameMessagePack pack = {-1, delay, nullptr};
     _messageQueue.push_back(std::make_pair(m, pack));

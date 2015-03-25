@@ -38,14 +38,14 @@ void ComBullet::update(float dt) {
             }
             cc::Vec2 d = _location - t->getLocation();
             if (d.lengthSquared() <= t->getRadius() * t->getRadius()) {
-                getOwner()->destroy();
+                getOwner()->kill();
                 obj->sendMessage(GAME_MSG::TAKE_DAMEGE, _damage);
             }
         }
     });
 }
 
-void ComBullet::onOwnerDestroy() {
+void ComBullet::onOwnerDead() {
     GameObject* explode = getWorld()->getObjectManager()->createObject().get();
     explode->addComponent(ComLifeTimeLimit::create(0.2));
     cc::ParticleSystem* emiter = cc::ParticleSystemQuad::create("particles/bullet_hit.plist");
@@ -56,6 +56,10 @@ void ComBullet::onOwnerDestroy() {
 
 ComBullet* ComBullet::setVelocity(const cc::Vec2& v) {
     _velocity = v;
+    return this;
+}
+
+ComBullet* ComBullet::setHeading(const cc::Vec2& v) {
     _ndoe->setRotation(math::radian2Angle(-_velocity.getAngle()));
     return this;
 }

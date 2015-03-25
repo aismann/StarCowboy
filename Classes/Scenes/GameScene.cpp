@@ -17,6 +17,8 @@
 #include "MissileLauncher.h"
 //=======
 
+#include "MemoryAllocator.h"
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -43,12 +45,6 @@ bool GameScene::init()
     {
         return false;
     }
-    
-//    Size visibleSize = Director::getInstance()->getVisibleSize();
-//    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-//    auto sprite = Sprite::create("space_1.jpg");
-//    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-//    addChild(sprite, 0);
     
     addChild(GameWorld::getInstance()->getGameLayer());
     addChild(GameWorld::getInstance()->getUiLayer());

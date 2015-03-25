@@ -17,7 +17,7 @@ bool Cannon::fire(const cc::Vec2& from,
                   const cc::Vec2& direction,
                   const cc::Vec2& shipVelocity)
 {
-    if (_coolDownTimer >= _coolDown) {
+    if (_coolDownTimer.isFire()) {
         float errorAngle = math::angle2Radian(cc::random<float>(-_errorAngle, _errorAngle));
         cc::Vec2 shootDirection = direction.rotateByAngle(cc::Vec2::ZERO, errorAngle);
         shootDirection.normalize();
@@ -27,11 +27,12 @@ bool Cannon::fire(const cc::Vec2& from,
         bullet->addComponent(ComBullet::create(cc::Sprite::create("bullet.png"))
                              ->setHitTestMask(_targetMask | _hitTestMask)->setDamage(_damage)
                              ->setVelocity(shootDirection * _bulletSpeed + shipVelocity)
+                             ->setHeading(shootDirection)
                              ->setLocation(from));
         bullet->addComponent(ComLifeTimeLimit::create(_range / _bulletSpeed));
         bullet->awake();
         
-        _coolDownTimer = 0;
+        _coolDownTimer.reset();
         return true;
     }
     return false;
@@ -39,5 +40,5 @@ bool Cannon::fire(const cc::Vec2& from,
 
 void Cannon::update(float dt)
 {
-    _coolDownTimer += dt;
+    _coolDownTimer.increase(dt);
 }

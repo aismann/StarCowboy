@@ -51,13 +51,13 @@ public:
     }
     
     MissileLauncher* setReloadTime(float t) {
-        _reloadTime = t;
+        _reloadTimer.reset(t);
         return this;
     }
     
     
     MissileLauncher* setCoolDown(float cd) {
-        _coolDown = cd;
+        _coolDownTimer.reset(cd);
         return this;
     }
     
@@ -85,11 +85,9 @@ protected:
     
     bool    _isLeftLaunche = true;
     
-    float   _reloadTime = 2;
-    float   _reloadTimer = 0;
+    Timer   _reloadTimer = 2;
     
-    float   _coolDown = 0.5;
-    float   _coolDownTimer = 0;
+    Timer   _coolDownTimer = 0.5;
 };
 
 #endif

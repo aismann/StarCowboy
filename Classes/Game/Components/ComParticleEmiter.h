@@ -14,8 +14,7 @@ public:
     virtual ~ComParticleEmiter() override {}
     
     static ComParticleEmiter*  create(cc::ParticleSystem *emiter, cc::ParticleSystem::PositionType pt = cc::ParticleSystem::PositionType::RELATIVE) {
-        ComParticleEmiter *com = new ComParticleEmiter;
-        com->autorelease();
+        ComParticleEmiter *com = NewEx(ComParticleEmiter);
         com->_emiter = emiter;
         com->_emiter->setPositionType(pt);
         return com;

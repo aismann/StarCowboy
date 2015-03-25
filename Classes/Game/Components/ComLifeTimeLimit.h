@@ -10,8 +10,7 @@ class ComLifeTimeLimit : public ComponentBace {
 public:
     
     static ComLifeTimeLimit *create(float time) {
-        ComLifeTimeLimit *com = new ComLifeTimeLimit(time);
-        com->autorelease();
+        ComLifeTimeLimit *com = NewEx(ComLifeTimeLimit, time);
         return com;
     }
 
@@ -21,7 +20,7 @@ protected:
     virtual void update(float dt) override {
         _timer += dt;
         if (_timer >= _limit) {
-            getOwner()->destroy();
+            getOwner()->kill();
         }
     }
     

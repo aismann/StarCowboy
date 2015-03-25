@@ -15,8 +15,7 @@ class ComAiEnemyController : public ComponentBace {
 public:
     
     static ComAiEnemyController *create() {
-        ComAiEnemyController *com = new ComAiEnemyController;
-        com->autorelease();
+        ComAiEnemyController *com = NewEx(ComAiEnemyController);
         return com;
     }
     

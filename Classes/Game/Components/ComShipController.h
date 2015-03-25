@@ -17,8 +17,7 @@ public:
     virtual ~ComShipController() override {}
     
     static ComShipController*  create() {
-        ComShipController *com = new ComShipController;
-        com->autorelease();
+        ComShipController *com = NewEx(ComShipController);
         return com;
     }
     

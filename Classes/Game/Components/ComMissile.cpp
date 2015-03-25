@@ -32,7 +32,8 @@ void ComMissile::start() {
 void ComMissile::update(float dt) {
     
     //find target
-    if (_targetEntity && _targetEntity->getOwner() && _targetEntity->getOwner()->isActive()) {
+    GameObject *target = _target.get();
+    if (target && target->isActive()) {
         //do nothing
         cc::Vec2 left = _direction.rotateByAngle({0, 0}, -_searchRadian * 0.5);
         cc::Vec2 right = _direction.rotateByAngle({0, 0}, _searchRadian * 0.5);
@@ -42,9 +43,10 @@ void ComMissile::update(float dt) {
             
         } else {
             //target lost
+            _target.reset();
             _targetEntity = nullptr;
         }
-    } else {
+    } else if (_searchTargetTimer.increase(dt)) {
         GameObjectManager::getInstance()->enumerateObject(_targetMask, [this](GameObject* obj){
             if (obj->isActive()) {
                 ComPhysicsEntity *t = obj->getComponent<ComPhysicsEntity>("physics_entity");
@@ -57,20 +59,23 @@ void ComMissile::update(float dt) {
                 cc::Vec2 dis = t->getLocation() - _location;
                 
                 if (left.cross(dis) > 0 && right.cross(dis) < 0) {
-                    if (_targetEntity) {
+                    if (_target) {
                         if (dis.lengthSquared() < _targetEntity->getLocation().distanceSquared(_location)) {
+                            _target = *obj;
                             _targetEntity = t;
                         }
                     } else {
+                        _target = *obj;
                         _targetEntity = t;
                     }
                 }
             }
         });
+        _searchTargetTimer.reset();
     }
     
     //track
-    if (_acceleratFinished && _targetEntity) {
+    if (_acceleratFinished && _target) {
         
         float aim = (_targetEntity->getLocation() - _location).getAngle();
         float curr = _direction.getAngle();
@@ -120,14 +125,14 @@ void ComMissile::update(float dt) {
             }
             cc::Vec2 d = _location - t->getLocation();
             if (d.lengthSquared() <= t->getRadius() * t->getRadius()) {
-                getOwner()->destroy();
+                getOwner()->kill();
                 obj->sendMessage(GAME_MSG::TAKE_DAMEGE, _damage);
             }
         }
     });
 }
 
-void ComMissile::onOwnerDestroy() {
+void ComMissile::onOwnerDead() {
     GameObject* explode = GameObjectManager::getInstance()->createObject().get();
     explode->addComponent(ComLifeTimeLimit::create(0.2));
     cc::ParticleSystem* emiter = cc::ParticleSystemQuad::create("particles/bullet_hit.plist");

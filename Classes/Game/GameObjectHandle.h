@@ -9,7 +9,7 @@
 #ifndef __GameObjectHandle_h__
 #define __GameObjectHandle_h__
 
-#include "GameObject.h"
+class GameObject;
 
 class GameObjectHandle
 {
@@ -17,7 +17,9 @@ public:
     
     GameObjectHandle() = default;
     
-    GameObjectHandle(long index, GameObject::IDType oid)
+    GameObjectHandle(const GameObject& obj);
+    
+    GameObjectHandle(long index, long oid)
     :_handleIndex(index)
     ,_id(oid){
     }
@@ -25,7 +27,7 @@ public:
     GameObject* get() const;
     
     long  getIndex() const { return _handleIndex; }
-    GameObject::IDType  getID() const { return _id; }
+    long  getID() const { return _id; }
     
     void reset() {
         _handleIndex = -1;
@@ -39,7 +41,7 @@ public:
 protected:
     
     long                _handleIndex = -1;
-    GameObject::IDType  _id = -1;
+    long                _id = -1;
 };
 
 #endif

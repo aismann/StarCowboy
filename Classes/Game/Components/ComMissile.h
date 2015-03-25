@@ -22,8 +22,7 @@ class ComMissile : public ComEntity
 public:
     
     static ComMissile *create(cc::Node *node) {
-        ComMissile *com = new ComMissile(node);
-        com->autorelease();
+        ComMissile *com = NewEx(ComMissile, node);
         return com;
     }
     
@@ -73,7 +72,7 @@ protected:
     virtual void onLoad() override;
     virtual void onUnload() override;
     
-    virtual void onOwnerDestroy() override;
+    virtual void onOwnerDead() override;
     
     int             _damage = 0;
     
@@ -91,7 +90,10 @@ protected:
     
     float           _searchRadian = 0;
     
-    cc::RefPtr<ComPhysicsEntity> _targetEntity;
+    GameObjectHandle  _target;
+    ComPhysicsEntity* _targetEntity;
+    
+    Timer           _searchTargetTimer = 0.25;
     
     cc::RefPtr<cc::Node> _ndoe = nullptr;
 };

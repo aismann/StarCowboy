@@ -18,8 +18,7 @@ bool MissileLauncher::fire(const cc::Vec2& from,
                            const cc::Vec2& direction,
                            const cc::Vec2& shipVelocity)
 {
-    if (_coolDownTimer >= _coolDown && _ammoNum > 0) {
-        
+    if (_coolDownTimer.isFire() && _ammoNum > 0) {
         GameObject* missile = GameWorld::getInstance()->getObjectManager()->createObject().get();
         missile->setTagBits(TagSet::getBit("missile"));
         missile->addComponent(ComMissile::create(cc::Sprite::create("missile.png"))
@@ -37,7 +36,7 @@ bool MissileLauncher::fire(const cc::Vec2& from,
         missile->awake();
         
         --_ammoNum;
-        _coolDownTimer = 0;
+        _coolDownTimer.reset();
         _isLeftLaunche = !_isLeftLaunche;
         return true;
     }
@@ -46,13 +45,12 @@ bool MissileLauncher::fire(const cc::Vec2& from,
 
 void MissileLauncher::update(float dt)
 {
-    _coolDownTimer += dt;
+    _coolDownTimer.increase(dt);
     
     if (_ammoNum < _maxAmmoNum) {
-        _reloadTimer += dt;
-        if (_reloadTimer >= _reloadTime) {
-            _reloadTimer = 0;
+        if (_reloadTimer.increase(dt)) {
             ++_ammoNum;
+            _reloadTimer.reset();
         }
     }
 }

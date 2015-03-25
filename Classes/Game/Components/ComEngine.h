@@ -15,10 +15,9 @@ public:
     virtual ~ComEngine() override {}
     
     static ComEngine*  create(float maxForce, float maxSpeed) {
-        ComEngine *com = new ComEngine;
+        ComEngine *com = NewEx(ComEngine);
         com->setMaxForce(maxForce);
         com->setMaxSpeed(maxSpeed);
-        com->autorelease();
         return com;
     }
     

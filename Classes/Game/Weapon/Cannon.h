@@ -44,7 +44,7 @@ public:
     }
     
     Cannon* setCoolDown(float cd) {
-        _coolDown = cd;
+        _coolDownTimer.reset(cd);
         return this;
     }
     
@@ -59,8 +59,7 @@ protected:
     float   _bulletSpeed = 200;
     float   _range = 500;
     
-    float   _coolDown = 0.5;
-    float   _coolDownTimer = 0;
+    Timer   _coolDownTimer = 0.5;
     
     float   _errorAngle = 0;
 };

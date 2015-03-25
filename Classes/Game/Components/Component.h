@@ -7,10 +7,12 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 #include "GameMessage.h"
+#include "CustomAllocate.h"
+#include "Timer.h"
 
 #include <string>
 
-class ComponentBace : public cc::Ref, public GameMessageHandler {
+class ComponentBace : public GameMessageHandler {
     
     friend class GameObject;
     
@@ -58,16 +60,7 @@ protected:
     
     virtual void onOwnerAwake() {}
     virtual void onOwnerSleep() {}
-    virtual void onOwnerDestroy() {}
-    
-    
-    const bool isStared() const {
-        return _isStarted;
-    }
-    
-    void setStared() {
-        _isStarted = true;
-    }
+    virtual void onOwnerDead() {}
     
     void setOwner(GameObject* obj) {
         _owner = obj;
@@ -79,10 +72,16 @@ protected:
     
     bool        _isEnabled = true;
     
+    void        setUpdateInterval(float interval) {
+        _updateTimer.reset(interval);
+    }
+    
 private:
     
-    bool        _isStarted = false;
+    void        doUpdate(float dt);
     
+    bool        _isStarted = false;
+    Timer       _updateTimer;
 };
 
 #endif

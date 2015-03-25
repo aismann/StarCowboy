@@ -7,17 +7,18 @@
 #include "TagSet.h"
 #include "GameMessage.h"
 #include "Constants.h"
+#include "MemoryAllocator.h"
 
 #include <vector>
 
 class GameWorld;
 class GameObjectManager;
 class ComponentBace;
-class GameObject : public cc::Ref, public GameMessageHandler {
+class GameObject : public GameMessageHandler{
     
     friend class GameObjectManager;
     
-    typedef std::vector<cc::RefPtr<ComponentBace>> ComVecType;
+    typedef std::vector<ComponentBace*> ComVecType;
     
     struct CompareById {
         bool operator()(const GameObject* lhs, const GameObject* rhs) const {
@@ -32,7 +33,7 @@ public:
     virtual ~GameObject()   final;
     
     const IDType            getID() const { return _id; }
-    const long               getHandleIndex() const { return _handleIndex; }
+    const long              getHandleIndex() const { return _handleIndex; }
     void                    setHandleIndex(long index) { _handleIndex = index; }
     
     const std::string&      getName() const;
@@ -48,7 +49,7 @@ public:
         if (_components) {
             auto it = findComByName(name);
             if (it != _components->end()) {
-                return dynamic_cast<ReturnType*>(it->get());
+                return dynamic_cast<ReturnType*>(*it);
             }
         }
         return nullptr;
@@ -62,7 +63,7 @@ public:
     
     void                    sendMessage(const GameMessage& msg);
     
-    void                    sendMessage(const GAME_MSG msg, long nParam = 0, void* pParam = nullptr, GameObject* objParam = nullptr);
+    void                    sendMessage(const GAME_MSG msg, long nParam = 0, void* pParam = nullptr, long objParam = -1);
     
     GameWorld*              getWorld();
     
@@ -82,14 +83,12 @@ public:
     
     virtual void            awake();
     virtual void            sleep();
-    virtual void            destroy();
+    virtual void            kill();
     
 protected:
     
     GameObject(IDType oid);
-    
-    static GameObject*      create(IDType oid);
-    
+    virtual void            destroy();
     
     virtual void            update(float dt);
     

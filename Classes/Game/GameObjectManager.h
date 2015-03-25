@@ -21,14 +21,14 @@ class GameObjectManager : public Singleton<GameObjectManager> {
     
 public:
     
-    typedef std::vector<cc::RefPtr<GameObject>> ObjectListType;
+    typedef std::vector<GameObject*> ObjectListType;
     
     GameObjectManager();
     ~GameObjectManager();
     
     GameObjectHandle createObject(const std::string& name = "");
     
-    GameObjectHandle getObjectHandle(GameObject::IDType oid) const;
+    GameObjectHandle getObjectHandle(long oid) const;
     
     GameObjectHandle getObjectHandle(const std::string& name) const;
     
@@ -53,12 +53,12 @@ public:
 
 protected:
     
-    ObjectListType                                              _objects;
-    std::unordered_map<std::string, long>                     _name2Index;
-    std::unordered_map<GameObject::IDType, long>              _id2Index;
-    std::list<GameObject::IDType>                               _availableHandles;
+    ObjectListType                                          _objects;
+    std::unordered_map<std::string, long>                   _name2Index;
+    std::unordered_map<long, long>                          _id2Index;
+    std::list<long>                                         _availableHandles;
     
-    static  GameObject::IDType                                  _nextValidID;
+    static  long                                            _nextValidID;
 };
 
 #endif

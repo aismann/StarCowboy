@@ -10,8 +10,7 @@ class ComHitPoint : public ComponentBace {
 public:
     
     static ComHitPoint *create(int hp) {
-        ComHitPoint *com = new ComHitPoint(hp);
-        com->autorelease();
+        ComHitPoint *com = NewEx(ComHitPoint, hp);
         return com;
     }
     
@@ -23,7 +22,7 @@ protected:
         if (msg.id == GAME_MSG::TAKE_DAMEGE) {
             _hp -= msg.nParam;
             if (_hp<=0) {
-                getOwner()->destroy();
+                getOwner()->kill();
             }
         }
     }

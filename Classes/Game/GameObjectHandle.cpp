@@ -7,7 +7,14 @@
 //
 
 #include "GameObjectHandle.h"
+#include "GameObject.h"
 #include "GameObjectManager.h"
+
+
+GameObjectHandle::GameObjectHandle(const GameObject& obj)
+:_handleIndex(obj.getHandleIndex())
+,_id(obj.getID()){
+}
 
 GameObject* GameObjectHandle::get() const {
     if (_handleIndex >= 0) {
