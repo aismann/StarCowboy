@@ -24,8 +24,8 @@ namespace memory {
         
     protected:
         
-        const size_t                        _align = 16;
-        const size_t                        _maxAllocSize = 128;
+        const size_t                        _align = 32;
+        const size_t                        _maxAllocSize = 256;
         const size_t                        _pageSize = 32;
         
         size_t                              _maxBlockSize = 0;

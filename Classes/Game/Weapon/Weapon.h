@@ -12,8 +12,9 @@
 #include "cocos.h"
 #include "TagSet.h"
 #include "Timer.h"
+#include "MemoryAllocator.h"
 
-class Weapon : public cc::Ref
+class Weapon
 {
 public:
     virtual bool fire(const cc::Vec2& from,

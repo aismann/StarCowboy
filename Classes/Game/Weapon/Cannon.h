@@ -17,8 +17,7 @@ class Cannon : public Weapon
 public:
     
     static Cannon* create() {
-        Cannon* weapon = new Cannon;
-        weapon->autorelease();
+        Cannon* weapon = NewEx(Cannon);
         return weapon;
     }
     

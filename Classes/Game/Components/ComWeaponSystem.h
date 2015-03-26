@@ -14,7 +14,7 @@ class ComWeaponSystem : public ComponentBace {
     
 public:
     
-    virtual ~ComWeaponSystem() override {}
+    virtual ~ComWeaponSystem() override;
     
     static ComWeaponSystem*  create() {
         ComWeaponSystem *com = NewEx(ComWeaponSystem);
@@ -59,8 +59,8 @@ protected:
     
     bool                    _isFire = false;
     
-    std::vector<cc::RefPtr<Weapon>> _weapens;
-    Weapon*                         _currentWeapen = nullptr;
+    std::vector<Weapon*>    _weapens;
+    Weapon*                 _currentWeapen = nullptr;
     
     TagSet::TagBit          _targetMask;
     

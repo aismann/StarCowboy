@@ -13,6 +13,13 @@ ComWeaponSystem::ComWeaponSystem()
 //    _node->addChild(sp);
 }
 
+ComWeaponSystem::~ComWeaponSystem() {
+    for (auto& w : _weapens) {
+        DelEx(Weapon, w);
+    }
+    _weapens.clear();
+}
+
 ComWeaponSystem* ComWeaponSystem::addWeapon(Weapon* weapon) {
     _weapens.push_back(weapon);
     weapon->setTargetMask(_targetMask);

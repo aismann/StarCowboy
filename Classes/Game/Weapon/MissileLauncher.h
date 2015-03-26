@@ -18,8 +18,7 @@ class MissileLauncher : public Weapon
 public:
     
     static MissileLauncher* create() {
-        MissileLauncher* weapon = new MissileLauncher;
-        weapon->autorelease();
+        MissileLauncher* weapon = NewEx(MissileLauncher);
         return weapon;
     }
     
