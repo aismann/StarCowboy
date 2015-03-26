@@ -12,6 +12,13 @@ FixedAllocator::~FixedAllocator()
     _buckets.clear();
 }
 
+
+void FixedAllocator::init(size_t blockSiz, unsigned char bucketSiz)
+{
+    _blockSiz = blockSiz;
+    _bucketSiz = bucketSiz;
+}
+
 void* FixedAllocator::alloc()
 {
     if (_lastAllocBucket >= 0) {

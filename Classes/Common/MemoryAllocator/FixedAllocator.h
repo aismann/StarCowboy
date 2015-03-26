@@ -12,12 +12,9 @@ namespace memory {
     {
     public:
         FixedAllocator() = default;
-        FixedAllocator(size_t blockSiz, unsigned char bucketSiz)
-        :_blockSiz(blockSiz)
-        ,_bucketSiz(bucketSiz)
-        {
-        }
         ~FixedAllocator();
+        
+        void init(size_t blockSiz, unsigned char bucketSiz);
         
         void* alloc();
         bool dealloc(void* p);

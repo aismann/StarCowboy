@@ -9,7 +9,7 @@ GameObjectManager::GameObjectManager() {
 }
 
 GameObjectManager::~GameObjectManager() {
-    _objects.clear();
+    clear();
 }
 
 void GameObjectManager::update(float dt) {
@@ -86,6 +86,11 @@ long GameObjectManager::getObjectHandleIndex(const std::string& name) const {
 }
 
 void GameObjectManager::clear() {
+    for (auto& obj : _objects) {
+        if (obj) {
+            DelEx(GameObject, obj);
+        }
+    }
     _objects.clear();
 }
 

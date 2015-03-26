@@ -4,39 +4,31 @@
 using namespace memory;
 
 #define ALIGNED_SIZE(size, align) (size % align == 0 ? size : size + align - size % align)
+#define ALIGNED_OFFSET(size, align) ((size + align - 1) / align)
+#define ALIGNED_INDEX(size, align) (ALIGNED_OFFSET(size, align) - 1)
+
+Allocator::Allocator() {
+    size_t n = ALIGNED_OFFSET(_maxAllocSize, _align);
+    _maxBlockSize = n * _align;
+    _pool = new FixedAllocator[n];
+    for (int i = 0; i < n; ++i) {
+        _pool[i].init((i + 1) * _align, _pageSize);
+    }
+}
 
 void* Allocator::alloc(size_t size)
 {
-    if (size > _maxAllocSize) {
+    if (size > _maxBlockSize) {
         return malloc(size);
     }
-    
-    size_t alignedSize = ALIGNED_SIZE(size, _align);
-    
-    if (_lastAlloc >= 0) {
-        FixedAllocator &a = _pool.at(_lastAlloc);
-        if (a.getBlockSize() == alignedSize) {
-            return a.alloc();
-        }
-    }
-    
-    auto it = _sizeIndex.find(alignedSize);
-    if (it != _sizeIndex.end()) {
-        _lastAlloc = it->second;
-        return _pool.at(_lastAlloc).alloc();
-    }
-    _lastAlloc = _pool.size();
-    _sizeIndex[alignedSize] = _lastAlloc;
-    _pool.push_back(FixedAllocator(alignedSize, _poolIncrease));
-    FixedAllocator& fa = _pool.back();
-    return fa.alloc();
+    return _pool[ALIGNED_INDEX(size, _align)].alloc();
 }
 
 void Allocator::dealloc(void* p)
 {
-    auto it = _pool.begin();
-    for (; it != _pool.end(); ++it) {
-        if (it->dealloc(p)) {
+    size_t n = ALIGNED_OFFSET(_maxAllocSize, _align);
+    for (int i = 0; i < n; ++i) {
+        if (_pool[i].dealloc(p)) {
             return;
         }
     }
@@ -45,26 +37,10 @@ void Allocator::dealloc(void* p)
 
 void Allocator::dealloc(void* p, size_t size)
 {
-    if (size > _maxAllocSize) {
+    if (size > _maxBlockSize) {
         free(p);
         return;
     }
-    
-    size_t alignedSize = ALIGNED_SIZE(size, _align);
-    if (_lastDealloc >= 0) {
-        FixedAllocator &a = _pool.at(_lastDealloc);
-        if (a.getBlockSize() == alignedSize) {
-            a.dealloc(p);
-            return;
-        }
-    }
-    
-    auto it = _sizeIndex.find(alignedSize);
-    if (it != _sizeIndex.end()) {
-        _lastDealloc = it->second;
-        _pool[_lastDealloc].dealloc(p);
-        return;
-    }
-    assert(!"dealloc error!");
+    _pool[ALIGNED_INDEX(size, _align)].dealloc(p);
 }
 

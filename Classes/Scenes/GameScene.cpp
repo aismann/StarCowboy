@@ -17,8 +17,6 @@
 #include "MissileLauncher.h"
 //=======
 
-#include "MemoryAllocator.h"
-
 USING_NS_CC;
 
 Scene* GameScene::createScene()

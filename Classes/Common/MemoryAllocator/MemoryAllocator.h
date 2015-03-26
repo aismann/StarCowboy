@@ -15,9 +15,7 @@ namespace memory {
         
     public:
         
-        Allocator() {
-            _pool.reserve((_maxAllocSize + _align - 1) / _align);
-        }
+        Allocator();
         
         void *alloc(size_t size);
         
@@ -26,15 +24,12 @@ namespace memory {
         
     protected:
         
-        std::vector<FixedAllocator>         _pool;
-        std::map<size_t, size_t>            _sizeIndex;
-        size_t                              _align = 16;
-        
-        long                                _lastAlloc = -1;
-        long                                _lastDealloc = -1;
-        
+        const size_t                        _align = 16;
         const size_t                        _maxAllocSize = 128;
-        const size_t                        _poolIncrease = 32;
+        const size_t                        _pageSize = 32;
+        
+        size_t                              _maxBlockSize = 0;
+        FixedAllocator*                     _pool;
     };
     
 }
