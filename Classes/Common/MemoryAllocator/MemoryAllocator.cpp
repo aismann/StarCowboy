@@ -1,11 +1,12 @@
 
 #include "MemoryAllocator.h"
+#include "FixedAllocator.h"
 
 using namespace memory;
 
-#define ALIGNED_SIZE(size, align) (size % align == 0 ? size : size + align - size % align)
-#define ALIGNED_OFFSET(size, align) ((size + align - 1) / align)
-#define ALIGNED_INDEX(size, align) (ALIGNED_OFFSET(size, align) - 1)
+#define ALIGNED_SIZE(size, align)       (size % align == 0 ? size : size + align - size % align)
+#define ALIGNED_OFFSET(size, align)     ((size + align - 1) / align)
+#define ALIGNED_INDEX(size, align)      (ALIGNED_OFFSET(size, align) - 1)
 
 Allocator::Allocator() {
     size_t n = ALIGNED_OFFSET(_maxAllocSize, _align);
@@ -26,13 +27,9 @@ void* Allocator::alloc(size_t size)
 
 void Allocator::dealloc(void* p)
 {
-    size_t n = ALIGNED_OFFSET(_maxAllocSize, _align);
-    for (int i = 0; i < n; ++i) {
-        if (_pool[i].dealloc(p)) {
-            return;
-        }
+    if (!_pool[ALIGNED_INDEX(READ_COOKIE(p) - COOKIE_SIZE, _align)].dealloc(p)) {
+        free(p);
     }
-    free(p);
 }
 
 void Allocator::dealloc(void* p, size_t size)

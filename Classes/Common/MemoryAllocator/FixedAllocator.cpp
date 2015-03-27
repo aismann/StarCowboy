@@ -15,16 +15,19 @@ FixedAllocator::~FixedAllocator()
 
 void FixedAllocator::init(size_t blockSiz, unsigned char bucketSiz)
 {
-    _blockSiz = blockSiz;
+    _blockSiz = blockSiz + COOKIE_SIZE;
     _bucketSiz = bucketSiz;
 }
 
 void* FixedAllocator::alloc()
 {
+    void *result = nullptr;
     if (_lastAllocBucket >= 0) {
         Bucket& b = _buckets.at(_lastAllocBucket);
         if (b.getAvailableBlockNum() > 0) {
-            return b.alloc(_blockSiz);
+            result = b.alloc(_blockSiz);
+            WRITE_COOKIE(result, _blockSiz);
+            return SKIP_COOKIE(result);
         }
     }
     //find a available bucket
@@ -32,7 +35,9 @@ void* FixedAllocator::alloc()
     for (; it != _buckets.end(); ++it) {
         if (it->getAvailableBlockNum() > 0) {
             _lastAllocBucket = it - _buckets.begin();
-            return it->alloc(_blockSiz);
+            result = it->alloc(_blockSiz);
+            WRITE_COOKIE(result, _blockSiz);
+            return SKIP_COOKIE(result);
         }
     }
     //add bucket
@@ -40,7 +45,9 @@ void* FixedAllocator::alloc()
     _buckets.push_back(Bucket());
     Bucket& b = _buckets.back();
     b.init(_blockSiz, _bucketSiz);
-    return b.alloc(_blockSiz);
+    result = b.alloc(_blockSiz);
+    WRITE_COOKIE(result, _blockSiz);
+    return SKIP_COOKIE(result);
 }
 
 bool FixedAllocator::dealloc(void* p)
@@ -49,7 +56,7 @@ bool FixedAllocator::dealloc(void* p)
     if (_lastDeallocBucket >= 0) {
         Bucket& b = _buckets.at(_lastDeallocBucket);
         if (b.contain(p, length)) {
-            b.dealloc(p, _blockSiz);
+            b.dealloc(BACKTO_COOKIE(p), _blockSiz);
             return true;
         }
     }
@@ -58,7 +65,7 @@ bool FixedAllocator::dealloc(void* p)
     for (; it != _buckets.end(); ++it) {
         if (it->contain(p, length)) {
             _lastDeallocBucket = it - _buckets.begin();
-            it->dealloc(p, _blockSiz);
+            it->dealloc(BACKTO_COOKIE(p), _blockSiz);
             return true;
         }
     }

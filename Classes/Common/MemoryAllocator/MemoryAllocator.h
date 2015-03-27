@@ -3,12 +3,13 @@
 #define __MemoryAllocator_h__
 
 #include "Singleton.h"
-#include "FixedAllocator.h"
 
 #include <vector>
 #include <map>
 
 namespace memory {
+    
+    class FixedAllocator;
     
     class Allocator : public Singleton<Allocator>
     {
@@ -26,7 +27,7 @@ namespace memory {
         
         const size_t                        _align = 32;
         const size_t                        _maxAllocSize = 256;
-        const size_t                        _pageSize = 32;
+        const size_t                        _pageSize = 16;
         
         size_t                              _maxBlockSize = 0;
         FixedAllocator*                     _pool;
@@ -39,7 +40,7 @@ namespace memory {
 #define DelEx(class, p) \
 if (p) {\
     p->~class();\
-    memory::Allocator::getInstance()->dealloc(p, sizeof(class));\
+    memory::Allocator::getInstance()->dealloc(p);\
     p = nullptr;\
 }
 
