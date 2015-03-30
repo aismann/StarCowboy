@@ -37,9 +37,15 @@ namespace memory {
 
 #define NewEx(class, args...) new(memory::Allocator::getInstance()->alloc(sizeof(class))) class(args)
 
-#define DelEx(class, p) \
+
+template <class T>
+void __destruct(T* p) {
+    p->~T();
+}
+
+#define DelEx(p) \
 if (p) {\
-    p->~class();\
+    __destruct(p);\
     memory::Allocator::getInstance()->dealloc(p);\
     p = nullptr;\
 }

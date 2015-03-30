@@ -31,7 +31,7 @@ void GameObject::setName(const std::string& name) {
     if (_name) {
         *_name = name;
     } else {
-        _name = new std::string(name);
+        _name = NewEx(std::string, name);
     }
 }
 
@@ -106,14 +106,13 @@ void GameObject::destroy() {
         if (it) {
             it->onUnload();
             it->setOwner(nullptr);
-            DelEx(ComponentBace, it);
+            DelEx(it);
         }
     }
     _components->clear();
     
     if (_name) {
-        delete _name;
-        _name = nullptr;
+        DelEx(_name);
     }
 }
 

@@ -15,7 +15,7 @@ ComWeaponSystem::ComWeaponSystem()
 
 ComWeaponSystem::~ComWeaponSystem() {
     for (auto& w : _weapens) {
-        DelEx(Weapon, w);
+        DelEx(w);
     }
     _weapens.clear();
 }
