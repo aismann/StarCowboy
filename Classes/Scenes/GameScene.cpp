@@ -3,6 +3,7 @@
 #include "GameObjectManager.h"
 
 //fortest
+#include "MathUtils.h"
 #include "GameObject.h"
 #include "ComShipBody.h"
 #include "ComShipController.h"

@@ -71,11 +71,11 @@ cc::Vec2 ComPhysicsEntity::calculateForce(float dt) {
     return result;
 }
 
-void ComPhysicsEntity::onMessage(const GameMessage& msg)
+bool ComPhysicsEntity::onMessage(const GameMessage& msg)
 {
     if (msg.id == GAME_MSG::ON_COLLISION_WITH) {
         if (_isFixed) {
-            return;
+            return false;
         }
         CollisionTargetInfo *target = static_cast<CollisionTargetInfo*>(msg.pParam);
         cc::Vec2 normal = target->location - getLocation();
@@ -86,5 +86,7 @@ void ComPhysicsEntity::onMessage(const GameMessage& msg)
         v1_2 *= 1 - _collisionResistance;
         _velocity -= v1;
         _velocity += v1_2;
+        return true;
     }
+    return false;
 }

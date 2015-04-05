@@ -79,7 +79,7 @@ protected:
     virtual void start() override;
     virtual void update(float dt) override;
     
-    virtual void onMessage(const GameMessage& msg) override;
+    virtual bool onMessage(const GameMessage& msg) override;
     
     cc::Vec2    calculateForce(float dt);
     

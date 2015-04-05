@@ -125,10 +125,12 @@ void GameObject::update(float dt) {
 }
 
 void GameObject::sendMessage(const GameMessage& msg) {
-    onMessage(msg);
+    if (onMessage(msg)) {
+        return;
+    }
     for (auto com : *_components) {
-        if (com) {
-            com->onMessage(msg);
+        if (com && com->onMessage(msg)) {
+            break;
         }
     }
 }
@@ -137,17 +139,18 @@ void GameObject::sendMessage(const GAME_MSG msg, long nParam, void* pParam, long
     sendMessage({msg, _id, nParam, pParam, objParam});
 }
 
-void GameObject::onMessage(const GameMessage& msg) {
+bool GameObject::onMessage(const GameMessage& msg) {
     switch (msg.id) {
         case GAME_MSG::AWAK_OBJECT:
             awake();
-            break;
+            return true;
 		case GAME_MSG::KILL_OBJECT:
             destroy();
-            break;
+            return true;
         default:
             break;
     }
+    return false;
 }
 
 GameObject::ComVecType::iterator GameObject::findComByName(const std::string& name) const {

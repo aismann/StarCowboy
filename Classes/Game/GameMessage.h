@@ -35,7 +35,7 @@ typedef std::pair<GameMessage, GameMessagePack> MsgItem;
 class GameMessageHandler {
 public:
     virtual ~GameMessageHandler() {};
-    virtual void onMessage(const GameMessage& msg) {};
+    virtual bool onMessage(const GameMessage& msg) { return false; };
 };
 
 #endif

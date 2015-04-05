@@ -5,7 +5,7 @@
 
 namespace math {
 
-	const double pi = 3.14159;
+	const float pi = 3.14159;
 
 	template<typename T>
 	inline bool is_equal(T a, T b) {
@@ -20,23 +20,15 @@ namespace math {
 		return false;
 	}
 
-	template<>
-	inline bool is_equal<double>(double a, double b) {
-		if (fabs(a-b) < 1E-12) {
-			return true;
-		}
-		return false;
+	inline float radian2Angle(float radian) {
+		return radian * 180.f / pi;
 	}
 
-	inline double radian2Angle(double radian) {
-		return radian * 180.0 / pi;
-	}
-
-    inline double angle2Radian (double angle) {
+    inline float angle2Radian (float angle) {
         return angle * pi / 180.0;
     }
     
-    inline double normalizeAngle(double angle) {
+    inline float normalizeAngle(float angle) {
         while (angle < 0) {
             angle += 360;
         }
@@ -45,6 +37,38 @@ namespace math {
             angle -= 360;
         }
         return angle;
+    }
+    
+    inline float power(float x, int n) {
+        return powf(x, n);
+    }
+    
+    template <int n>
+    inline int power(int x) {
+        return x * power<n - 1>(x);
+    }
+    
+    template <>
+    inline int power<1>(int x) {
+        return x;
+    }
+    
+    template <int n>
+    inline int power(float x) {
+        return x * power<n - 1>(x);
+    }
+    
+    template <>
+    inline int power<1>(float x) {
+        return x;
+    }
+    
+    template <int n>
+    inline int log(int x) {
+        if (x >= n) {
+            return 1 + log<n>(x / n);
+        }
+        return 0;
     }
 }
 

@@ -25,29 +25,31 @@ namespace memory {
         
     protected:
         
-        const size_t                        _align = 32;
-        const size_t                        _maxAllocSize = 256;
-        const size_t                        _pageSize = 16;
+        // 1-16 17-32 33-64 65-128 129-256
+        enum {
+            kMaxAllocSize   = 256,
+            kBlockBace      = 16,
+            kPageSize       = 16
+        };
         
-        size_t                              _maxBlockSize = 0;
-        FixedAllocator*                     _pool;
+        FixedAllocator*     _pool;
+        size_t              _poolSize;
     };
     
 }
 
 #define NewEx(class, args...) new(memory::Allocator::getInstance()->alloc(sizeof(class))) class(args)
 
-
-template <class T>
-void __destruct(T* p) {
-    p->~T();
-}
-
 #define DelEx(p) \
 if (p) {\
     __destruct(p);\
     memory::Allocator::getInstance()->dealloc(p);\
     p = nullptr;\
+}
+
+template <class T>
+void __destruct(T* p) {
+    p->~T();
 }
 
 #endif

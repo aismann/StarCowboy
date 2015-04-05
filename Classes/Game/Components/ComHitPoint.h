@@ -17,14 +17,16 @@ public:
     
 protected:
     
-    void onMessage(const GameMessage& msg)
+    bool onMessage(const GameMessage& msg)
     {
         if (msg.id == GAME_MSG::TAKE_DAMEGE) {
             _hp -= msg.nParam;
             if (_hp<=0) {
                 getOwner()->kill();
+                return true;
             }
         }
+        return false;
     }
     
     float _hp = 0;

@@ -92,7 +92,7 @@ protected:
     
     virtual void            update(float dt);
     
-    virtual void            onMessage(const GameMessage& msg) override;
+    virtual bool            onMessage(const GameMessage& msg) override;
     
     IDType                  _id;
     long                    _handleIndex;
