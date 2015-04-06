@@ -2,7 +2,6 @@
 #include "MemoryAllocator.h"
 #include "FixedAllocator.h"
 #include "MathUtils.h"
-#include <iostream>
 
 using namespace memory;
 
@@ -10,14 +9,11 @@ inline size_t __n_bace(size_t size, size_t bace) {
     return size % bace == 0 ? size / bace : (size + bace - 1) / bace;
 }
 
-inline size_t __index(size_t size, size_t bace) {
+size_t __index(size_t size, size_t bace) {
     size_t n = __n_bace(size, bace);
     size_t n_ = 1;
     size_t index = 0;
-    while (true) {
-        if (n_ >= n) {
-            break;
-        }
+    while (n_ < n) {
         n_ *= 2;
         ++index;
     }

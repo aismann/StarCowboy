@@ -37,7 +37,7 @@ void GameObject::setName(const std::string& name) {
 
 void GameObject::addComponent(ComponentBace* com, const std::string& name) {
     if (_components == nullptr) {
-        _components = new ComVecType;
+        _components = NewEx(ComVecType);
     }
     _components->push_back(com);
     com->setOwner(this);
@@ -57,6 +57,7 @@ void GameObject::removeAllComponents() {
         if (it) {
             it->onUnload();
             it->setOwner(nullptr);
+            DelEx(it);
         }
     }
     _components->clear();
@@ -65,6 +66,7 @@ void GameObject::removeAllComponents() {
 void GameObject::removeComponentIterator(ComVecType::iterator it) {
     (*it)->onUnload();
     (*it)->setOwner(nullptr);
+    DelEx(*it);
     _components->erase(it);
 }
 
@@ -102,18 +104,9 @@ void GameObject::kill() {
 }
 
 void GameObject::destroy() {
-    for (auto it : *_components) {
-        if (it) {
-            it->onUnload();
-            it->setOwner(nullptr);
-            DelEx(it);
-        }
-    }
-    _components->clear();
-    
-    if (_name) {
-        DelEx(_name);
-    }
+    removeAllComponents();
+    DelEx(_components);
+    DelEx(_name);
 }
 
 void GameObject::update(float dt) {
