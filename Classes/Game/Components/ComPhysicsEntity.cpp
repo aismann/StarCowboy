@@ -21,7 +21,7 @@ void ComPhysicsEntity::update(float dt) {
     }
     
     //Collision Detection
-    getWorld()->getObjectManager()->enumerateObject(_physicsEntityMask, [this](GameObject* obj){
+    getWorld()->getObjectManager()->enumerateObjectAfter(getOwner()->getHandleIndex(), _physicsEntityMask, [this](GameObject* obj){
         if (_owner && obj != _owner && obj->isActive()) {
             ComPhysicsEntity *he = obj->getComponent<ComPhysicsEntity>("physics_entity");
             ComPhysicsEntity *me = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
@@ -30,17 +30,17 @@ void ComPhysicsEntity::update(float dt) {
             }
             cc::Vec2 d = me->getLocation() - he->getLocation();
             float limit = me->getRadius() + he->getRadius();
-            float distance = d.length();
-            if (distance <= limit) {
+            float distanceSq = d.lengthSquared();
+            if (distanceSq < limit * limit) {
                 CollisionTargetInfo his = { he->getVelocity(), he->getLocation(), he->getMass()};
                 CollisionTargetInfo my = { me->getVelocity(), me->getLocation(), me->getMass()};
 				me->getOwner()->sendMessage(GAME_MSG::ON_COLLISION_WITH, 0, &his, he->getOwner()->getID());
                 obj->sendMessage(GAME_MSG::ON_COLLISION_WITH, 0, &my, me->getOwner()->getID());
                 d.normalize();
                 if (!me->getIsFixed()) {
-                    me->setLocation(me->getLocation() + d * (limit - distance + constants::MinDistance));
+                    me->setLocation(me->getLocation() + d * (limit - sqrtf(distanceSq) + constants::MinDistance));
                 } else if (!he->getIsFixed()) {
-                    he->setLocation(he->getLocation() - d * (limit - distance + constants::MinDistance));
+                    he->setLocation(he->getLocation() - d * (limit - sqrtf(distanceSq) + constants::MinDistance));
                 }
             }
         }

@@ -112,4 +112,22 @@ void GameObjectManager::enumerateObject(TagSet::TagBit tagMask, std::function<vo
     }
 }
 
+void GameObjectManager::enumerateObjectAfter(long index, std::function<void(GameObject*)> callback) {
+    auto it = _objects.begin() + index + 1;
+    for (; it != _objects.end(); ++it) {
+        if (*it) {
+            callback(*it);
+        }
+    }
+}
+
+void GameObjectManager::enumerateObjectAfter(long index, TagSet::TagBit tagMask, std::function<void(GameObject*)> callback) {
+    auto it = _objects.begin() + index + 1;
+    for (; it != _objects.end(); ++it) {
+        if (*it && ((*it)->getTagBits() & tagMask) != 0) {
+            callback(*it);
+        }
+    }
+}
+
 

@@ -34,7 +34,7 @@ public:
     
     GameObject* getObject(const long handleIndex) const;
     
-    long         getObjectHandleIndex(const std::string& name) const;
+    long        getObjectHandleIndex(const std::string& name) const;
     
     void        update(float dt);
     
@@ -42,6 +42,9 @@ public:
     
     void        enumerateObject(std::function<void(GameObject*)> callback);
     void        enumerateObject(TagSet::TagBit tagMask, std::function<void(GameObject*)> callback);
+    
+    void        enumerateObjectAfter(long index, std::function<void(GameObject*)> callback);
+    void        enumerateObjectAfter(long index, TagSet::TagBit tagMask, std::function<void(GameObject*)> callback);
     
     const size_t getObjectNum() const {
         return _id2Index.size();
