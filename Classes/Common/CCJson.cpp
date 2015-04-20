@@ -126,7 +126,7 @@ size_t CCJson::writeToFile(const std::string& path, CCJsonObject* json) {
       }
       std::string data("");
       print(data, json);
-      int size = fwrite(data.c_str(), sizeof(char), data.size(), fp);
+      size_t size = fwrite(data.c_str(), sizeof(char), data.size(), fp);
       fclose(fp);
       return size;
 }

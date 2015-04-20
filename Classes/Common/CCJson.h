@@ -143,7 +143,7 @@ namespace json {
         
         virtual CCJsonType type() { return CCJsonType::Dictionary; }
         
-        unsigned int count() { return map_.size(); }
+        ssize_t count() { return map_.size(); }
         
         CCJsonObject *objectForKey(const std::string& key) {
             MapType::iterator it = map_.find(key);
@@ -214,7 +214,7 @@ namespace json {
         
         virtual CCJsonType type() { return CCJsonType::Array; }
         
-        unsigned int count() const {
+        ssize_t count() const {
             return vec_.size();
         }
         
