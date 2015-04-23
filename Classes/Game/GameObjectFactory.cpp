@@ -15,7 +15,7 @@
 GameObject* GameObjectFactory::createRandomRock(const cc::Vec2 location)
 {
     char name[16] = "";
-    sprintf(name, "rock%d.png", cc::random(0, 3));
+    sprintf(name, "rock%d.png", cc::random(0, 2));
     cc::Sprite *sp = cc::Sprite::create(name);
     GameObject* rock = GameObjectManager::getInstance()->createObject().get();
     rock->setTagBits(TagSet::get("rock").bit() | TagSet::get("physics_entity").bit());
