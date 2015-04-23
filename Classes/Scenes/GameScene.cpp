@@ -16,6 +16,7 @@
 #include "Cannon.h"
 #include "Laser.h"
 #include "MissileLauncher.h"
+#include "GameObjectFactory.h"
 //=======
 
 USING_NS_CC;
@@ -50,11 +51,11 @@ bool GameScene::init()
     
     GameObject *playerShip = GameWorld::getInstance()->getObjectManager()->createObject("player").get();
     playerShip->setTagBits(TagSet::getBit("player") | TagSet::getBit("physics_entity"));
+    playerShip->addComponent(ComPhysicsEntity::create(3, 500), "physics_entity");
     playerShip->addComponent(ComShipBody::create(Sprite::create("ship.png")), "body");
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/cosmic_particle.plist")));
-    playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
+    playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/ship_wake_0.plist")), "wake_emiter");
     playerShip->addComponent(ComShipController::create(), "controller");
-    playerShip->addComponent(ComPhysicsEntity::create(3, 500), "physics_entity");
     playerShip->addComponent(ComEngine::create(50000, 50), "engine");
     playerShip->addComponent(ComWeaponSystem::create()
                              ->setTargetMask(TagSet::getBit("enemy"))
@@ -79,8 +80,12 @@ bool GameScene::init()
     playerShip->addComponent(ComHitPoint::create(200));
     playerShip->awake();
     
+    for (int i = 0; i < 40; ++i) {
+        GameObjectFactory::createRandomRock(cc::Vec2(random(-200.f, 200.f), random(-200.f, 200.f)))->awake();
+    }
+    
     int maxEnemyNum = 10;
-    int waveEnemyNum = 5;
+    int waveEnemyNum = 2;
     std::function<void(float)> addEnemy = [=](float){
         GameObject *player = GameObjectManager::getInstance()->getObjectHandle("player").get();
         if (player == nullptr || !player->isActive()) {
@@ -94,10 +99,10 @@ bool GameScene::init()
         num = std::min(maxEnemyNum - num, waveEnemyNum);
         for (int i = 0; i < num; ++i) {
             GameObject *enemy = GameWorld::getInstance()->getObjectManager()->createObject().get();
+            enemy->addComponent(ComPhysicsEntity::create(3, 200), "physics_entity");
             enemy->setTagBits(TagSet::getBit("enemy") | TagSet::getBit("physics_entity"));
             enemy->addComponent(ComShipBody::create(Sprite::create("enemy.png")), "body");
-            enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/particle_wake.plist")));
-            enemy->addComponent(ComPhysicsEntity::create(3, 200), "physics_entity");
+            enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/ship_wake_1.plist")), "wake_emiter");
             cc::Vec2 locate(random(-100, 100), random(-100, 100));
             enemy->getComponent<ComPhysicsEntity>("physics_entity")->setLocation(player->getComponent<ComPhysicsEntity>("physics_entity")->getLocation() + locate.getNormalized() * random(300, 500));
             enemy->addComponent(ComEngine::create(2000, 45), "engine");

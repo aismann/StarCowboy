@@ -32,7 +32,7 @@ bool MissileLauncher::fire(const cc::Vec2& from,
                               ->setAngularSpeed(_angularSpeed)
                               ->setLocation(from), "entity");
         missile->addComponent(ComLifeTimeLimit::create(_flyingTime));
-        missile->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/missile_wake.plist")));
+        missile->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/missile_wake_0.plist")));
         missile->awake();
         
         --_ammoNum;

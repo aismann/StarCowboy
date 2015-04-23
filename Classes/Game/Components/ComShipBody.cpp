@@ -19,7 +19,8 @@ void ComShipBody::onUnload() {
 void ComShipBody::start() {
     _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
     _engine = getOwner()->getComponent<ComEngine>("engine");
-    
+    _emiter = getOwner()->getComponent<ComParticleEmiter>("wake_emiter");
+
     if (!_ndoe->getParent()) {
         getOwner()->getWorld()->getGameForeground()->addChild(_ndoe);
     }
@@ -42,7 +43,7 @@ void ComShipBody::update(float dt) {
             
             float dis = aim - curr;
             if (dis > 180) {
-                dis = -(360 - dis);
+                dis -= 360;
             } else if (dis < -180) {
                 dis += 360;
             }
@@ -54,6 +55,16 @@ void ComShipBody::update(float dt) {
                 _ndoe->setRotation(curr - step);
             } else {
                 _ndoe->setRotation(aim);
+            }
+            if (_emiter) {
+                _emiter->getEmiter()->setEmissionRate(std::numeric_limits<float>::max()); //what a fucking value making this work
+                _emiter->getEmiter()->setAngle(180 - _ndoe->getRotation());
+                _emiter->getEmiter()->setSpeed(200);
+            }
+        } else {
+            if (_emiter) {
+                _emiter->getEmiter()->setSpeed(0);
+                _emiter->getEmiter()->setEmissionRate(0);
             }
         }
     }

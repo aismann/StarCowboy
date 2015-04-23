@@ -20,6 +20,10 @@ public:
         return com;
     }
     
+    cc::ParticleSystem* getEmiter() {
+        return _emiter;
+    }
+    
 protected:
     
     virtual void start() override;

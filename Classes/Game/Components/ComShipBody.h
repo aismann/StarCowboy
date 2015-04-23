@@ -6,6 +6,7 @@
 
 class ComPhysicsEntity;
 class ComEngine;
+class ComParticleEmiter;
 class ComShipBody : public ComponentBace {
     
     ComShipBody() {}
@@ -38,6 +39,7 @@ protected:
     
     ComPhysicsEntity*       _entity = nullptr;
     ComEngine*              _engine = nullptr;
+    ComParticleEmiter*      _emiter = nullptr;
 };
 
 #endif
