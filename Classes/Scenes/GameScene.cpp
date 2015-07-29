@@ -17,7 +17,6 @@
 #include "Laser.h"
 #include "MissileLauncher.h"
 #include "GameObjectFactory.h"
-//=======
 
 USING_NS_CC;
 
@@ -80,7 +79,7 @@ bool GameScene::init()
     playerShip->addComponent(ComHitPoint::create(200));
     playerShip->awake();
     
-    for (int i = 0; i < 40; ++i) {
+    for (int i = 0; i < 50; ++i) {
         GameObjectFactory::createRandomRock(cc::Vec2(random(-200.f, 200.f), random(-200.f, 200.f)))->awake();
     }
     

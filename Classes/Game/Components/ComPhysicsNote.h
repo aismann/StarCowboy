@@ -14,7 +14,7 @@ public:
     virtual ~ComPhysicsNote() override {}
     
     static ComPhysicsNote*  create(cc::Node *node) {
-        ComPhysicsNote *com = NewEx(ComPhysicsNote);
+        ComPhysicsNote *com = New(ComPhysicsNote);
         com->_ndoe = node;
         return com;
     }

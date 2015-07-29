@@ -7,7 +7,6 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 #include "GameMessage.h"
-#include "CustomAllocate.h"
 #include "Timer.h"
 
 #include <string>
@@ -19,7 +18,6 @@ class ComponentBace : public GameMessageHandler {
 public:
     
     ComponentBace() : _owner(nullptr) {
-        reset();
     }
     
     virtual ~ComponentBace() = 0;
@@ -43,12 +41,6 @@ public:
     const bool isEnabled() const {
         return _isEnabled;
     }
-
-    
-    virtual void reset() {
-        _isEnabled = true;
-        _isStarted = false;
-    }
     
 protected:
     
@@ -64,6 +56,10 @@ protected:
     
     void setOwner(GameObject* obj) {
         _owner = obj;
+    }
+    
+    bool isStarted() {
+        return _isStarted;
     }
     
     GameObject* _owner = nullptr;

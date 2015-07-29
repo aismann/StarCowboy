@@ -12,7 +12,7 @@
 #include "cocos.h"
 #include "TagSet.h"
 #include "Timer.h"
-#include "MemoryAllocator.h"
+#include "Allocator.h"
 
 class Weapon
 {

@@ -24,7 +24,7 @@ void GameObjectManager::update(float dt) {
                 if (!obj->getName().empty()) {
                     _name2Index.erase(obj->getName());
                 }
-                DelEx(obj);
+                Delete(obj);
             }
         }
     }
@@ -32,7 +32,7 @@ void GameObjectManager::update(float dt) {
 
 GameObjectHandle GameObjectManager::createObject(const std::string& name) {
     
-    GameObject* obj = NewEx(GameObject, _nextValidID++);
+    GameObject* obj = New(GameObject, _nextValidID++);
     long index = _objects.size();
     if (!_availableHandles.empty()) {
         index = *_availableHandles.begin();
@@ -88,7 +88,7 @@ long GameObjectManager::getObjectHandleIndex(const std::string& name) const {
 void GameObjectManager::clear() {
     for (auto& obj : _objects) {
         if (obj) {
-            DelEx(obj);
+            Delete(obj);
         }
     }
     _objects.clear();

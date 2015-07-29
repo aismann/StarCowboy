@@ -12,7 +12,7 @@ class ComBullet : public ComEntity {
 public:
     
     static ComBullet *create(cc::Node *node) {
-        ComBullet *com = NewEx(ComBullet, node);
+        ComBullet *com = New(ComBullet, node);
         return com;
     }
     
@@ -36,7 +36,6 @@ protected:
     
     virtual void update(float dt) override;
     
-    virtual void onLoad() override;
     virtual void onUnload() override;
     
     virtual void onOwnerDead() override;
@@ -45,7 +44,8 @@ protected:
     
     cc::Vec2 _velocity;
     
-    TagSet::TagBit  _hitTestMask;
+    TagSet::TagBit              _hitTestMask;
+    std::set<ComEntity*>     _nearbyEnties;
     
     cc::RefPtr<cc::Node> _ndoe = nullptr;
 };

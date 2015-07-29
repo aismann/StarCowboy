@@ -4,8 +4,7 @@
 #include "GameObjectManager.h"
 #include "Component.h"
 #include "GameMessageDefine.h"
-
-#include "MemoryAllocator.h"
+#include "Allocator.h"
 
 GameObject::GameObject(IDType oid)
 :_id(oid)
@@ -31,13 +30,13 @@ void GameObject::setName(const std::string& name) {
     if (_name) {
         *_name = name;
     } else {
-        _name = NewEx(std::string, name);
+        _name = New(std::string, name);
     }
 }
 
 void GameObject::addComponent(ComponentBace* com, const std::string& name) {
     if (_components == nullptr) {
-        _components = NewEx(ComVecType);
+        _components = New(ComVecType);
     }
     _components->push_back(com);
     com->setOwner(this);
@@ -57,7 +56,7 @@ void GameObject::removeAllComponents() {
         if (it) {
             it->onUnload();
             it->setOwner(nullptr);
-            DelEx(it);
+            Delete(it);
         }
     }
     _components->clear();
@@ -66,7 +65,7 @@ void GameObject::removeAllComponents() {
 void GameObject::removeComponentIterator(ComVecType::iterator it) {
     (*it)->onUnload();
     (*it)->setOwner(nullptr);
-    DelEx(*it);
+    Delete(*it);
     _components->erase(it);
 }
 
@@ -105,8 +104,8 @@ void GameObject::kill() {
 
 void GameObject::destroy() {
     removeAllComponents();
-    DelEx(_components);
-    DelEx(_name);
+    Delete(_components);
+    Delete(_name);
 }
 
 void GameObject::update(float dt) {

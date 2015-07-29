@@ -10,10 +10,9 @@ class ComLifeTimeLimit : public ComponentBace {
 public:
     
     static ComLifeTimeLimit *create(float time) {
-        ComLifeTimeLimit *com = NewEx(ComLifeTimeLimit, time);
+        ComLifeTimeLimit *com = New(ComLifeTimeLimit, time);
         return com;
     }
-
     
 protected:
     

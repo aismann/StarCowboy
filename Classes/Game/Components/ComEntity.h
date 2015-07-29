@@ -8,7 +8,7 @@ class ComEntity : public ComponentBace
 {
 public:
     
-    ComEntity*    setLocation(const cc::Vec2& location)  {
+    virtual ComEntity* setLocation(const cc::Vec2& location) {
         _location = location;
         return this;
     }

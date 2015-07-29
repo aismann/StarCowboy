@@ -16,7 +16,7 @@ class Laser : public Weapon
 public:
     
     static Laser* create(cc::Node* light) {
-        Laser* weapon = NewEx(Laser);
+        Laser* weapon = New(Laser);
         weapon->_light = light;
         return weapon;
     }

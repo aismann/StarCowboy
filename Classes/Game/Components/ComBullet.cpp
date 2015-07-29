@@ -6,15 +6,13 @@
 #include "ComLifeTimeLimit.h"
 #include "ComParticleEmiter.h"
 
-void ComBullet::onLoad() {
-}
-
 void ComBullet::onUnload() {
+    ComEntity::onUnload();
     getOwner()->getWorld()->getGameForeground()->removeChild(_ndoe);
 }
 
 void ComBullet::start() {
-    
+    ComEntity::start();
     if (!_ndoe->getParent()) {
         getOwner()->getWorld()->getGameForeground()->addChild(_ndoe);
     }
@@ -43,6 +41,22 @@ void ComBullet::update(float dt) {
             }
         }
     });
+//    _nearbyEnties.clear();
+//    ComPhysicsEntity::_sSDTree->getNearbyData(_location.x, _location.y, _nearbyEnties);
+//    for (auto target : _nearbyEnties) {
+//        if (target && target != this
+//            && target->getOwner()
+//            && target->getOwner()->isActive()
+//            && (target->getOwner()->getTagBits() & _hitTestMask) != 0) {
+//            
+//            ComPhysicsEntity *t = static_cast<ComPhysicsEntity*>(target);
+//            cc::Vec2 d = _location - t->getLocation();
+//            if (d.lengthSquared() <= t->getRadius() * t->getRadius()) {
+//                getOwner()->kill();
+//                t->getOwner()->sendMessage(GAME_MSG::TAKE_DAMEGE, _damage);
+//            }
+//        }
+//    }
 }
 
 void ComBullet::onOwnerDead() {

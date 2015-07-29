@@ -18,7 +18,7 @@ class MissileLauncher : public Weapon
 public:
     
     static MissileLauncher* create() {
-        MissileLauncher* weapon = NewEx(MissileLauncher);
+        MissileLauncher* weapon = New(MissileLauncher);
         return weapon;
     }
     

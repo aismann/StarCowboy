@@ -17,8 +17,8 @@
 		0592087E1A6C0A07000FD7C3 /* particles in Resources */ = {isa = PBXBuildFile; fileRef = 0592087C1A6C0A07000FD7C3 /* particles */; };
 		059208811A6C0C51000FD7C3 /* ComParticleEmiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0592087F1A6C0C51000FD7C3 /* ComParticleEmiter.cpp */; };
 		059208821A6C0C51000FD7C3 /* ComParticleEmiter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0592087F1A6C0C51000FD7C3 /* ComParticleEmiter.cpp */; };
-		059E8DB11AC12D7F004AAACD /* MemoryAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DAF1AC12D7F004AAACD /* MemoryAllocator.cpp */; };
-		059E8DB21AC12D7F004AAACD /* MemoryAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DAF1AC12D7F004AAACD /* MemoryAllocator.cpp */; };
+		059E8DB11AC12D7F004AAACD /* Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DAF1AC12D7F004AAACD /* Allocator.cpp */; };
+		059E8DB21AC12D7F004AAACD /* Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DAF1AC12D7F004AAACD /* Allocator.cpp */; };
 		059E8DB51AC12E2F004AAACD /* FixedAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DB31AC12E2F004AAACD /* FixedAllocator.cpp */; };
 		059E8DB61AC12E2F004AAACD /* FixedAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DB31AC12E2F004AAACD /* FixedAllocator.cpp */; };
 		059E8DB91AC12F88004AAACD /* Bucket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E8DB71AC12F88004AAACD /* Bucket.cpp */; };
@@ -200,13 +200,12 @@
 		0592087C1A6C0A07000FD7C3 /* particles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particles; sourceTree = "<group>"; };
 		0592087F1A6C0C51000FD7C3 /* ComParticleEmiter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComParticleEmiter.cpp; sourceTree = "<group>"; };
 		059208801A6C0C51000FD7C3 /* ComParticleEmiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComParticleEmiter.h; sourceTree = "<group>"; };
-		059E8DAF1AC12D7F004AAACD /* MemoryAllocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MemoryAllocator.cpp; sourceTree = "<group>"; };
-		059E8DB01AC12D7F004AAACD /* MemoryAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryAllocator.h; sourceTree = "<group>"; };
+		059E8DAF1AC12D7F004AAACD /* Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Allocator.cpp; sourceTree = "<group>"; };
+		059E8DB01AC12D7F004AAACD /* Allocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Allocator.h; sourceTree = "<group>"; };
 		059E8DB31AC12E2F004AAACD /* FixedAllocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FixedAllocator.cpp; sourceTree = "<group>"; };
 		059E8DB41AC12E2F004AAACD /* FixedAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedAllocator.h; sourceTree = "<group>"; };
 		059E8DB71AC12F88004AAACD /* Bucket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bucket.cpp; sourceTree = "<group>"; };
 		059E8DB81AC12F88004AAACD /* Bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bucket.h; sourceTree = "<group>"; };
-		059E8DC71AC1C090004AAACD /* CustomAllocate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAllocate.h; sourceTree = "<group>"; };
 		05A90EFA1A66B24E006018B2 /* cJSON.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cJSON.c; sourceTree = "<group>"; };
 		05A90EFB1A66B24E006018B2 /* cJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cJSON.h; sourceTree = "<group>"; };
 		05A90EFC1A66B24E006018B2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -387,18 +386,17 @@
 			name = Weapon;
 			sourceTree = "<group>";
 		};
-		059E8DAE1AC12D53004AAACD /* MemoryAllocator */ = {
+		059E8DAE1AC12D53004AAACD /* Allocator */ = {
 			isa = PBXGroup;
 			children = (
-				059E8DC71AC1C090004AAACD /* CustomAllocate.h */,
-				059E8DAF1AC12D7F004AAACD /* MemoryAllocator.cpp */,
-				059E8DB01AC12D7F004AAACD /* MemoryAllocator.h */,
+				059E8DAF1AC12D7F004AAACD /* Allocator.cpp */,
+				059E8DB01AC12D7F004AAACD /* Allocator.h */,
 				059E8DB31AC12E2F004AAACD /* FixedAllocator.cpp */,
 				059E8DB41AC12E2F004AAACD /* FixedAllocator.h */,
 				059E8DB71AC12F88004AAACD /* Bucket.cpp */,
 				059E8DB81AC12F88004AAACD /* Bucket.h */,
 			);
-			path = MemoryAllocator;
+			path = Allocator;
 			sourceTree = "<group>";
 		};
 		05A90EF81A66B24E006018B2 /* ThirdParty */ = {
@@ -424,7 +422,7 @@
 		05A90F041A66B2C2006018B2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				059E8DAE1AC12D53004AAACD /* MemoryAllocator */,
+				059E8DAE1AC12D53004AAACD /* Allocator */,
 				05A90F051A66B2C2006018B2 /* CCJson.cpp */,
 				05A90F061A66B2C2006018B2 /* CCJson.h */,
 				05A90F071A66B2C2006018B2 /* cocos2d_namespace_alias.h */,
@@ -897,7 +895,7 @@
 				05A90F331A66B2C2006018B2 /* ComPhysicsEntity.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				05A90F2F1A66B2C2006018B2 /* CCJson.cpp in Sources */,
-				059E8DB11AC12D7F004AAACD /* MemoryAllocator.cpp in Sources */,
+				059E8DB11AC12D7F004AAACD /* Allocator.cpp in Sources */,
 				05D15A6D1A735A3E00017EFA /* ComBullet.cpp in Sources */,
 				05A90F351A66B2C2006018B2 /* Component.cpp in Sources */,
 				05A90F3F1A66B2C2006018B2 /* GameObject.cpp in Sources */,
@@ -931,7 +929,7 @@
 				05A90F4A1A66B2C2006018B2 /* Joystick.cpp in Sources */,
 				05A90F321A66B2C2006018B2 /* ComEngine.cpp in Sources */,
 				05A90F3E1A66B2C2006018B2 /* GameMessageDispatcher.cpp in Sources */,
-				059E8DB21AC12D7F004AAACD /* MemoryAllocator.cpp in Sources */,
+				059E8DB21AC12D7F004AAACD /* Allocator.cpp in Sources */,
 				05C9CC921AE7E5C3008B030E /* GameObjectFactory.cpp in Sources */,
 				05D15A371A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */,
 				059E8DBA1AC12F88004AAACD /* Bucket.cpp in Sources */,

@@ -16,7 +16,7 @@ public:
     virtual ~ComShipBody() override {}
     
     static ComShipBody*  create(cc::Node *node) {
-        ComShipBody *com = NewEx(ComShipBody);
+        ComShipBody *com = New(ComShipBody);
         com->_ndoe = node;
         return com;
     }

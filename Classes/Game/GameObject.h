@@ -7,7 +7,7 @@
 #include "TagSet.h"
 #include "GameMessage.h"
 #include "Constants.h"
-#include "MemoryAllocator.h"
+#include "Allocator.h"
 
 #include <vector>
 

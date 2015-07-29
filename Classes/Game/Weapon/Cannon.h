@@ -17,7 +17,7 @@ class Cannon : public Weapon
 public:
     
     static Cannon* create() {
-        Cannon* weapon = NewEx(Cannon);
+        Cannon* weapon = New(Cannon);
         return weapon;
     }
     

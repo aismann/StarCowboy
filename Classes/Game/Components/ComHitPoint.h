@@ -10,7 +10,7 @@ class ComHitPoint : public ComponentBace {
 public:
     
     static ComHitPoint *create(int hp) {
-        ComHitPoint *com = NewEx(ComHitPoint, hp);
+        ComHitPoint *com = New(ComHitPoint, hp);
         return com;
     }
     

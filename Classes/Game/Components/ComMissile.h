@@ -22,7 +22,7 @@ class ComMissile : public ComEntity
 public:
     
     static ComMissile *create(cc::Node *node) {
-        ComMissile *com = NewEx(ComMissile, node);
+        ComMissile *com = New(ComMissile, node);
         return com;
     }
     
@@ -69,15 +69,15 @@ protected:
     
     virtual void update(float dt) override;
     
-    virtual void onLoad() override;
     virtual void onUnload() override;
     
     virtual void onOwnerDead() override;
     
     int             _damage = 0;
     
-    TagSet::TagBit  _targetMask;
-    TagSet::TagBit  _hitTestMask;
+    TagSet::TagBit              _targetMask;
+    TagSet::TagBit              _hitTestMask;
+    std::set<ComEntity*>        _nearbyEnties;
     
     cc::Vec2        _direction;
     
