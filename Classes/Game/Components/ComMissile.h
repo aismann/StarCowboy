@@ -75,9 +75,8 @@ protected:
     
     int             _damage = 0;
     
-    TagSet::TagBit              _targetMask;
-    TagSet::TagBit              _hitTestMask;
-    std::set<ComEntity*>        _nearbyEnties;
+    TagSet::TagBit  _targetMask;
+    TagSet::TagBit  _hitTestMask;
     
     cc::Vec2        _direction;
     

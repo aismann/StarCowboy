@@ -30,6 +30,10 @@ public:
     
     bool increase(float dt) {
         
+        if(_reset) {
+            reset();
+        }
+        
         _current += dt;
         if (_current >= _time) {
             _reset = true;

@@ -54,19 +54,19 @@ namespace math {
     }
     
     template <int n>
-    inline int power(float x) {
+    inline float power(float x) {
         return x * power<n - 1>(x);
     }
     
     template <>
-    inline int power<1>(float x) {
+    inline float power<1>(float x) {
         return x;
     }
     
-    template <int n>
+    template <int bace>
     inline int log(int x) {
-        if (x >= n) {
-            return 1 + log<n>(x / n);
+        if (x >= bace) {
+            return 1 + log<bace>(x / bace);
         }
         return 0;
     }

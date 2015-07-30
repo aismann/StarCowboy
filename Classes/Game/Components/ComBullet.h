@@ -44,8 +44,7 @@ protected:
     
     cc::Vec2 _velocity;
     
-    TagSet::TagBit              _hitTestMask;
-    std::set<ComEntity*>     _nearbyEnties;
+    TagSet::TagBit          _hitTestMask;
     
     cc::RefPtr<cc::Node> _ndoe = nullptr;
 };
