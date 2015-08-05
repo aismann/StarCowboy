@@ -20,7 +20,7 @@ public:
     
     ComBullet* setHeading(const cc::Vec2& v);
     
-    ComBullet* setHitTestMask(TagSet::TagBit m) {
+    ComBullet* setHitTestMask(Tag::Bit m) {
         _hitTestMask = m;
         return this;
     }
@@ -40,11 +40,13 @@ protected:
     
     virtual void onOwnerDead() override;
     
+    void onHit();
+    
     int _damage = 0;
     
     cc::Vec2 _velocity;
     
-    TagSet::TagBit          _hitTestMask;
+    Tag::Bit          _hitTestMask;
     
     cc::RefPtr<cc::Node> _ndoe = nullptr;
 };

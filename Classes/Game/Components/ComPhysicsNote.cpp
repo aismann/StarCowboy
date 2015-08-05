@@ -16,7 +16,7 @@ void ComPhysicsNote::start() {
         getOwner()->getWorld()->getGameForeground()->addChild(_ndoe);
     }
     
-    _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
+    _entity = getOwner()->getComponent<ComPhysicsEntity>("entity");
     if (_entity) {
         _ndoe->setPosition(_entity->getLocation() * constants::Ptm);
     }

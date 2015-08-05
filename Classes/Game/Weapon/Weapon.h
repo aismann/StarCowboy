@@ -10,7 +10,7 @@
 #define __Weapon_h__
 
 #include "cocos.h"
-#include "TagSet.h"
+#include "Tag.h"
 #include "Timer.h"
 #include "Allocator.h"
 
@@ -25,20 +25,20 @@ public:
     
     virtual void update(float dt) {};
     
-    Weapon* setTargetMask(const TagSet::TagBit& m) {
+    Weapon* setTargetMask(const Tag::Bit& m) {
         _targetMask = m;
         return this;
     }
     
-    Weapon* addHitTestMask(const TagSet::TagBit& m) {
+    Weapon* addHitTestMask(const Tag::Bit& m) {
         _hitTestMask |= m;
         return this;
     }
     
 protected:
     
-    TagSet::TagBit _targetMask;
-    TagSet::TagBit _hitTestMask;
+    Tag::Bit _targetMask;
+    Tag::Bit _hitTestMask;
 };
 
 #endif

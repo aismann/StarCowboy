@@ -42,7 +42,7 @@ void ComWeaponSystem::start() {
     cc::Size sz = _body->getNode()->getContentSize();
     _node->setPosition(cc::Vec2(sz.width * 0.5, sz.height * 0.5));
     
-    _shipEntity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
+    _shipEntity = getOwner()->getComponent<ComPhysicsEntity>("entity");
 }
 
 void ComWeaponSystem::update(float dt) {

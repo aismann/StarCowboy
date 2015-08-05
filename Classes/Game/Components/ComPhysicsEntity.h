@@ -94,7 +94,7 @@ protected:
     
     bool        _isFixed = false;
     
-    TagSet::TagBit      _physicsEntityMask;
+    Tag::Bit      _physicsEntityMask;
     
     typedef std::pair<cc::Vec2, float>  ForceTimePair;
     std::vector<ForceTimePair>          _constantForces;

@@ -28,7 +28,7 @@ public:
         return this;
     }
     
-    ComWeaponSystem* setTargetMask(const TagSet::TagBit& mask) {
+    ComWeaponSystem* setTargetMask(const Tag::Bit& mask) {
         _targetMask = mask;
         return this;
     }
@@ -62,7 +62,7 @@ protected:
     std::vector<Weapon*>    _weapens;
     Weapon*                 _currentWeapen = nullptr;
     
-    TagSet::TagBit          _targetMask;
+    Tag::Bit          _targetMask;
     
 };
 

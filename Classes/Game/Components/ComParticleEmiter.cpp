@@ -12,9 +12,6 @@ void ComParticleEmiter::onUnload() {
 
 void ComParticleEmiter::start() {
     _entity = getOwner()->getComponent<ComEntity>("entity");
-    if (!_entity) {
-        _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
-    }
 }
 
 void ComParticleEmiter::update(float dt) {

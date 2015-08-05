@@ -19,7 +19,7 @@ namespace constants {
     
     static const float MinDistance = 0.01;
     
-    static const float MaxMass = 1000000000;
+    static const float MaxMass = std::numeric_limits<float>::max();
     
     static const std::string EmptyString = "";
 }

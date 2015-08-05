@@ -8,7 +8,7 @@
 #include "ComPhysicsEntity.h"
 
 void ComAiEnemyController::onLoad() {
-    _enemyMask = TagSet::getBit("enemy");
+    _enemyMask = Tag::getBit("enemy");
 }
 
 void ComAiEnemyController::onUnload() {
@@ -17,13 +17,13 @@ void ComAiEnemyController::onUnload() {
 
 void ComAiEnemyController::start() {
     
-    _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
+    _entity = getOwner()->getComponent<ComPhysicsEntity>("entity");
     _engine = getOwner()->getComponent<ComEngine>("engine");
     _weapon = getOwner()->getComponent<ComWeaponSystem>("weapon");
     _player = GameWorld::getInstance()->getObjectManager()->getObjectHandle("player");
     GameObject *player = _player.get();
     if (player) {
-        _playerEntity = player->getComponent<ComPhysicsEntity>("physics_entity");
+        _playerEntity = player->getComponent<ComPhysicsEntity>("entity");
     }
 }
 

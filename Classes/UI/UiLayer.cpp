@@ -1,6 +1,7 @@
 
 #include "UiLayer.h"
 #include "Joystick.h"
+#include "Radar.h"
 
 bool UiLayer::init() {
     bool ret = false;
@@ -11,7 +12,7 @@ bool UiLayer::init() {
         cc::Size size = cc::Director::getInstance()->getVisibleSize();
         
         auto joystickLeft = Joystick::create(cc::Sprite::create("joystick_bg.png"), cc::Sprite::create("joystick_button.png"));
-        joystickLeft->setPosition(cc::Director::getInstance()->getVisibleOrigin() + cc::Vec2(125, 125));
+        joystickLeft->setPosition(origin + cc::Vec2(125, 125));
         joystickLeft->setName("left_joystick");
         addChild(joystickLeft);
         
@@ -20,19 +21,24 @@ bool UiLayer::init() {
         joystickRight->setName("right_joystick");
         addChild(joystickRight);
         
-        auto menuItem0 = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
-        menuItem0->setPosition(joystickRight->getPosition() + cc::Vec2(-50, 150));
-        menuItem0->setName("weapon_button_0");
+        auto weapon0 = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
+        weapon0->setPosition(joystickRight->getPosition() + cc::Vec2(-50, 150));
+        weapon0->setName("weapon_button_0");
         
-        auto menuItem1 = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
-        menuItem1->setPosition(joystickRight->getPosition() + cc::Vec2(0, 150));
-        menuItem1->setName("weapon_button_1");
+        auto weapon1 = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
+        weapon1->setPosition(joystickRight->getPosition() + cc::Vec2(0, 150));
+        weapon1->setName("weapon_button_1");
         
-        auto menuItem2 = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
-        menuItem2->setPosition(joystickRight->getPosition() + cc::Vec2(50, 150));
-        menuItem2->setName("weapon_button_2");
+        auto weapon2 = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
+        weapon2->setPosition(joystickRight->getPosition() + cc::Vec2(50, 150));
+        weapon2->setName("weapon_button_2");
         
-        auto menu = cc::Menu::create(menuItem0, menuItem1, menuItem2, NULL);
+        auto radar = cc::MenuItemImage::create("CloseNormal.png", "CloseSelected.png");
+        radar->setPosition(joystickLeft->getPosition() + cc::Vec2(-50, 150));
+        radar->setName("radar_button");
+        radar->setCallback(CC_CALLBACK_1(UiLayer::onRadarButtonClicked, this));
+        
+        auto menu = cc::Menu::create(weapon0, weapon1, weapon2, radar, NULL);
         menu->setPosition(cc::Vec2::ZERO);
         menu->setName("menu");
         addChild(menu);
@@ -40,4 +46,21 @@ bool UiLayer::init() {
         ret = true;
     } while (0);
     return ret;
+}
+
+void UiLayer::onRadarButtonClicked(cc::Ref*)
+{
+    if (!_radar) {
+        cc::Vec2 origin = cc::Director::getInstance()->getVisibleOrigin();
+        cc::Size size = cc::Director::getInstance()->getVisibleSize();
+        _radar = Radar::create();
+        _radar->setPosition(origin + size / 2);
+    }
+    if (_radar->getParent()) {
+        _radar->unscheduleUpdate();
+        _radar->removeFromParent();
+    } else {
+        addChild(_radar);
+        _radar->scheduleUpdate();
+    }
 }

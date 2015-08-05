@@ -4,7 +4,7 @@
 #include "MathUtils.h"
 
 void ComPhysicsEntity::start() {
-    _physicsEntityMask = TagSet::getBit("physics_entity");
+    _physicsEntityMask = Tag::getBit("physics_entity");
 }
 
 void ComPhysicsEntity::update(float dt) {
@@ -23,8 +23,8 @@ void ComPhysicsEntity::update(float dt) {
     //Collision Detection
     getWorld()->getObjectManager()->enumerateObjectAfter(getOwner()->getHandleIndex(), _physicsEntityMask, [this](GameObject* obj){
         if (_owner && obj != _owner && obj->isActive()) {
-            ComPhysicsEntity *he = obj->getComponent<ComPhysicsEntity>("physics_entity");
-            ComPhysicsEntity *me = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
+            ComPhysicsEntity *he = obj->getComponent<ComPhysicsEntity>("entity");
+            ComPhysicsEntity *me = getOwner()->getComponent<ComPhysicsEntity>("entity");
             if (!(he && me)) {
                 return;
             }

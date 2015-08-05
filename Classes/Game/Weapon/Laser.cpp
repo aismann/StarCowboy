@@ -59,7 +59,7 @@ void Laser::update(float dt)
             GameWorld* world = GameWorld::getInstance();
             world->getObjectManager()->enumerateObject(_targetMask | _hitTestMask, [&](GameObject *obj) {
                 if (obj->isActive()) {
-                    t = obj->getComponent<ComPhysicsEntity>("physics_entity");
+                    t = obj->getComponent<ComPhysicsEntity>("entity");
                     if (!t) {
                         return ;
                     }

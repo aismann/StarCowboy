@@ -38,12 +38,12 @@ public:
         return this;
     }
     
-    ComMissile* setTargetMask(TagSet::TagBit m) {
+    ComMissile* setTargetMask(Tag::Bit m) {
         _targetMask = m;
         return this;
     }
     
-    ComMissile* setHitTestMask(TagSet::TagBit m) {
+    ComMissile* setHitTestMask(Tag::Bit m) {
         _hitTestMask |= m;
         return this;
     }
@@ -73,10 +73,12 @@ protected:
     
     virtual void onOwnerDead() override;
     
+    void onHit();
+    
     int             _damage = 0;
     
-    TagSet::TagBit  _targetMask;
-    TagSet::TagBit  _hitTestMask;
+    Tag::Bit  _targetMask;
+    Tag::Bit  _hitTestMask;
     
     cc::Vec2        _direction;
     

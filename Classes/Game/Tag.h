@@ -7,15 +7,15 @@
 #include <map>
 #include <assert.h>
 
-class TagSet {
+class Tag {
     
     enum {
-        BIT_SIZE = 64
+        BIT_SIZE = sizeof(int) * 8
     };
     
 public:
     
-    typedef std::bitset<BIT_SIZE> TagBit;
+    typedef std::bitset<BIT_SIZE> Bit;
     
     const std::bitset<BIT_SIZE> bit() const {
         return _bit;
@@ -25,23 +25,23 @@ public:
         return _name;
     }
     
-    static TagSet& get(const std::string& tagName) {
+    static Tag& get(const std::string& tagName) {
         auto it = _sTagMap->find(tagName);
         if (it != _sTagMap->end()) {
             return *it->second;
         }
-        TagSet *t = new TagSet(tagName);
+        Tag *t = new Tag(tagName);
         _sTagMap->insert(std::make_pair(tagName, t));
         return *t;
     }
     
-    static const TagBit getBit(const std::string& tagName) {
+    static const Bit getBit(const std::string& tagName) {
         return get(tagName).bit();
     }
     
 protected:
     
-    TagSet(const std::string& name)
+    Tag(const std::string& name)
     :_bit(_sNextBit)
     ,_name(name) {
         _sNextBit = _sNextBit << 1;
@@ -49,9 +49,9 @@ protected:
     }
     
     //init the static null and all
-    TagSet() :_bit(0) ,_name("null"){
+    Tag() :_bit(0) ,_name("null"){
         if (_sTagMap == nullptr) {
-            _sTagMap = new std::map<std::string, TagSet*>;
+            _sTagMap = new std::map<std::string, Tag*>;
         }
         if (_sTagMap->find("null") == _sTagMap->end()) {
             _sTagMap->insert(std::make_pair(_name, this));
@@ -60,15 +60,15 @@ protected:
         }
     }
     
-    TagBit                  _bit;
-    std::string             _name;
+    Bit                 _bit;
+    std::string         _name;
     
-    static TagBit                           _sNextBit;
-    static std::map<std::string, TagSet*>*  _sTagMap;
+    static Bit          _sNextBit;
+    static std::map<std::string, Tag*>*  _sTagMap;
     
 public:
     
-    const static TagSet null;
+    const static Tag null;
 };
 
 #endif

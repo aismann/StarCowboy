@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		051A6B3D1AB3264800258D6E /* GameObjectHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */; };
 		051A6B3E1AB3264800258D6E /* GameObjectHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */; };
+		052225651B71D520001C3E1A /* Radar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225631B71D520001C3E1A /* Radar.cpp */; };
+		052225661B71D520001C3E1A /* Radar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225631B71D520001C3E1A /* Radar.cpp */; };
 		053876B31B6A357100AE6568 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053876AF1B6A357100AE6568 /* json11.cpp */; };
 		053876B41B6A357100AE6568 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053876AF1B6A357100AE6568 /* json11.cpp */; };
 		053876B51B6A357100AE6568 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 053876B11B6A357100AE6568 /* LICENSE.txt */; };
@@ -47,8 +49,8 @@
 		05A90F401A66B2C2006018B2 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F1F1A66B2C2006018B2 /* GameObject.cpp */; };
 		05A90F411A66B2C2006018B2 /* GameObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F211A66B2C2006018B2 /* GameObjectManager.cpp */; };
 		05A90F421A66B2C2006018B2 /* GameObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F211A66B2C2006018B2 /* GameObjectManager.cpp */; };
-		05A90F431A66B2C2006018B2 /* TagSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F231A66B2C2006018B2 /* TagSet.cpp */; };
-		05A90F441A66B2C2006018B2 /* TagSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F231A66B2C2006018B2 /* TagSet.cpp */; };
+		05A90F431A66B2C2006018B2 /* Tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F231A66B2C2006018B2 /* Tag.cpp */; };
+		05A90F441A66B2C2006018B2 /* Tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F231A66B2C2006018B2 /* Tag.cpp */; };
 		05A90F451A66B2C2006018B2 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F251A66B2C2006018B2 /* GameWorld.cpp */; };
 		05A90F461A66B2C2006018B2 /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F251A66B2C2006018B2 /* GameWorld.cpp */; };
 		05A90F471A66B2C2006018B2 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A90F281A66B2C2006018B2 /* GameScene.cpp */; };
@@ -188,6 +190,8 @@
 /* Begin PBXFileReference section */
 		051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjectHandle.cpp; sourceTree = "<group>"; };
 		051A6B3C1AB3264800258D6E /* GameObjectHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectHandle.h; sourceTree = "<group>"; };
+		052225631B71D520001C3E1A /* Radar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Radar.cpp; sourceTree = "<group>"; };
+		052225641B71D520001C3E1A /* Radar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radar.h; sourceTree = "<group>"; };
 		053876AF1B6A357100AE6568 /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
 		053876B01B6A357100AE6568 /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
 		053876B11B6A357100AE6568 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -234,8 +238,8 @@
 		05A90F201A66B2C2006018B2 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		05A90F211A66B2C2006018B2 /* GameObjectManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjectManager.cpp; sourceTree = "<group>"; };
 		05A90F221A66B2C2006018B2 /* GameObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectManager.h; sourceTree = "<group>"; };
-		05A90F231A66B2C2006018B2 /* TagSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TagSet.cpp; sourceTree = "<group>"; };
-		05A90F241A66B2C2006018B2 /* TagSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSet.h; sourceTree = "<group>"; };
+		05A90F231A66B2C2006018B2 /* Tag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tag.cpp; sourceTree = "<group>"; };
+		05A90F241A66B2C2006018B2 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		05A90F251A66B2C2006018B2 /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
 		05A90F261A66B2C2006018B2 /* GameWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWorld.h; sourceTree = "<group>"; };
 		05A90F281A66B2C2006018B2 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -379,6 +383,38 @@
 			path = json11;
 			sourceTree = "<group>";
 		};
+		053876BA1B6B899300AE6568 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				05A90F1F1A66B2C2006018B2 /* GameObject.cpp */,
+				05A90F201A66B2C2006018B2 /* GameObject.h */,
+				051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */,
+				051A6B3C1AB3264800258D6E /* GameObjectHandle.h */,
+				05A90F211A66B2C2006018B2 /* GameObjectManager.cpp */,
+				05A90F221A66B2C2006018B2 /* GameObjectManager.h */,
+			);
+			name = Object;
+			sourceTree = "<group>";
+		};
+		053876BB1B6B89CE00AE6568 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				05A90F1B1A66B2C2006018B2 /* GameMessage.h */,
+				05A90F1C1A66B2C2006018B2 /* GameMessageDefine.h */,
+				05A90F1D1A66B2C2006018B2 /* GameMessageDispatcher.cpp */,
+				05A90F1E1A66B2C2006018B2 /* GameMessageDispatcher.h */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		053876BC1B6B8A7900AE6568 /* Cocos2dx */ = {
+			isa = PBXGroup;
+			children = (
+				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
+			);
+			name = Cocos2dx;
+			sourceTree = "<group>";
+		};
 		056EBF1B1A9EC85B005C6032 /* Weapon */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,22 +467,14 @@
 		05A90F0B1A66B2C2006018B2 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				053876BB1B6B89CE00AE6568 /* Message */,
+				053876BA1B6B899300AE6568 /* Object */,
 				056EBF1B1A9EC85B005C6032 /* Weapon */,
 				05A90F0D1A66B2C2006018B2 /* Components */,
 				05A90F0C1A66B2C2006018B2 /* cocos.h */,
 				05A90F1A1A66B2C2006018B2 /* Constants.h */,
-				05A90F1B1A66B2C2006018B2 /* GameMessage.h */,
-				05A90F1C1A66B2C2006018B2 /* GameMessageDefine.h */,
-				05A90F1D1A66B2C2006018B2 /* GameMessageDispatcher.cpp */,
-				05A90F1E1A66B2C2006018B2 /* GameMessageDispatcher.h */,
-				05A90F1F1A66B2C2006018B2 /* GameObject.cpp */,
-				05A90F201A66B2C2006018B2 /* GameObject.h */,
-				051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */,
-				051A6B3C1AB3264800258D6E /* GameObjectHandle.h */,
-				05A90F211A66B2C2006018B2 /* GameObjectManager.cpp */,
-				05A90F221A66B2C2006018B2 /* GameObjectManager.h */,
-				05A90F231A66B2C2006018B2 /* TagSet.cpp */,
-				05A90F241A66B2C2006018B2 /* TagSet.h */,
+				05A90F231A66B2C2006018B2 /* Tag.cpp */,
+				05A90F241A66B2C2006018B2 /* Tag.h */,
 				05A90F251A66B2C2006018B2 /* GameWorld.cpp */,
 				05A90F261A66B2C2006018B2 /* GameWorld.h */,
 				05C9CC8F1AE7E5C3008B030E /* GameObjectFactory.cpp */,
@@ -486,10 +514,12 @@
 		05A90F2A1A66B2C2006018B2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				05A90F2B1A66B2C2006018B2 /* Joystick.cpp */,
-				05A90F2C1A66B2C2006018B2 /* Joystick.h */,
 				05A90F2D1A66B2C2006018B2 /* UiLayer.cpp */,
 				05A90F2E1A66B2C2006018B2 /* UiLayer.h */,
+				05A90F2B1A66B2C2006018B2 /* Joystick.cpp */,
+				05A90F2C1A66B2C2006018B2 /* Joystick.h */,
+				052225631B71D520001C3E1A /* Radar.cpp */,
+				052225641B71D520001C3E1A /* Radar.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -559,7 +589,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
+				053876BC1B6B8A7900AE6568 /* Cocos2dx */,
 				05A90EF81A66B24E006018B2 /* ThirdParty */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
@@ -862,6 +892,7 @@
 				05C9CC911AE7E5C3008B030E /* GameObjectFactory.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				056EBF221A9ED82B005C6032 /* Cannon.cpp in Sources */,
+				052225651B71D520001C3E1A /* Radar.cpp in Sources */,
 				05E50F811AA0C0ED0078F759 /* MissileLauncher.cpp in Sources */,
 				059E8DB51AC12E2F004AAACD /* FixedAllocator.cpp in Sources */,
 				05A90F491A66B2C2006018B2 /* Joystick.cpp in Sources */,
@@ -876,7 +907,7 @@
 				05A90F391A66B2C2006018B2 /* ComShipController.cpp in Sources */,
 				05E50F881AA0D1FC0078F759 /* ComMissile.cpp in Sources */,
 				05A90F471A66B2C2006018B2 /* GameScene.cpp in Sources */,
-				05A90F431A66B2C2006018B2 /* TagSet.cpp in Sources */,
+				05A90F431A66B2C2006018B2 /* Tag.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				05A90F311A66B2C2006018B2 /* ComEngine.cpp in Sources */,
 				0586D76E1AA02D130024C387 /* Laser.cpp in Sources */,
@@ -900,8 +931,9 @@
 			files = (
 				05A90F461A66B2C2006018B2 /* GameWorld.cpp in Sources */,
 				05D15A6E1A735A3E00017EFA /* ComBullet.cpp in Sources */,
-				05A90F441A66B2C2006018B2 /* TagSet.cpp in Sources */,
+				05A90F441A66B2C2006018B2 /* Tag.cpp in Sources */,
 				05A90F481A66B2C2006018B2 /* GameScene.cpp in Sources */,
+				052225661B71D520001C3E1A /* Radar.cpp in Sources */,
 				053876B81B6A357100AE6568 /* README.md in Sources */,
 				05E50F821AA0C0ED0078F759 /* MissileLauncher.cpp in Sources */,
 				05A90F361A66B2C2006018B2 /* Component.cpp in Sources */,

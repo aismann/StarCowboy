@@ -11,7 +11,7 @@ GameObject::GameObject(IDType oid)
 ,_handleIndex(-1)
 ,_name(nullptr)
 ,_world(nullptr)
-,_tagBits(TagSet::null.bit()) {
+,_tagBits(Tag::null.bit()) {
     _world = GameWorld::getInstance();
 }
  

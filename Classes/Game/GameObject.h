@@ -4,7 +4,7 @@
 
 
 #include "Component.h"
-#include "TagSet.h"
+#include "Tag.h"
 #include "GameMessage.h"
 #include "Constants.h"
 #include "Allocator.h"
@@ -39,9 +39,9 @@ public:
     const std::string&      getName() const;
     void                    setName(const std::string& name);
     
-    const TagSet::TagBit&   getTagBits() const { return _tagBits; }
+    const Tag::Bit&   getTagBits() const { return _tagBits; }
     
-    void                    setTagBits(const TagSet::TagBit& tb) { _tagBits = tb; }
+    void                    setTagBits(const Tag::Bit& tb) { _tagBits = tb; }
     
     template<class ReturnType>
     ReturnType*             getComponent(const std::string& name) const {
@@ -101,7 +101,7 @@ protected:
     
     GameWorld*              _world;
     
-    TagSet::TagBit          _tagBits;
+    Tag::Bit          _tagBits;
     
     LifeState               _lifeState = LifeState::Sleep;
     

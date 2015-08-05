@@ -34,7 +34,7 @@ protected:
     GameObjectHandle            _player;
     ComPhysicsEntity*           _playerEntity = nullptr;
     
-    TagSet::TagBit              _enemyMask;
+    Tag::Bit              _enemyMask;
 };
 
 #endif

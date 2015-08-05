@@ -17,7 +17,7 @@ void ComShipBody::onUnload() {
 }
 
 void ComShipBody::start() {
-    _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
+    _entity = getOwner()->getComponent<ComPhysicsEntity>("entity");
     _engine = getOwner()->getComponent<ComEngine>("engine");
     _emiter = getOwner()->getComponent<ComParticleEmiter>("wake_emiter");
 

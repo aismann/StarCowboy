@@ -13,7 +13,7 @@
 #include "cocos.h"
 
 #include "GameObjectHandle.h"
-#include "TagSet.h"
+#include "Tag.h"
 
 #include <list>
 
@@ -41,10 +41,10 @@ public:
     void        clear();
     
     void        enumerateObject(std::function<void(GameObject*)> callback);
-    void        enumerateObject(TagSet::TagBit tagMask, std::function<void(GameObject*)> callback);
+    void        enumerateObject(Tag::Bit tagMask, std::function<void(GameObject*)> callback);
     
     void        enumerateObjectAfter(long index, std::function<void(GameObject*)> callback);
-    void        enumerateObjectAfter(long index, TagSet::TagBit tagMask, std::function<void(GameObject*)> callback);
+    void        enumerateObjectAfter(long index, Tag::Bit tagMask, std::function<void(GameObject*)> callback);
     
     const size_t getObjectNum() const {
         return _id2Index.size();

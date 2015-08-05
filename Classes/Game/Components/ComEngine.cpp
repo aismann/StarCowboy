@@ -4,7 +4,7 @@
 
 void ComEngine::start() {
     
-    _entity = getOwner()->getComponent<ComPhysicsEntity>("physics_entity");
+    _entity = getOwner()->getComponent<ComPhysicsEntity>("entity");
 }
 
 void ComEngine::update(float dt) {
