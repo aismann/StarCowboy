@@ -18,7 +18,7 @@ GameObject* GameObjectFactory::createRandomRock(const cc::Vec2 location)
     sprintf(name, "rock%d.png", cc::random(0, 2));
     cc::Sprite *sp = cc::Sprite::create(name);
     GameObject* rock = GameObjectManager::getInstance()->createObject().get();
-    rock->setTagBits(Tag::get("rock").bit() | Tag::get("physics_entity").bit());
+    rock->setTagBits(Tag::get("rock").bit() | Tag::get("physics").bit());
     rock->addComponent(ComPhysicsEntity::create(3, 1000)
                        ->setCollisionResistance(0.5)
                        ->setVelocity(cc::Vec2(cc::random(-5.f, 5.f), cc::random(-5.f, 5.f)))

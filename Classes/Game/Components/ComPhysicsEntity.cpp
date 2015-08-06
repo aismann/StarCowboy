@@ -4,7 +4,7 @@
 #include "MathUtils.h"
 
 void ComPhysicsEntity::start() {
-    _physicsEntityMask = Tag::getBit("physics_entity");
+    _physicsEntityMask = Tag::getBit("physics");
 }
 
 void ComPhysicsEntity::update(float dt) {

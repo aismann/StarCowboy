@@ -49,7 +49,7 @@ bool GameScene::init()
     addChild(GameWorld::getInstance()->getUiLayer());
     
     GameObject *playerShip = GameWorld::getInstance()->getObjectManager()->createObject("player").get();
-    playerShip->setTagBits(Tag::getBit("player") | Tag::getBit("physics_entity"));
+    playerShip->setTagBits(Tag::getBit("player") | Tag::getBit("physics"));
     playerShip->addComponent(ComPhysicsEntity::create(3, 500), "entity");
     playerShip->addComponent(ComShipBody::create(Sprite::create("ship.png")), "body");
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/cosmic_particle.plist")));
@@ -99,7 +99,7 @@ bool GameScene::init()
         for (int i = 0; i < num; ++i) {
             GameObject *enemy = GameWorld::getInstance()->getObjectManager()->createObject().get();
             enemy->addComponent(ComPhysicsEntity::create(3, 200), "entity");
-            enemy->setTagBits(Tag::getBit("enemy") | Tag::getBit("physics_entity"));
+            enemy->setTagBits(Tag::getBit("enemy") | Tag::getBit("physics"));
             enemy->addComponent(ComShipBody::create(Sprite::create("enemy.png")), "body");
             enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/ship_wake_1.plist")), "wake_emiter");
             cc::Vec2 locate(random(-100, 100), random(-100, 100));
