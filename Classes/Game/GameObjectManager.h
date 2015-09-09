@@ -21,7 +21,9 @@ class GameObjectManager : public Singleton<GameObjectManager> {
     
 public:
     
-    typedef std::vector<GameObject*> ObjectListType;
+    typedef std::vector<GameObject*>                ObjectList;
+    typedef std::unordered_map<std::string, long>   Name2IndexMap;
+    typedef std::unordered_map<long, long>          Id2IndexMap;
     
     GameObjectManager();
     ~GameObjectManager();
@@ -56,12 +58,12 @@ public:
 
 protected:
     
-    ObjectListType                                          _objects;
-    std::unordered_map<std::string, long>                   _name2Index;
-    std::unordered_map<long, long>                          _id2Index;
-    std::list<long>                                         _availableHandles;
+    ObjectList          _objects;
+    Name2IndexMap       _name2Index;
+    Id2IndexMap         _id2Index;
+    std::list<long>     _availableHandles;
     
-    static  long                                            _nextValidID;
+    static  long        _nextValidID;
 };
 
 #endif

@@ -58,7 +58,7 @@ protected:
     float   _bulletSpeed = 200;
     float   _range = 500;
     
-    Timer   _coolDownTimer = 0.5;
+    Counter<float>   _coolDownTimer = 0.5;
     
     float   _errorAngle = 0;
 };

@@ -8,6 +8,7 @@
 #include "GameMessage.h"
 #include "Constants.h"
 #include "Allocator.h"
+#include "GameObjectHandle.h"
 
 #include <vector>
 
@@ -35,6 +36,8 @@ public:
     const IDType            getID() const { return _id; }
     const long              getHandleIndex() const { return _handleIndex; }
     void                    setHandleIndex(long index) { _handleIndex = index; }
+    
+    GameObjectHandle        handle() { return GameObjectHandle(_handleIndex, _id); }
     
     const std::string&      getName() const;
     void                    setName(const std::string& name);

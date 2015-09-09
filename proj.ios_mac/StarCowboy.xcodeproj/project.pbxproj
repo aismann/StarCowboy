@@ -11,6 +11,10 @@
 		051A6B3E1AB3264800258D6E /* GameObjectHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051A6B3B1AB3264800258D6E /* GameObjectHandle.cpp */; };
 		052225651B71D520001C3E1A /* Radar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225631B71D520001C3E1A /* Radar.cpp */; };
 		052225661B71D520001C3E1A /* Radar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225631B71D520001C3E1A /* Radar.cpp */; };
+		052225E41B7B39D5001C3E1A /* SDTree4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225E21B7B39D5001C3E1A /* SDTree4.cpp */; };
+		052225E51B7B39D5001C3E1A /* SDTree4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225E21B7B39D5001C3E1A /* SDTree4.cpp */; };
+		052225ED1B7C7FF6001C3E1A /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225EB1B7C7FF6001C3E1A /* Level.cpp */; };
+		052225EE1B7C7FF6001C3E1A /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052225EB1B7C7FF6001C3E1A /* Level.cpp */; };
 		053876B31B6A357100AE6568 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053876AF1B6A357100AE6568 /* json11.cpp */; };
 		053876B41B6A357100AE6568 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053876AF1B6A357100AE6568 /* json11.cpp */; };
 		053876B51B6A357100AE6568 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 053876B11B6A357100AE6568 /* LICENSE.txt */; };
@@ -97,6 +101,12 @@
 		05E50F851AA0D0F50078F759 /* missile.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E50F831AA0D0F50078F759 /* missile.png */; };
 		05E50F881AA0D1FC0078F759 /* ComMissile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E50F861AA0D1FC0078F759 /* ComMissile.cpp */; };
 		05E50F891AA0D1FC0078F759 /* ComMissile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E50F861AA0D1FC0078F759 /* ComMissile.cpp */; };
+		05E539911B9EA177000DC93E /* Danmaku_1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E5398F1B9EA177000DC93E /* Danmaku_1.cpp */; };
+		05E539921B9EA177000DC93E /* Danmaku_1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E5398F1B9EA177000DC93E /* Danmaku_1.cpp */; };
+		05E539961BA01AED000DC93E /* Danmaku_2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E539941BA01AED000DC93E /* Danmaku_2.cpp */; };
+		05E539971BA01AED000DC93E /* Danmaku_2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E539941BA01AED000DC93E /* Danmaku_2.cpp */; };
+		05E5399A1BA02659000DC93E /* Danmaku_3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E539981BA02659000DC93E /* Danmaku_3.cpp */; };
+		05E5399B1BA02659000DC93E /* Danmaku_3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E539981BA02659000DC93E /* Danmaku_3.cpp */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -192,11 +202,15 @@
 		051A6B3C1AB3264800258D6E /* GameObjectHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectHandle.h; sourceTree = "<group>"; };
 		052225631B71D520001C3E1A /* Radar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Radar.cpp; sourceTree = "<group>"; };
 		052225641B71D520001C3E1A /* Radar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radar.h; sourceTree = "<group>"; };
+		052225E21B7B39D5001C3E1A /* SDTree4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDTree4.cpp; sourceTree = "<group>"; };
+		052225E31B7B39D5001C3E1A /* SDTree4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDTree4.h; sourceTree = "<group>"; };
+		052225EB1B7C7FF6001C3E1A /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
+		052225EC1B7C7FF6001C3E1A /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		053876AF1B6A357100AE6568 /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
 		053876B01B6A357100AE6568 /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
 		053876B11B6A357100AE6568 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		053876B21B6A357100AE6568 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		055C29FA1AC3034500DFE384 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		055C29FA1AC3034500DFE384 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Counter.h; sourceTree = "<group>"; };
 		056EBF1D1A9EC894005C6032 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weapon.h; path = Weapon/Weapon.h; sourceTree = "<group>"; };
 		056EBF201A9ED82B005C6032 /* Cannon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cannon.cpp; path = Weapon/Cannon.cpp; sourceTree = "<group>"; };
 		056EBF211A9ED82B005C6032 /* Cannon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cannon.h; path = Weapon/Cannon.h; sourceTree = "<group>"; };
@@ -212,7 +226,6 @@
 		059E8DB41AC12E2F004AAACD /* FixedAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FixedAllocator.h; sourceTree = "<group>"; };
 		059E8DB71AC12F88004AAACD /* Bucket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bucket.cpp; sourceTree = "<group>"; };
 		059E8DB81AC12F88004AAACD /* Bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bucket.h; sourceTree = "<group>"; };
-		05A90F071A66B2C2006018B2 /* cocos2d_namespace_alias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocos2d_namespace_alias.h; sourceTree = "<group>"; };
 		05A90F081A66B2C2006018B2 /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
 		05A90F091A66B2C2006018B2 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		05A90F0A1A66B2C2006018B2 /* TypeInfoCmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeInfoCmp.h; sourceTree = "<group>"; };
@@ -275,6 +288,12 @@
 		05E50F831AA0D0F50078F759 /* missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missile.png; sourceTree = "<group>"; };
 		05E50F861AA0D1FC0078F759 /* ComMissile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComMissile.cpp; sourceTree = "<group>"; };
 		05E50F871AA0D1FC0078F759 /* ComMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComMissile.h; sourceTree = "<group>"; };
+		05E5398F1B9EA177000DC93E /* Danmaku_1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Danmaku_1.cpp; path = Weapon/Danmaku_1.cpp; sourceTree = "<group>"; };
+		05E539901B9EA177000DC93E /* Danmaku_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Danmaku_1.h; path = Weapon/Danmaku_1.h; sourceTree = "<group>"; };
+		05E539941BA01AED000DC93E /* Danmaku_2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Danmaku_2.cpp; path = Weapon/Danmaku_2.cpp; sourceTree = "<group>"; };
+		05E539951BA01AED000DC93E /* Danmaku_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Danmaku_2.h; path = Weapon/Danmaku_2.h; sourceTree = "<group>"; };
+		05E539981BA02659000DC93E /* Danmaku_3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Danmaku_3.cpp; path = Weapon/Danmaku_3.cpp; sourceTree = "<group>"; };
+		05E539991BA02659000DC93E /* Danmaku_3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Danmaku_3.h; path = Weapon/Danmaku_3.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -372,6 +391,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052225E11B7B39D5001C3E1A /* SDT4 */ = {
+			isa = PBXGroup;
+			children = (
+				052225E21B7B39D5001C3E1A /* SDTree4.cpp */,
+				052225E31B7B39D5001C3E1A /* SDTree4.h */,
+			);
+			path = SDT4;
+			sourceTree = "<group>";
+		};
+		052225EA1B7C7FF6001C3E1A /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				052225EB1B7C7FF6001C3E1A /* Level.cpp */,
+				052225EC1B7C7FF6001C3E1A /* Level.h */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
 		053876AE1B6A357100AE6568 /* json11 */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +455,7 @@
 		056EBF1B1A9EC85B005C6032 /* Weapon */ = {
 			isa = PBXGroup;
 			children = (
+				05E5398E1B9E8B3B000DC93E /* Danmaku */,
 				056EBF1D1A9EC894005C6032 /* Weapon.h */,
 				056EBF201A9ED82B005C6032 /* Cannon.cpp */,
 				056EBF211A9ED82B005C6032 /* Cannon.h */,
@@ -455,11 +493,10 @@
 			isa = PBXGroup;
 			children = (
 				059E8DAE1AC12D53004AAACD /* Allocator */,
-				05A90F071A66B2C2006018B2 /* cocos2d_namespace_alias.h */,
 				05A90F081A66B2C2006018B2 /* MathUtils.h */,
 				05A90F091A66B2C2006018B2 /* Singleton.h */,
 				05A90F0A1A66B2C2006018B2 /* TypeInfoCmp.h */,
-				055C29FA1AC3034500DFE384 /* Timer.h */,
+				055C29FA1AC3034500DFE384 /* Counter.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -467,6 +504,8 @@
 		05A90F0B1A66B2C2006018B2 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				052225EA1B7C7FF6001C3E1A /* Level */,
+				052225E11B7B39D5001C3E1A /* SDT4 */,
 				053876BB1B6B89CE00AE6568 /* Message */,
 				053876BA1B6B899300AE6568 /* Object */,
 				056EBF1B1A9EC85B005C6032 /* Weapon */,
@@ -551,6 +590,19 @@
 				05E50F871AA0D1FC0078F759 /* ComMissile.h */,
 			);
 			name = Ammo;
+			sourceTree = "<group>";
+		};
+		05E5398E1B9E8B3B000DC93E /* Danmaku */ = {
+			isa = PBXGroup;
+			children = (
+				05E539981BA02659000DC93E /* Danmaku_3.cpp */,
+				05E539991BA02659000DC93E /* Danmaku_3.h */,
+				05E539941BA01AED000DC93E /* Danmaku_2.cpp */,
+				05E539951BA01AED000DC93E /* Danmaku_2.h */,
+				05E5398F1B9EA177000DC93E /* Danmaku_1.cpp */,
+				05E539901B9EA177000DC93E /* Danmaku_1.h */,
+			);
+			name = Danmaku;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* ios */ = {
@@ -903,9 +955,12 @@
 				05A90F451A66B2C2006018B2 /* GameWorld.cpp in Sources */,
 				05A90F411A66B2C2006018B2 /* GameObjectManager.cpp in Sources */,
 				05D15A361A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */,
+				05E5399A1BA02659000DC93E /* Danmaku_3.cpp in Sources */,
 				05A90F3D1A66B2C2006018B2 /* GameMessageDispatcher.cpp in Sources */,
 				05A90F391A66B2C2006018B2 /* ComShipController.cpp in Sources */,
 				05E50F881AA0D1FC0078F759 /* ComMissile.cpp in Sources */,
+				05E539961BA01AED000DC93E /* Danmaku_2.cpp in Sources */,
+				052225ED1B7C7FF6001C3E1A /* Level.cpp in Sources */,
 				05A90F471A66B2C2006018B2 /* GameScene.cpp in Sources */,
 				05A90F431A66B2C2006018B2 /* Tag.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -914,12 +969,14 @@
 				059E8DB91AC12F88004AAACD /* Bucket.cpp in Sources */,
 				059208811A6C0C51000FD7C3 /* ComParticleEmiter.cpp in Sources */,
 				053876B31B6A357100AE6568 /* json11.cpp in Sources */,
+				052225E41B7B39D5001C3E1A /* SDTree4.cpp in Sources */,
 				05A90F371A66B2C2006018B2 /* ComShipBody.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				05A90F331A66B2C2006018B2 /* ComPhysicsEntity.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				059E8DB11AC12D7F004AAACD /* Allocator.cpp in Sources */,
 				05D15A6D1A735A3E00017EFA /* ComBullet.cpp in Sources */,
+				05E539911B9EA177000DC93E /* Danmaku_1.cpp in Sources */,
 				05A90F351A66B2C2006018B2 /* Component.cpp in Sources */,
 				05A90F3F1A66B2C2006018B2 /* GameObject.cpp in Sources */,
 			);
@@ -929,10 +986,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E539971BA01AED000DC93E /* Danmaku_2.cpp in Sources */,
 				05A90F461A66B2C2006018B2 /* GameWorld.cpp in Sources */,
 				05D15A6E1A735A3E00017EFA /* ComBullet.cpp in Sources */,
 				05A90F441A66B2C2006018B2 /* Tag.cpp in Sources */,
 				05A90F481A66B2C2006018B2 /* GameScene.cpp in Sources */,
+				052225E51B7B39D5001C3E1A /* SDTree4.cpp in Sources */,
 				052225661B71D520001C3E1A /* Radar.cpp in Sources */,
 				053876B81B6A357100AE6568 /* README.md in Sources */,
 				05E50F821AA0C0ED0078F759 /* MissileLauncher.cpp in Sources */,
@@ -950,10 +1009,13 @@
 				05A90F4C1A66B2C2006018B2 /* UiLayer.cpp in Sources */,
 				05A90F3A1A66B2C2006018B2 /* ComShipController.cpp in Sources */,
 				05A90F4A1A66B2C2006018B2 /* Joystick.cpp in Sources */,
+				05E539921B9EA177000DC93E /* Danmaku_1.cpp in Sources */,
 				05A90F321A66B2C2006018B2 /* ComEngine.cpp in Sources */,
 				05A90F3E1A66B2C2006018B2 /* GameMessageDispatcher.cpp in Sources */,
 				059E8DB21AC12D7F004AAACD /* Allocator.cpp in Sources */,
 				05C9CC921AE7E5C3008B030E /* GameObjectFactory.cpp in Sources */,
+				05E5399B1BA02659000DC93E /* Danmaku_3.cpp in Sources */,
+				052225EE1B7C7FF6001C3E1A /* Level.cpp in Sources */,
 				05D15A371A729F6E00017EFA /* ComAiEnemyController.cpp in Sources */,
 				059E8DBA1AC12F88004AAACD /* Bucket.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,

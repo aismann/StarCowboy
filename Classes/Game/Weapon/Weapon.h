@@ -11,7 +11,7 @@
 
 #include "cocos.h"
 #include "Tag.h"
-#include "Timer.h"
+#include "Counter.h"
 #include "Allocator.h"
 
 class Weapon

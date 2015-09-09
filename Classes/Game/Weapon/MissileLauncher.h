@@ -84,9 +84,9 @@ protected:
     
     bool    _isLeftLaunche = true;
     
-    Timer   _reloadTimer = 2;
+    Counter<float>   _reloadTimer = 2;
     
-    Timer   _coolDownTimer = 0.5;
+    Counter<float>   _coolDownTimer = 0.5;
 };
 
 #endif

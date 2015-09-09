@@ -75,26 +75,26 @@ protected:
     
     void onHit();
     
-    int             _damage = 0;
+    int         _damage = 0;
     
-    Tag::Bit  _targetMask;
-    Tag::Bit  _hitTestMask;
+    Tag::Bit    _targetMask;
+    Tag::Bit    _hitTestMask;
     
-    cc::Vec2        _direction;
+    cc::Vec2    _direction;
     
-    cc::Vec2        _velocity;
-    float           _maxSpeed;
-    float           _accelerationTime = 0.25;
-    float           _acceleratFinished = false;
+    cc::Vec2    _velocity;
+    float   _maxSpeed;
+    float   _accelerationTime = 0.25;
+    float   _acceleratFinished = false;
     
-    float           _angularSpeed = 0;
+    float   _angularSpeed = 0;
     
-    float           _searchRadian = 0;
+    float   _searchRadian = 0;
     
-    GameObjectHandle  _target;
-    ComPhysicsEntity* _targetEntity;
+    GameObjectHandle    _target;
+    ComPhysicsEntity*   _targetEntity;
     
-    Timer           _searchTargetTimer = 0.25;
+    Counter<float>      _searchTargetTimer = 0.25;
     
     cc::RefPtr<cc::Node> _ndoe = nullptr;
 };

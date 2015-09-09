@@ -27,3 +27,8 @@ GameObject* GameObjectFactory::createRandomRock(const cc::Vec2 location)
     sp->runAction(cc::RepeatForever::create(cc::RotateBy::create(1, cc::random(-90.f, 90.f))));
     return rock;
 }
+
+GameObject* createBullet(cc::Node* node,const cc::Vec2 location, const cc::Vec2 velocity)
+{
+    return nullptr;
+}

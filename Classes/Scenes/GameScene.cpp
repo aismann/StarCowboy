@@ -51,7 +51,7 @@ bool GameScene::init()
     GameObject *playerShip = GameWorld::getInstance()->getObjectManager()->createObject("player").get();
     playerShip->setTagBits(Tag::getBit("player") | Tag::getBit("physics"));
     playerShip->addComponent(ComPhysicsEntity::create(3, 500), "entity");
-    playerShip->addComponent(ComShipBody::create(Sprite::create("ship.png")), "body");
+    playerShip->addComponent(ComShipBody::create(CREATE_SPRITE("ship.png")), "body");
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/cosmic_particle.plist")));
     playerShip->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/ship_wake_0.plist")), "wake_emiter");
     playerShip->addComponent(ComShipController::create(), "controller");
@@ -72,7 +72,7 @@ bool GameScene::init()
                                          ->setSearchAngular(60)
                                          ->setAngularSpeed(180)
                                          ->addHitTestMask(Tag::getBit("rock")))
-                             ->addWeapon(Laser::create(Sprite::create("laser.png"))
+                             ->addWeapon(Laser::create(CREATE_SPRITE("laser.png"))
                                          ->setDPS(200)
                                          ->addHitTestMask(Tag::getBit("rock")))
 , "weapon");
@@ -100,7 +100,7 @@ bool GameScene::init()
             GameObject *enemy = GameWorld::getInstance()->getObjectManager()->createObject().get();
             enemy->addComponent(ComPhysicsEntity::create(3, 200), "entity");
             enemy->setTagBits(Tag::getBit("enemy") | Tag::getBit("physics"));
-            enemy->addComponent(ComShipBody::create(Sprite::create("enemy.png")), "body");
+            enemy->addComponent(ComShipBody::create(CREATE_SPRITE("enemy.png")), "body");
             enemy->addComponent(ComParticleEmiter::create(cc::ParticleSystemQuad::create("particles/ship_wake_1.plist")), "wake_emiter");
             cc::Vec2 locate(random(-100, 100), random(-100, 100));
             enemy->getComponent<ComPhysicsEntity>("entity")->setLocation(player->getComponent<ComPhysicsEntity>("entity")->getLocation() + locate.getNormalized() * random(300, 500));
@@ -148,6 +148,7 @@ bool GameScene::init()
     schedule(checkRestartGame, 10, "check_restart_game");
 
     scheduleUpdate();
+    
     return true;
 }
 

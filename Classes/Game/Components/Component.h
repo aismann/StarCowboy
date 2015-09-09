@@ -7,7 +7,7 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 #include "GameMessage.h"
-#include "Timer.h"
+#include "Counter.h"
 
 #include <string>
 
@@ -77,7 +77,7 @@ private:
     void        doUpdate(float dt);
     
     bool        _isStarted = false;
-    Timer       _updateTimer;
+    Counter<float>       _updateTimer;
 };
 
 #endif

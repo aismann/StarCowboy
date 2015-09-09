@@ -39,6 +39,17 @@ public:
         }
     }
     
+    void switchToNext() {
+        if (!_weapens.empty()) {
+            auto it = std::find(_weapens.begin(), _weapens.end(), _currentWeapen);
+            if (it != _weapens.end() && ++it != _weapens.end()) {
+                _currentWeapen = *it;
+                return;
+            }
+            _currentWeapen = *_weapens.begin();
+        }
+    }
+    
     void startFire();
     void endFire();
     

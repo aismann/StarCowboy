@@ -9,7 +9,7 @@ ComWeaponSystem::ComWeaponSystem()
 :_node(nullptr){
     
     _node = cc::Node::create();
-//    cc::Sprite* sp = cc::Sprite::create("weapon.png");
+//    cc::Sprite* sp = CREATE_SPRITE("weapon.png");
 //    _node->addChild(sp);
 }
 
@@ -30,9 +30,6 @@ ComWeaponSystem* ComWeaponSystem::addWeapon(Weapon* weapon) {
 }
 
 void ComWeaponSystem::onUnload() {
-    if (_currentWeapen) {
-        _currentWeapen->stopFire();
-    }
 }
 
 void ComWeaponSystem::start() {
@@ -67,8 +64,5 @@ void ComWeaponSystem::startFire() {
 void ComWeaponSystem::endFire() {
     if (_isFire) {
         _isFire = false;
-        if (_currentWeapen) {
-            _currentWeapen->stopFire();
-        }
     }
 }

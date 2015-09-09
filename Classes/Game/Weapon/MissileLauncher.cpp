@@ -18,10 +18,10 @@ bool MissileLauncher::fire(const cc::Vec2& from,
                            const cc::Vec2& direction,
                            const cc::Vec2& shipVelocity)
 {
-    if (_coolDownTimer.isFire() && _ammoNum > 0) {
+    if (_coolDownTimer.isFinish() && _ammoNum > 0) {
         GameObject* missile = GameWorld::getInstance()->getObjectManager()->createObject().get();
         missile->setTagBits(Tag::getBit("missile"));
-        missile->addComponent(ComMissile::create(cc::Sprite::create("missile.png"))
+        missile->addComponent(ComMissile::create(CREATE_SPRITE("missile.png"))
                               ->setTargetMask(_targetMask)
                               ->setHitTestMask(_hitTestMask)
                               ->setDamage(_damage)
