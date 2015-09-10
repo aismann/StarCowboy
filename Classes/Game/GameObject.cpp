@@ -7,11 +7,7 @@
 #include "Allocator.h"
 
 GameObject::GameObject(IDType oid)
-:_id(oid)
-,_handleIndex(-1)
-,_name(nullptr)
-,_world(nullptr)
-,_tagBits(Tag::null.bit()) {
+:_id(oid) {
     _world = GameWorld::getInstance();
 }
  

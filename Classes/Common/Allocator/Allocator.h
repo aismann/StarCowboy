@@ -38,6 +38,13 @@ namespace memory {
     
 }
 
+template <class T>
+void __destruct(T* p) {
+    p->~T();
+}
+
+
+
 #define New(class, args...) new(memory::Allocator::getInstance()->alloc(sizeof(class))) class(args)
 
 #define Delete(p) \
@@ -47,9 +54,13 @@ if (p) {\
     p = nullptr;\
 }
 
-template <class T>
-void __destruct(T* p) {
-    p->~T();
-}
+
+/*
+#define New(class, args...) new class(args)
+#define Delete(p) \
+if (p) {\
+    delete p;\
+    p = nullptr;\
+}*/
 
 #endif

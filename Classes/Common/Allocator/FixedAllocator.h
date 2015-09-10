@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#define COOKIE_TYPE             unsigned short
+#define COOKIE_TYPE             unsigned int
 #define COOKIE_SIZE             sizeof(COOKIE_TYPE)
 
 #define SKIP_COOKIE(p)          ((unsigned char*)p + COOKIE_SIZE)

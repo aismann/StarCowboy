@@ -91,30 +91,33 @@ public:
 protected:
     
     GameObject(IDType oid);
+    
     virtual void            destroy();
     
     virtual void            update(float dt);
     
     virtual bool            onMessage(const GameMessage& msg) override;
     
-    IDType                  _id;
-    long                    _handleIndex;
-    
-    std::string*            _name;
-    
-    GameWorld*              _world;
-    
-    Tag::Bit          _tagBits;
-    
-    LifeState               _lifeState = LifeState::Sleep;
-    
-    ComVecType*             _components = nullptr;
-    
     ComVecType::iterator    findComByType(const std::type_info& type) const;
     
     ComVecType::iterator    findComByName(const std::string& name) const;
     
     void                    removeComponentIterator(ComVecType::iterator it);
+    
+    IDType                  _id = 0;
+    
+    long                    _handleIndex = -1;
+    
+    LifeState               _lifeState = LifeState::Sleep;
+    
+    Tag::Bit                _tagBits = Tag::null.bit();
+    
+    std::string*            _name = nullptr;;
+    
+    GameWorld*              _world = nullptr;;
+    
+    ComVecType*             _components = nullptr;
+    
 };
 
 #endif
