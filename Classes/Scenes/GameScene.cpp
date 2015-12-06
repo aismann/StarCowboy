@@ -18,6 +18,10 @@
 #include "MissileLauncher.h"
 #include "GameObjectFactory.h"
 
+#include "Danmaku_1.h"
+#include "Danmaku_2.h"
+#include "Danmaku_3.h"
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -105,7 +109,7 @@ bool GameScene::init()
             cc::Vec2 locate(random(-100, 100), random(-100, 100));
             enemy->getComponent<ComPhysicsEntity>("entity")->setLocation(player->getComponent<ComPhysicsEntity>("entity")->getLocation() + locate.getNormalized() * random(300, 500));
             enemy->addComponent(ComEngine::create(2000, 45), "engine");
-            if (random(0, 100) >= 90) {
+            if (random(0, 100) >= 50) {
                 enemy->addComponent(ComWeaponSystem::create()
                                     ->setTargetMask(Tag::getBit("player"))
                                     ->addWeapon(MissileLauncher::create()
@@ -117,16 +121,38 @@ bool GameScene::init()
                                                 ->setSearchAngular(30)
                                                 ->setAngularSpeed(90)
                                                 ->addHitTestMask(Tag::getBit("rock"))), "weapon");
+//                enemy->addComponent(ComWeaponSystem::create()
+//                                    ->setTargetMask(Tag::getBit("player"))
+//                                    ->addWeapon(Danmaku_2::create()
+//                                                ->setDamage(10)
+//                                                ->setBulletSpeed(100)
+//                                                ->setCoolDown(2.0)
+//                                                ->setRange(150)
+//                                                ->setBulletNum(10)
+//                                                ->setShotInterval(0.1)
+//                                                ->addHitTestMask(Tag::getBit("rock"))), "weapon");
             } else {
                 enemy->addComponent(ComWeaponSystem::create()
                                     ->setTargetMask(Tag::getBit("player"))
-                                    ->addWeapon(Cannon::create()
+                                    ->addWeapon(Danmaku_1::create()
                                                 ->setDamage(10)
-                                                ->setBulletSpeed(150)
-                                                ->setCoolDown(1.0)
+                                                ->setBulletSpeed(100)
+                                                ->setCoolDown(2.0)
                                                 ->setRange(150)
-                                                ->setErrorAngle(2.5)
+                                                ->setErrorAngle(5)
+                                                ->setBulletNum(3)
+                                                ->setShotInterval(0.1)
                                                 ->addHitTestMask(Tag::getBit("rock"))), "weapon");
+//                enemy->addComponent(ComWeaponSystem::create()
+//                                    ->setTargetMask(Tag::getBit("player"))
+//                                    ->addWeapon(Danmaku_3::create()
+//                                                ->setDamage(10)
+//                                                ->setBulletSpeed(100)
+//                                                ->setCoolDown(2.0)
+//                                                ->setRange(150)
+//                                                ->setBulletNum(10)
+//                                                ->setShotInterval(0.1)
+//                                                ->addHitTestMask(Tag::getBit("rock"))), "weapon");
             }
             
             enemy->addComponent(ComAiEnemyController::create());

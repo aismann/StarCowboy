@@ -10,14 +10,14 @@
 class Tag {
     
     enum {
-        BIT_SIZE = sizeof(int) * 8
+        BIT_SIZE = 64
     };
     
 public:
     
     typedef std::bitset<BIT_SIZE> Bit;
     
-    const std::bitset<BIT_SIZE> bit() const {
+    const Bit bit() const {
         return _bit;
     }
     

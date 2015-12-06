@@ -64,5 +64,6 @@ void ComWeaponSystem::startFire() {
 void ComWeaponSystem::endFire() {
     if (_isFire) {
         _isFire = false;
+        _currentWeapen->stopFire();
     }
 }
