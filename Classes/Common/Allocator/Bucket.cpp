@@ -1,7 +1,7 @@
 
 #include "Bucket.h"
 
-#include <stdlib.h>
+#include <cassert>
 
 using namespace memory;
 

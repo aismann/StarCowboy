@@ -121,16 +121,6 @@ bool GameScene::init()
                                                 ->setSearchAngular(30)
                                                 ->setAngularSpeed(90)
                                                 ->addHitTestMask(Tag::getBit("rock"))), "weapon");
-//                enemy->addComponent(ComWeaponSystem::create()
-//                                    ->setTargetMask(Tag::getBit("player"))
-//                                    ->addWeapon(Danmaku_2::create()
-//                                                ->setDamage(10)
-//                                                ->setBulletSpeed(100)
-//                                                ->setCoolDown(2.0)
-//                                                ->setRange(150)
-//                                                ->setBulletNum(10)
-//                                                ->setShotInterval(0.1)
-//                                                ->addHitTestMask(Tag::getBit("rock"))), "weapon");
             } else {
                 enemy->addComponent(ComWeaponSystem::create()
                                     ->setTargetMask(Tag::getBit("player"))
@@ -143,16 +133,6 @@ bool GameScene::init()
                                                 ->setBulletNum(3)
                                                 ->setShotInterval(0.1)
                                                 ->addHitTestMask(Tag::getBit("rock"))), "weapon");
-//                enemy->addComponent(ComWeaponSystem::create()
-//                                    ->setTargetMask(Tag::getBit("player"))
-//                                    ->addWeapon(Danmaku_3::create()
-//                                                ->setDamage(10)
-//                                                ->setBulletSpeed(100)
-//                                                ->setCoolDown(2.0)
-//                                                ->setRange(150)
-//                                                ->setBulletNum(10)
-//                                                ->setShotInterval(0.1)
-//                                                ->addHitTestMask(Tag::getBit("rock"))), "weapon");
             }
             
             enemy->addComponent(ComAiEnemyController::create());
@@ -179,5 +159,6 @@ bool GameScene::init()
 }
 
 void GameScene::update(float dt) {
-    GameWorld::getInstance()->update(dt);
+    static float fixedDeltaTime = 1 / 60.f;
+    GameWorld::getInstance()->update(fixedDeltaTime);
 }

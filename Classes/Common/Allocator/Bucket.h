@@ -2,6 +2,8 @@
 #ifndef __MemPool_h__
 #define __MemPool_h__
 
+#include <cstdlib>
+
 namespace memory {
     
     class Bucket
